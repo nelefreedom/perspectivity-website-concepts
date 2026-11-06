@@ -64,7 +64,6 @@
         d.get('alsoNews')
           ? destination(S.news, ['name', 'email'], d)
           : destination(S.news, null, d, S.newsSkipped),
-        destination(S.site, null, d, S.siteNothing),
       ]);
     });
   }
@@ -80,7 +79,6 @@
       }
       show(document.getElementById('news-sim'), [
         destination(S.news, ['name', 'email'], d),
-        destination(S.site, null, d, S.siteNothing),
       ]);
     });
   }
