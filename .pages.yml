@@ -1,0 +1,185 @@
+# Pages CMS: what Perspectivity partners can edit on concept A.
+# Every save becomes a commit; GitHub then rebuilds the site (about two minutes).
+
+media:
+  input: public/uploads
+  output: /uploads
+  rename: safe
+  categories: [image]
+
+# The repository is public: commits carry the editor's name, never their email address.
+settings:
+  commit:
+    identity: app
+    templates:
+      create: "Add {path} by {userName} (via Pages CMS)"
+      update: "Update {path} by {userName} (via Pages CMS)"
+      delete: "Delete {path} by {userName} (via Pages CMS)"
+      rename: "Rename {oldPath} to {newPath} by {userName} (via Pages CMS)"
+
+content:
+  - name: texts
+    label: Page texts
+    type: file
+    path: content/texts.json
+    format: json
+    fields:
+      - name: hero
+        label: Top of the page
+        type: object
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: lead, label: Introduction, type: text }
+      - name: work
+        label: What we do
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+          - { name: intro, label: Introduction, type: text }
+          - name: services
+            label: Services
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{title}" }
+            fields:
+              - { name: title, label: Title, type: string, required: true }
+              - { name: text, label: Text, type: text }
+      - name: navigator
+        label: Complexity Navigator
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+          - { name: subtitle, label: Subtitle, type: string }
+          - { name: text, label: Text, type: text }
+      - name: tools
+        label: Our tools
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+          - { name: intro, label: Introduction, type: text }
+          - name: sprockler
+            label: Sprockler
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Text, type: text }
+          - name: challenge
+            label: The Perspectivity Challenge
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Text, type: text }
+      - name: training
+        label: Training
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+          - { name: intro, label: Introduction, type: text }
+          - { name: note, label: Note at the bottom, type: string }
+      - name: projects
+        label: Projects
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+      - { name: quote, label: Quote, type: text }
+      - name: stories
+        label: Stories
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+      - name: team
+        label: Who we are
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+          - { name: intro, label: Introduction, type: text }
+      - name: toolbox
+        label: Toolbox
+        type: object
+        fields:
+          - { name: label, label: Small label above the title, type: string }
+          - { name: title, label: Title, type: string }
+          - { name: methods, label: Methods, type: string, list: true }
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: address, label: Address (one line per row), type: text }
+          - { name: email, label: Email address, type: string }
+          - { name: phone, label: Phone number, type: string }
+      - { name: footer, label: Footer line, type: string }
+
+  - name: dates
+    label: Training dates
+    type: file
+    path: content/dates.json
+    format: json
+    list: true
+    fields:
+      - { name: date, label: Date (leave empty for "Date to be announced"), type: string }
+      - { name: training, label: Training, type: string, required: true }
+      - name: format
+        label: Format
+        type: select
+        options: { values: [In person, Online, Hybrid] }
+      - { name: visible, label: Show on the site, type: boolean, default: true }
+
+  - name: trainings
+    label: Trainings
+    type: file
+    path: content/trainings.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: summary, label: One-line description, type: string }
+      - name: kind
+        label: Type
+        type: select
+        options: { values: [Open training, In-company] }
+      - { name: visible, label: Show on the site, type: boolean, default: true }
+
+  - name: projects
+    label: Projects
+    type: file
+    path: content/projects.json
+    format: json
+    list: true
+    fields:
+      - { name: partner, label: Partner, type: string }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: summary, label: Summary, type: text }
+
+  - name: news
+    label: News and blogs
+    type: file
+    path: content/news.json
+    format: json
+    list: true
+    fields:
+      - name: kind
+        label: Type
+        type: select
+        options: { values: [News, Blog] }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: summary, label: Summary, type: text }
+
+  - name: team
+    label: Team
+    type: file
+    path: content/team.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: focus, label: Focus (a few words), type: string }
+      - { name: photo, label: Photo (square works best), type: image }

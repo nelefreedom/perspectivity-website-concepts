@@ -1,3 +1,20 @@
+---
+// Concept A, built from the content files that editors change in Pages CMS.
+import texts from '../../../content/texts.json';
+import trainings from '../../../content/trainings.json';
+import dates from '../../../content/dates.json';
+import projects from '../../../content/projects.json';
+import news from '../../../content/news.json';
+import team from '../../../content/team.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const media = (p) => (!p ? '' : p.startsWith('http') ? p : base + p);
+const t = texts;
+const shown = (list) => list.filter((x) => x.visible !== false);
+const openTrainings = shown(trainings).filter((x) => x.kind !== 'In-company');
+const companyTrainings = shown(trainings).filter((x) => x.kind === 'In-company');
+const lines = (s) => (s || '').split('\n').filter(Boolean);
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +24,7 @@
 <title>Perspectivity · Concept A: Calm</title>
 <link rel="icon" href="../assets/person-red.png">
 <link rel="stylesheet" href="../assets/tokens.css">
-<style>
+<style is:global>
   body{background:#fff}
   /* Header */
   .top{--menu-bg:#fff;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:var(--dashed)}
@@ -164,8 +181,8 @@
   <section class="hero" id="top">
     <div class="wrap">
       <div>
-        <h1 class="title">For the love of complexity</h1>
-        <p class="lead">We are facilitators of social systems change. Today’s complexity offers fantastic opportunities for creativity, innovation and collaboration. By embracing complexity, we can create our desired future together.</p>
+        <h1 class="title">{t.hero.title}</h1>
+        <p class="lead">{t.hero.lead}</p>
         <div class="actions">
           <a class="btn btn-primary" href="#work">What we do</a>
           <a class="btn btn-outline" href="#training">Our training courses</a>
@@ -180,25 +197,19 @@
   <section id="work">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">What we do</p>
+        <p class="eyebrow">{t.work.label}</p>
         <div>
-          <h2 class="title">How can we help you?</h2>
-          <p>We bring people with different knowledge, interests and perspectives together. This is how we create space for new insights and responses to the complex challenges we are facing.</p>
+          <h2 class="title">{t.work.title}</h2>
+          <p>{t.work.intro}</p>
         </div>
       </div>
       <div class="three">
-        <article>
-          <h3>Facilitation of multi-stakeholder processes</h3>
-          <p>We facilitate dialogue with diverse stakeholders around shared challenges. Strengthening common ground and including diverse perspectives brings depth, new insights and room for collective action.</p>
-        </article>
-        <article>
-          <h3>Narrative research and evaluation</h3>
-          <p>To unravel patterns in complexity, we use the power of stories for research and evaluation, in a participatory and inclusive way. We help you learn from the past and decide for the future.</p>
-        </article>
-        <article>
-          <h3>Leadership and capacity strengthening</h3>
-          <p>To help you and your organisation navigate complexity, we offer group training and coaching on the job, with tools and methods for complex situations.</p>
-        </article>
+        {t.work.services.map((x) => (
+          <article>
+            <h3>{x.title}</h3>
+            <p>{x.text}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -208,10 +219,10 @@
       <img src="../assets/navigator.png" alt="The Complexity Navigator: an egg of building blocks" aria-describedby="nav-blocks">
       <p class="sr-only" id="nav-blocks">The building blocks include backbone, responsive leadership, reinforcing actions, involvement of all, urgency for change, vital connections, adaptive learning and shared ambitions.</p>
       <div>
-        <p class="eyebrow" style="color:var(--p-red-text)">Our vision and tool</p>
-        <h2 class="title">The Complexity Navigator</h2>
-        <p class="subtitle" style="color:var(--p-red-text)">nine building blocks for collective impact in complexity</p>
-        <p>To navigate complexity and create collective impact, you need to pay attention to nine crucial aspects. These building blocks help you unravel your specific situation and find your starting point for action. The Navigator is based on proven methods and our years of collective experience.</p>
+        <p class="eyebrow" style="color:var(--p-red-text)">{t.navigator.label}</p>
+        <h2 class="title">{t.navigator.title}</h2>
+        <p class="subtitle" style="color:var(--p-red-text)">{t.navigator.subtitle}</p>
+        <p>{t.navigator.text}</p>
         <a class="btn btn-primary" href="#">Download the Navigator</a>
       </div>
     </div>
@@ -220,21 +231,21 @@
   <section id="tools" class="tools-band">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Our tools</p>
-        <div><h2 class="title">Made by Perspectivity</h2>
-        <p>Two tools that grew out of our work, now used far beyond it.</p></div>
+        <p class="eyebrow">{t.tools.label}</p>
+        <div><h2 class="title">{t.tools.title}</h2>
+        <p>{t.tools.intro}</p></div>
       </div>
       <div class="tool-pair">
         <article>
           <img class="tool-logo" src="../assets/sprockler-wordmark.png" alt="Sprockler" width="900" height="297">
-          <h3>Stories and stats, connected in one tool</h3>
-          <p>Sprockler is our online tool for narrative research. People share a story and interpret it themselves; the patterns appear right away in interactive graphs, with the individual stories at the heart of every graph. Used in evaluations from Timor-Leste to Amsterdam.</p>
+          <h3>{t.tools.sprockler.title}</h3>
+          <p>{t.tools.sprockler.text}</p>
           <a class="btn btn-outline" href="https://sprockler.com" rel="noopener">Visit sprockler.com<span class="sr-only"> (external site)</span></a>
         </article>
         <article>
           <p class="tussenkop" style="color:var(--p-red)">The Perspectivity Challenge</p>
-          <h3>A serious board game about complexity</h3>
-          <p>In The Perspectivity Challenge, players act as world leaders and experience complexity first-hand, then reflect on what they learned. Games on climate, food, public health, fashion, human security and decision making. Played in 24 countries, by 83 organisations.</p>
+          <h3>{t.tools.challenge.title}</h3>
+          <p>{t.tools.challenge.text}</p>
           <a class="btn btn-outline" href="https://perspectivity-challenge.org" rel="noopener">Visit the Challenge<span class="sr-only"> (external site)</span></a>
         </article>
       </div>
@@ -244,39 +255,34 @@
   <section id="training">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Training</p>
+        <p class="eyebrow">{t.training.label}</p>
         <div>
-          <h2 class="title">Learn to navigate complexity</h2>
-          <p>Learn how to facilitate a generative dialogue, use the value of different perspectives, or conduct narrative and participatory research. Open enrolment, or tailor-made for your organisation.</p>
+          <h2 class="title">{t.training.title}</h2>
+          <p>{t.training.intro}</p>
         </div>
       </div>
-      <ul class="dates">
-        <li><span class="when">25 &amp; 26 March 2027</span><span class="what">Deep Democracy Level 2</span><span class="how">In person</span></li>
-        <li><span class="when">Date to be announced</span><span class="what">The Art of Facilitation in Complexity</span><span class="how">Online</span></li>
-        <li><span class="when">Date to be announced</span><span class="what">Storytelling in complexity (Sprockler)</span><span class="how">Online</span></li>
-      </ul>
+      {shown(dates).length > 0 && (
+        <ul class="dates">
+          {shown(dates).map((x) => (
+            <li><span class="when">{x.date || 'Date to be announced'}</span><span class="what">{x.training}</span><span class="how">{x.format}</span></li>
+          ))}
+        </ul>
+      )}
       <div class="cols">
         <div>
           <p class="tussenkop">Open trainings</p>
           <ul>
-            <li><strong>Deep Democracy, Level 1 and 2</strong><span>Facilitate dialogue and uncover the wisdom of the minority.</span></li>
-            <li><strong>The Art of Facilitation in Complexity</strong><span>An on-the-job learning journey in facilitating complex processes.</span></li>
-            <li><strong>Storytelling in complexity (Sprockler)</strong><span>Collect many stories and quantify the key patterns.</span></li>
-            <li><strong>How to get started with Systems Mapping</strong><span>Find high leverage points for systems change.</span></li>
-            <li><strong>Writeshop</strong><span>Learn to write &amp; write to learn.</span></li>
+            {openTrainings.map((x) => <li><strong>{x.title}</strong><span>{x.summary}</span></li>)}
           </ul>
         </div>
         <div>
           <p class="tussenkop">In-company</p>
           <ul>
-            <li><strong>Stories of Change</strong><span>Communicate the value and progress of a project.</span></li>
-            <li><strong>CoResolve: Participatory Leadership</strong><span>For anyone driving an agenda.</span></li>
-            <li><strong>Agile Scrum &amp; Project Management</strong><span>A practical workshop.</span></li>
-            <li><strong>Care for a Common Cause</strong><span>How young leaders create common ground and lead change.</span></li>
+            {companyTrainings.map((x) => <li><strong>{x.title}</strong><span>{x.summary}</span></li>)}
           </ul>
         </div>
       </div>
-      <p class="note">Perspectivity Enterprise is CRKBO registered; our training courses are VAT exempt.</p>
+      <p class="note">{t.training.note}</p>
     </div>
   </section>
 
@@ -285,31 +291,23 @@
   <section id="projects" class="projects">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Projects</p>
-        <h2 class="title">Iconic projects</h2>
+        <p class="eyebrow">{t.projects.label}</p>
+        <h2 class="title">{t.projects.title}</h2>
       </div>
-      <article>
-        <p class="partner">Partner: Human Security Collective</p>
-        <div><h3>Learning from a youth programme in Tunisia and the Netherlands</h3>
-        <p>Can you set up and conduct an innovative monitoring and evaluation system for an international youth programme? We designed and ran the evaluation of two youth leadership programmes.</p></div>
-      </article>
-      <article>
-        <p class="partner">Partner: Netherlands Embassy in Turkey</p>
-        <div><h3>ACT Academy strengthens youth leadership in Turkey</h3>
-        <p>A ground-breaking pilot of a sustainable leadership programme, set up with the embassy in Ankara to support civil society where civic space is shrinking.</p></div>
-      </article>
-      <article>
-        <p class="partner">Partner: Partos</p>
-        <div><h3>Building the future of development cooperation</h3>
-        <p>A six-month collective exploration with the Dutch development sector: which future is most desirable, and what does it mean for strategy?</p></div>
-      </article>
+      {projects.map((x) => (
+        <article>
+          <p class="partner">Partner: {x.partner}</p>
+          <div><h3>{x.title}</h3>
+          <p>{x.summary}</p></div>
+        </article>
+      ))}
     </div>
   </section>
 
   <section class="quote-band">
     <div class="wrap">
       <blockquote>
-        <p class="quote">“Perspectivity’s work is based on human contact and social structures. Human contact is a whimsical process. It can rub, explode, unite or run smoothly.”</p>
+        <p class="quote">{t.quote}</p>
       </blockquote>
     </div>
   </section>
@@ -317,13 +315,13 @@
   <section id="stories">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Stories</p>
-        <h2 class="title">Latest stories</h2>
+        <p class="eyebrow">{t.stories.label}</p>
+        <h2 class="title">{t.stories.title}</h2>
       </div>
       <div class="stories">
-        <a href="#"><span class="eyebrow" style="color:var(--p-red)">Blog</span><h3>Embracing difference: first reflections on the National Citizens’ Assembly on Climate</h3><p>What we witnessed, what we learned, and what makes this kind of process possible.</p></a>
-        <a href="#"><span class="eyebrow" style="color:var(--p-red)">News</span><h3>Weaving knowledge for collective learning</h3><p>A learning resource and Partnership Prompt Cards, co-created with the Robert Carr Fund.</p></a>
-        <a href="#"><span class="eyebrow" style="color:var(--p-red)">News</span><h3>The Perspectivity Public Health Challenge expands in the UK</h3><p>What would you prioritise during a public health crisis with limited resources?</p></a>
+        {news.map((x) => (
+          <a href="#"><span class="eyebrow" style="color:var(--p-red)">{x.kind}</span><h3>{x.title}</h3><p>{x.summary}</p></a>
+        ))}
       </div>
     </div>
   </section>
@@ -333,29 +331,32 @@
   <section id="team">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Who we are</p>
+        <p class="eyebrow">{t.team.label}</p>
         <div>
-          <h2 class="title">A cooperative of facilitators</h2>
-          <p>Perspectivity is a steward-owned cooperative of professionals who join forces to navigate complexity. We live and work in Europe, the Middle East, Africa and beyond. Are you an independent professional looking for like-minded spirits? Let’s have a virtual coffee.</p>
+          <h2 class="title">{t.team.title}</h2>
+          <p>{t.team.intro}</p>
         </div>
       </div>
-      <div class="team" id="team-grid"></div>
+      <div class="team" id="team-grid">
+        {team.map((p) => (
+          <figure><div class={p.photo ? 'ph' : 'ph none'}>{p.photo ? <img class="grey" src={media(p.photo)} alt="" loading="lazy"> : <img src="../assets/person-red.png" alt="">}</div>
+          <figcaption><strong>{p.name}</strong><span>{p.focus}</span></figcaption></figure>
+        ))}
+      </div>
     </div>
   </section>
 
   <section id="toolbox" style="padding-top:0">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Toolbox</p>
-        <div><h2 class="title" style="font-size:var(--fs-title-3)">Methods we often use</h2></div>
+        <p class="eyebrow">{t.toolbox.label}</p>
+        <div><h2 class="title" style="font-size:var(--fs-title-3)">{t.toolbox.title}</h2></div>
       </div>
       <div class="tools">
         <a href="https://sprockler.com" rel="noopener">Sprockler ↗</a>
         <a href="#navigator">Complexity Navigator</a>
         <a href="#">Publications</a>
-        <span>Citizens’ Assembly</span><span>Deep Democracy</span><span>Future Search</span><span>Social Lab</span>
-        <span>Appreciative Inquiry</span><span>Serious Gaming</span><span>Transformative Scenario Planning</span>
-        <span>Theory U</span><span>Systems Mapping</span><span>Open Space</span><span>World Café</span>
+        {t.toolbox.methods.map((m) => <span>{m}</span>)}
       </div>
     </div>
   </section>
@@ -363,9 +364,9 @@
   <section class="contact" id="contact">
     <div class="wrap">
       <div>
-        <h2 class="title">Let’s talk</h2>
-        <p>Working on a complex challenge? We like to think along. Send us a message, or sign up for our newsletter about our work, trainings and events.</p>
-        <address>Perspectivity<br>Jean François van Royenweg 16<br>2597 NW The Hague<br><a href="mailto:info@perspectivity.org">info@perspectivity.org</a><br>+31 6 1033 4466</address>
+        <h2 class="title">{t.contact.title}</h2>
+        <p>{t.contact.text}</p>
+        <address>{lines(t.contact.address).map((l) => <>{l}<br></>)}<a href={`mailto:${t.contact.email}`}>{t.contact.email}</a><br>{t.contact.phone}</address>
       </div>
       <form onsubmit="return false" aria-label="Newsletter">
         <p class="tussenkop" style="color:#fff">Newsletter</p>
@@ -380,15 +381,11 @@
 <footer>
   <div class="wrap">
     <img src="../assets/logo-payoff-red.png" alt="Perspectivity, for the love of complexity">
-    <span>Perspectivity Enterprise · Chamber of Commerce 54179092 · <a href="#">Privacy statement</a></span>
+    <span>{t.footer} · <a href="#">Privacy statement</a></span>
   </div>
 </footer>
 
 <nav class="concept-bar" aria-label="Concepts"><a href="../">All</a><a href="../a/" aria-current="page">A</a><a href="../b/">B</a><a href="../c/">C</a></nav>
-<script src="../assets/team.js"></script>
-<script src="../assets/site.js"></script>
-<script>renderTeam(document.getElementById('team-grid'), p => `
-  <figure><div class="ph ${p.img?'':'none'}">${p.img?`<img class="grey" src="${p.img}" alt="" loading="lazy">`:`<img src="../assets/person-red.png" alt="">`}</div>
-  <figcaption><strong>${p.name}</strong><span>${p.focus}</span></figcaption></figure>`);</script>
+<script is:inline src="../assets/site.js"></script>
 </body>
 </html>

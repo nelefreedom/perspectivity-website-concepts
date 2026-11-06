@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Deep Democracy, Level 1 and 2",
+    "summary": "Facilitate dialogue and uncover the wisdom of the minority.",
+    "kind": "Open training",
+    "visible": true
+  },
+  {
+    "title": "The Art of Facilitation in Complexity",
+    "summary": "An on-the-job learning journey in facilitating complex processes.",
+    "kind": "Open training",
+    "visible": true
+  },
+  {
+    "title": "Storytelling in complexity (Sprockler)",
+    "summary": "Collect many stories and quantify the key patterns.",
+    "kind": "Open training",
+    "visible": true
+  },
+  {
+    "title": "How to get started with Systems Mapping",
+    "summary": "Find high leverage points for systems change.",
+    "kind": "Open training",
+    "visible": true
+  },
+  {
+    "title": "Writeshop",
+    "summary": "Learn to write & write to learn.",
+    "kind": "Open training",
+    "visible": true
+  },
+  {
+    "title": "Stories of Change",
+    "summary": "Communicate the value and progress of a project.",
+    "kind": "In-company",
+    "visible": true
+  },
+  {
+    "title": "CoResolve: Participatory Leadership",
+    "summary": "For anyone driving an agenda.",
+    "kind": "In-company",
+    "visible": true
+  },
+  {
+    "title": "Agile Scrum & Project Management",
+    "summary": "A practical workshop.",
+    "kind": "In-company",
+    "visible": true
+  },
+  {
+    "title": "Care for a Common Cause",
+    "summary": "How young leaders create common ground and lead change.",
+    "kind": "In-company",
+    "visible": true
+  }
+]

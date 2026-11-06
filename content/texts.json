@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "title": "For the love of complexity",
+    "lead": "We are facilitators of social systems change. Today’s complexity offers fantastic opportunities for creativity, innovation and collaboration. By embracing complexity, we can create our desired future together."
+  },
+  "work": {
+    "label": "What we do",
+    "title": "How can we help you?",
+    "intro": "We bring people with different knowledge, interests and perspectives together. This is how we create space for new insights and responses to the complex challenges we are facing.",
+    "services": [
+      {
+        "title": "Facilitation of multi-stakeholder processes",
+        "text": "We facilitate dialogue with diverse stakeholders around shared challenges. Strengthening common ground and including diverse perspectives brings depth, new insights and room for collective action."
+      },
+      {
+        "title": "Narrative research and evaluation",
+        "text": "To unravel patterns in complexity, we use the power of stories for research and evaluation, in a participatory and inclusive way. We help you learn from the past and decide for the future."
+      },
+      {
+        "title": "Leadership and capacity strengthening",
+        "text": "To help you and your organisation navigate complexity, we offer group training and coaching on the job, with tools and methods for complex situations."
+      }
+    ]
+  },
+  "navigator": {
+    "label": "Our vision and tool",
+    "title": "The Complexity Navigator",
+    "subtitle": "nine building blocks for collective impact in complexity",
+    "text": "To navigate complexity and create collective impact, you need to pay attention to nine crucial aspects. These building blocks help you unravel your specific situation and find your starting point for action. The Navigator is based on proven methods and our years of collective experience."
+  },
+  "tools": {
+    "label": "Our tools",
+    "title": "Made by Perspectivity",
+    "intro": "Two tools that grew out of our work, now used far beyond it.",
+    "sprockler": {
+      "title": "Stories and stats, connected in one tool",
+      "text": "Sprockler is our online tool for narrative research. People share a story and interpret it themselves; the patterns appear right away in interactive graphs, with the individual stories at the heart of every graph. Used in evaluations from Timor-Leste to Amsterdam."
+    },
+    "challenge": {
+      "title": "A serious board game about complexity",
+      "text": "In The Perspectivity Challenge, players act as world leaders and experience complexity first-hand, then reflect on what they learned. Games on climate, food, public health, fashion, human security and decision making. Played in 24 countries, by 83 organisations."
+    }
+  },
+  "training": {
+    "label": "Training",
+    "title": "Learn to navigate complexity",
+    "intro": "Learn how to facilitate a generative dialogue, use the value of different perspectives, or conduct narrative and participatory research. Open enrolment, or tailor-made for your organisation.",
+    "note": "Perspectivity Enterprise is CRKBO registered; our training courses are VAT exempt."
+  },
+  "projects": {
+    "label": "Projects",
+    "title": "Iconic projects"
+  },
+  "quote": "“Perspectivity’s work is based on human contact and social structures. Human contact is a whimsical process. It can rub, explode, unite or run smoothly.”",
+  "stories": {
+    "label": "Stories",
+    "title": "Latest stories"
+  },
+  "team": {
+    "label": "Who we are",
+    "title": "A cooperative of facilitators",
+    "intro": "Perspectivity is a steward-owned cooperative of professionals who join forces to navigate complexity. We live and work in Europe, the Middle East, Africa and beyond. Are you an independent professional looking for like-minded spirits? Let’s have a virtual coffee."
+  },
+  "toolbox": {
+    "label": "Toolbox",
+    "title": "Methods we often use",
+    "methods": [
+      "Citizens’ Assembly",
+      "Deep Democracy",
+      "Future Search",
+      "Social Lab",
+      "Appreciative Inquiry",
+      "Serious Gaming",
+      "Transformative Scenario Planning",
+      "Theory U",
+      "Systems Mapping",
+      "Open Space",
+      "World Café"
+    ]
+  },
+  "contact": {
+    "title": "Let’s talk",
+    "text": "Working on a complex challenge? We like to think along. Send us a message, or sign up for our newsletter about our work, trainings and events.",
+    "address": "Perspectivity\nJean François van Royenweg 16\n2597 NW The Hague",
+    "email": "info@perspectivity.org",
+    "phone": "+31 6 1033 4466"
+  },
+  "footer": "Perspectivity Enterprise · Chamber of Commerce 54179092"
+}
