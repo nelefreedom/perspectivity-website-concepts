@@ -98,3 +98,4 @@ section[id],[id^="s"]{scroll-margin-top:96px}
 
 /* Grid columns may shrink below their content width */
 .wrap>*{min-width:0}
+hgroup{margin:0}
