@@ -1,4 +1,4 @@
-# Pages CMS: what Perspectivity partners can edit on concept A.
+# Pages CMS: what Perspectivity partners can edit on concept A, in English and Dutch.
 # Every save becomes a commit; GitHub then rebuilds the site (about two minutes).
 
 media:
@@ -17,6 +17,19 @@ settings:
       delete: "Delete {path} by {userName} (via Pages CMS)"
       rename: "Rename {oldPath} to {newPath} by {userName} (via Pages CMS)"
 
+# Every text has an English and a Dutch field, side by side.
+components:
+  en-nl-line:
+    type: object
+    fields:
+      - { name: en, label: English, type: string }
+      - { name: nl, label: Nederlands, type: string }
+  en-nl-text:
+    type: object
+    fields:
+      - { name: en, label: English, type: text }
+      - { name: nl, label: Nederlands, type: text }
+
 content:
   - name: texts
     label: Page texts
@@ -28,95 +41,95 @@ content:
         label: Top of the page
         type: object
         fields:
-          - { name: title, label: Title, type: string, required: true }
-          - { name: lead, label: Introduction, type: text }
+          - { name: title, label: Title, component: en-nl-line, required: true }
+          - { name: lead, label: Introduction, component: en-nl-text }
       - name: work
         label: What we do
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
-          - { name: intro, label: Introduction, type: text }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
+          - { name: intro, label: Introduction, component: en-nl-text }
           - name: services
             label: Services
             type: object
             list:
               collapsible: { collapsed: true, summary: "{title}" }
             fields:
-              - { name: title, label: Title, type: string, required: true }
-              - { name: text, label: Text, type: text }
+              - { name: title, label: Title, component: en-nl-line, required: true }
+              - { name: text, label: Text, component: en-nl-text }
       - name: navigator
         label: Complexity Navigator
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
-          - { name: subtitle, label: Subtitle, type: string }
-          - { name: text, label: Text, type: text }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
+          - { name: subtitle, label: Subtitle, component: en-nl-line }
+          - { name: text, label: Text, component: en-nl-text }
       - name: tools
         label: Our tools
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
-          - { name: intro, label: Introduction, type: text }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
+          - { name: intro, label: Introduction, component: en-nl-text }
           - name: sprockler
             label: Sprockler
             type: object
             fields:
-              - { name: title, label: Title, type: string }
-              - { name: text, label: Text, type: text }
+              - { name: title, label: Title, component: en-nl-line }
+              - { name: text, label: Text, component: en-nl-text }
           - name: challenge
             label: The Perspectivity Challenge
             type: object
             fields:
-              - { name: title, label: Title, type: string }
-              - { name: text, label: Text, type: text }
+              - { name: title, label: Title, component: en-nl-line }
+              - { name: text, label: Text, component: en-nl-text }
       - name: training
         label: Training
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
-          - { name: intro, label: Introduction, type: text }
-          - { name: note, label: Note at the bottom, type: string }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
+          - { name: intro, label: Introduction, component: en-nl-text }
+          - { name: note, label: Note at the bottom, component: en-nl-line }
       - name: projects
         label: Projects
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
-      - { name: quote, label: Quote, type: text }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
+      - { name: quote, label: Quote, component: en-nl-text }
       - name: stories
         label: Stories
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
       - name: team
         label: Who we are
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
-          - { name: intro, label: Introduction, type: text }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
+          - { name: intro, label: Introduction, component: en-nl-text }
       - name: toolbox
         label: Toolbox
         type: object
         fields:
-          - { name: label, label: Small label above the title, type: string }
-          - { name: title, label: Title, type: string }
-          - { name: methods, label: Methods, type: string, list: true }
+          - { name: label, label: Small label above the title, component: en-nl-line }
+          - { name: title, label: Title, component: en-nl-line }
+          - { name: methods, label: Methods, component: en-nl-line, list: true }
       - name: contact
         label: Contact
         type: object
         fields:
-          - { name: title, label: Title, type: string }
-          - { name: text, label: Text, type: text }
-          - { name: address, label: Address (one line per row), type: text }
+          - { name: title, label: Title, component: en-nl-line }
+          - { name: text, label: Text, component: en-nl-text }
+          - { name: address, label: Address (one line per row), component: en-nl-text }
           - { name: email, label: Email address, type: string }
           - { name: phone, label: Phone number, type: string }
-      - { name: footer, label: Footer line, type: string }
+      - { name: footer, label: Footer line, component: en-nl-line }
 
   - name: dates
     label: Training dates
@@ -125,8 +138,8 @@ content:
     format: json
     list: true
     fields:
-      - { name: date, label: Date (leave empty for "Date to be announced"), type: string }
-      - { name: training, label: Training, type: string, required: true }
+      - { name: date, label: Date (leave empty for "Date to be announced" / "Datum volgt"), component: en-nl-line }
+      - { name: training, label: Training, component: en-nl-line, required: true }
       - name: format
         label: Format
         type: select
@@ -140,8 +153,8 @@ content:
     format: json
     list: true
     fields:
-      - { name: title, label: Title, type: string, required: true }
-      - { name: summary, label: One-line description, type: string }
+      - { name: title, label: Title, component: en-nl-line, required: true }
+      - { name: summary, label: One-line description, component: en-nl-line }
       - name: kind
         label: Type
         type: select
@@ -155,9 +168,9 @@ content:
     format: json
     list: true
     fields:
-      - { name: partner, label: Partner, type: string }
-      - { name: title, label: Title, type: string, required: true }
-      - { name: summary, label: Summary, type: text }
+      - { name: partner, label: Partner, component: en-nl-line }
+      - { name: title, label: Title, component: en-nl-line, required: true }
+      - { name: summary, label: Summary, component: en-nl-text }
 
   - name: news
     label: News and blogs
@@ -170,8 +183,8 @@ content:
         label: Type
         type: select
         options: { values: [News, Blog] }
-      - { name: title, label: Title, type: string, required: true }
-      - { name: summary, label: Summary, type: text }
+      - { name: title, label: Title, component: en-nl-line, required: true }
+      - { name: summary, label: Summary, component: en-nl-text }
 
   - name: team
     label: Team
@@ -181,5 +194,5 @@ content:
     list: true
     fields:
       - { name: name, label: Name, type: string, required: true }
-      - { name: focus, label: Focus (a few words), type: string }
+      - { name: focus, label: Focus (a few words), component: en-nl-line }
       - { name: photo, label: Photo (square works best), type: image }

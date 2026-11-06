@@ -1,87 +1,138 @@
 [
   {
     "name": "Lisette Gast",
-    "focus": "Deep Democracy, Art of Facilitation",
+    "focus": {
+      "en": "Deep Democracy, Art of Facilitation",
+      "nl": "Deep Democracy, Kunst van het faciliteren"
+    },
     "photo": ""
   },
   {
     "name": "Diana Gapak-Hughes",
-    "focus": "Migration & diaspora, narrative analysis",
+    "focus": {
+      "en": "Migration & diaspora, narrative analysis",
+      "nl": "Migratie & diaspora, narratieve analyse"
+    },
     "photo": "/uploads/team/diana-gapak-hughes.jpg"
   },
   {
     "name": "María Peiró Torralba",
-    "focus": "Creative facilitation, storytelling",
+    "focus": {
+      "en": "Creative facilitation, storytelling",
+      "nl": "Creatieve facilitatie, storytelling"
+    },
     "photo": "/uploads/team/maria-peiro-torralba.jpg"
   },
   {
     "name": "Chiwei Luu",
-    "focus": "Social design, graphic recording",
+    "focus": {
+      "en": "Social design, graphic recording",
+      "nl": "Sociaal ontwerpen, graphic recording"
+    },
     "photo": "/uploads/team/chiwei-luu.jpg"
   },
   {
     "name": "Marjolein Kok",
-    "focus": "Narrative research, evaluation & learning",
+    "focus": {
+      "en": "Narrative research, evaluation & learning",
+      "nl": "Narratief onderzoek, evaluatie & leren"
+    },
     "photo": "/uploads/team/marjolein-kok.jpg"
   },
   {
     "name": "Maarten Kraneveld",
-    "focus": "Co-creation, systems dynamics",
+    "focus": {
+      "en": "Co-creation, systems dynamics",
+      "nl": "Co-creatie, systeemdenken"
+    },
     "photo": "/uploads/team/maarten-kraneveld.jpg"
   },
   {
     "name": "Dagmar Heemskerk-Verbeek",
-    "focus": "Deep Democracy, regeneration",
+    "focus": {
+      "en": "Deep Democracy, regeneration",
+      "nl": "Deep Democracy, regeneratie"
+    },
     "photo": ""
   },
   {
     "name": "Niels Tabingh Suermondt",
-    "focus": "Storytelling, sustainability",
+    "focus": {
+      "en": "Storytelling, sustainability",
+      "nl": "Verhalen vertellen, duurzaamheid"
+    },
     "photo": "/uploads/team/niels-tabingh-suermondt.jpg"
   },
   {
     "name": "Anna Kanneworff",
-    "focus": "Deep Democracy, conflict transformation",
+    "focus": {
+      "en": "Deep Democracy, conflict transformation",
+      "nl": "Deep Democracy, conflicttransformatie"
+    },
     "photo": "/uploads/team/anna-kanneworff.jpg"
   },
   {
     "name": "Petra de Boer",
-    "focus": "Participatory policymaking, Agile Scrum",
+    "focus": {
+      "en": "Participatory policymaking, Agile Scrum",
+      "nl": "Participatieve beleidsvorming, Agile Scrum"
+    },
     "photo": "/uploads/team/petra-de-boer.jpg"
   },
   {
     "name": "Rutger Bartelsman",
-    "focus": "Leadership development, coaching",
+    "focus": {
+      "en": "Leadership development, coaching",
+      "nl": "Leiderschapsontwikkeling, coaching"
+    },
     "photo": "/uploads/team/rutger-bartelsman.jpg"
   },
   {
     "name": "Elien Rogaar",
-    "focus": "Large scale interventions, co-creation",
+    "focus": {
+      "en": "Large scale interventions, co-creation",
+      "nl": "Grote-groepsinterventies, co-creatie"
+    },
     "photo": "/uploads/team/elien-rogaar.jpg"
   },
   {
     "name": "Ted Jan Post",
-    "focus": "Complexity & systems thinking",
+    "focus": {
+      "en": "Complexity & systems thinking",
+      "nl": "Complexiteit & systeemdenken"
+    },
     "photo": "/uploads/team/ted-jan-post.jpg"
   },
   {
     "name": "Nohad Elhajj",
-    "focus": "Process facilitation, capacity building",
+    "focus": {
+      "en": "Process facilitation, capacity building",
+      "nl": "Procesfacilitatie, capacity building"
+    },
     "photo": "/uploads/team/nohad-elhajj.jpg"
   },
   {
     "name": "Monique Janmaat",
-    "focus": "Large scale interventions, Deep Democracy",
+    "focus": {
+      "en": "Large scale interventions, Deep Democracy",
+      "nl": "Grote-groepsinterventies, Deep Democracy"
+    },
     "photo": "/uploads/team/monique-janmaat.jpg"
   },
   {
     "name": "Nele Blommestein",
-    "focus": "Narrative research, Sprockler",
+    "focus": {
+      "en": "Narrative research, Sprockler",
+      "nl": "Narratief onderzoek, Sprockler"
+    },
     "photo": "/uploads/team/nele-blommestein.jpg"
   },
   {
     "name": "Han Rakels",
-    "focus": "Large scale interventions, envisioning",
+    "focus": {
+      "en": "Large scale interventions, envisioning",
+      "nl": "Grote-groepsinterventies, visievorming"
+    },
     "photo": "/uploads/team/han-rakels.jpg"
   }
 ]

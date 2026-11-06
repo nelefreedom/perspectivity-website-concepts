@@ -1,55 +1,109 @@
 [
   {
-    "title": "Deep Democracy, Level 1 and 2",
-    "summary": "Facilitate dialogue and uncover the wisdom of the minority.",
+    "title": {
+      "en": "Deep Democracy, Level 1 and 2",
+      "nl": "Deep Democracy, Level 1 en 2"
+    },
+    "summary": {
+      "en": "Facilitate dialogue and uncover the wisdom of the minority.",
+      "nl": "Faciliteer een dialoog en ontdek de wijsheid van de minderheid."
+    },
     "kind": "Open training",
     "visible": true
   },
   {
-    "title": "The Art of Facilitation in Complexity",
-    "summary": "An on-the-job learning journey in facilitating complex processes.",
+    "title": {
+      "en": "The Art of Facilitation in Complexity",
+      "nl": "De Kunst van het Faciliteren in Complexiteit"
+    },
+    "summary": {
+      "en": "An on-the-job learning journey in facilitating complex processes.",
+      "nl": "Een on-the-job leertraject in het faciliteren van complexe processen."
+    },
     "kind": "Open training",
     "visible": true
   },
   {
-    "title": "Storytelling in complexity (Sprockler)",
-    "summary": "Collect many stories and quantify the key patterns.",
+    "title": {
+      "en": "Storytelling in complexity (Sprockler)",
+      "nl": "Storytelling in complexiteit (Sprockler)"
+    },
+    "summary": {
+      "en": "Collect many stories and quantify the key patterns.",
+      "nl": "Verzamel veel verhalen en kwantificeer de belangrijkste patronen."
+    },
     "kind": "Open training",
     "visible": true
   },
   {
-    "title": "How to get started with Systems Mapping",
-    "summary": "Find high leverage points for systems change.",
+    "title": {
+      "en": "How to get started with Systems Mapping",
+      "nl": "Aan de slag met Systems Mapping"
+    },
+    "summary": {
+      "en": "Find high leverage points for systems change.",
+      "nl": "Vind de hefboompunten voor systeemverandering."
+    },
     "kind": "Open training",
     "visible": true
   },
   {
-    "title": "Writeshop",
-    "summary": "Learn to write & write to learn.",
+    "title": {
+      "en": "Writeshop",
+      "nl": "Writeshop"
+    },
+    "summary": {
+      "en": "Learn to write & write to learn.",
+      "nl": "Leer schrijven en schrijf om te leren."
+    },
     "kind": "Open training",
     "visible": true
   },
   {
-    "title": "Stories of Change",
-    "summary": "Communicate the value and progress of a project.",
+    "title": {
+      "en": "Stories of Change",
+      "nl": "Verhalen van verandering"
+    },
+    "summary": {
+      "en": "Communicate the value and progress of a project.",
+      "nl": "Breng de waarde en voortgang van een project over."
+    },
     "kind": "In-company",
     "visible": true
   },
   {
-    "title": "CoResolve: Participatory Leadership",
-    "summary": "For anyone driving an agenda.",
+    "title": {
+      "en": "CoResolve: Participatory Leadership",
+      "nl": "CoResolve: Participatief leiderschap"
+    },
+    "summary": {
+      "en": "For anyone driving an agenda.",
+      "nl": "Voor iedereen die een agenda trekt."
+    },
     "kind": "In-company",
     "visible": true
   },
   {
-    "title": "Agile Scrum & Project Management",
-    "summary": "A practical workshop.",
+    "title": {
+      "en": "Agile Scrum & Project Management",
+      "nl": "Agile Scrum & projectmanagement"
+    },
+    "summary": {
+      "en": "A practical workshop.",
+      "nl": "Een praktische workshop."
+    },
     "kind": "In-company",
     "visible": true
   },
   {
-    "title": "Care for a Common Cause",
-    "summary": "How young leaders create common ground and lead change.",
+    "title": {
+      "en": "Care for a Common Cause",
+      "nl": "Care for a Common Cause"
+    },
+    "summary": {
+      "en": "How young leaders create common ground and lead change.",
+      "nl": "Hoe jonge leiders gemeenschappelijke grond creëren en verandering leiden."
+    },
     "kind": "In-company",
     "visible": true
   }

@@ -1,19 +1,37 @@
 [
   {
-    "date": "25 & 26 March 2027",
-    "training": "Deep Democracy Level 2",
+    "date": {
+      "en": "25 & 26 March 2027",
+      "nl": "25 & 26 maart 2027"
+    },
+    "training": {
+      "en": "Deep Democracy Level 2",
+      "nl": "Deep Democracy Level 2"
+    },
     "format": "In person",
     "visible": true
   },
   {
-    "date": "",
-    "training": "The Art of Facilitation in Complexity",
+    "date": {
+      "en": "",
+      "nl": ""
+    },
+    "training": {
+      "en": "The Art of Facilitation in Complexity",
+      "nl": "De Kunst van het Faciliteren in Complexiteit"
+    },
     "format": "Online",
     "visible": true
   },
   {
-    "date": "",
-    "training": "Storytelling in complexity (Sprockler)",
+    "date": {
+      "en": "",
+      "nl": ""
+    },
+    "training": {
+      "en": "Storytelling in complexity (Sprockler)",
+      "nl": "Storytelling in complexiteit (Sprockler)"
+    },
     "format": "Online",
     "visible": true
   }

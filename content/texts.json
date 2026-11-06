@@ -1,89 +1,242 @@
 {
   "hero": {
-    "title": "For the love of complexity",
-    "lead": "We are facilitators of social systems change. Today’s complexity offers fantastic opportunities for creativity, innovation and collaboration. By embracing complexity, we can create our desired future together."
+    "title": {
+      "en": "For the love of complexity",
+      "nl": "For the love of complexity"
+    },
+    "lead": {
+      "en": "We are facilitators of social systems change. Today’s complexity offers fantastic opportunities for creativity, innovation and collaboration. By embracing complexity, we can create our desired future together.",
+      "nl": "Wij faciliteren veranderingen in sociale systemen. Wij zijn ervan overtuigd dat de complexiteit van vandaag fantastische kansen biedt voor creativiteit, innovatie en samenwerking. Door complexiteit te omarmen, kunnen we samen onze gewenste toekomst creëren."
+    }
   },
   "work": {
-    "label": "What we do",
-    "title": "How can we help you?",
-    "intro": "We bring people with different knowledge, interests and perspectives together. This is how we create space for new insights and responses to the complex challenges we are facing.",
+    "label": {
+      "en": "What we do",
+      "nl": "Wat we doen"
+    },
+    "title": {
+      "en": "How can we help you?",
+      "nl": "Hoe kunnen we je helpen?"
+    },
+    "intro": {
+      "en": "We bring people with different knowledge, interests and perspectives together. This is how we create space for new insights and responses to the complex challenges we are facing.",
+      "nl": "In ons werk brengen we mensen met verschillende kennis, interesses en perspectieven samen. Zo creëren we ruimte voor nieuwe inzichten en antwoorden op de complexe vraagstukken die voor ons liggen."
+    },
     "services": [
       {
-        "title": "Facilitation of multi-stakeholder processes",
-        "text": "We facilitate dialogue with diverse stakeholders around shared challenges. Strengthening common ground and including diverse perspectives brings depth, new insights and room for collective action."
+        "title": {
+          "en": "Facilitation of multi-stakeholder processes",
+          "nl": "Multi-stakeholder-dialoogprocessen"
+        },
+        "text": {
+          "en": "We facilitate dialogue with diverse stakeholders around shared challenges. Strengthening common ground and including diverse perspectives brings depth, new insights and room for collective action.",
+          "nl": "We faciliteren dialoogprocessen waarbij verschillende belanghebbenden rondom gedeelde vraagstukken bij elkaar komen. Het versterken van een gemeenschappelijke basis en het betrekken van diverse perspectieven zorgt voor diepgang, nieuwe inzichten en ruimte voor gezamenlijke actie."
+        }
       },
       {
-        "title": "Narrative research and evaluation",
-        "text": "To unravel patterns in complexity, we use the power of stories for research and evaluation, in a participatory and inclusive way. We help you learn from the past and decide for the future."
+        "title": {
+          "en": "Narrative research and evaluation",
+          "nl": "Narratief onderzoek en evaluatie"
+        },
+        "text": {
+          "en": "To unravel patterns in complexity, we use the power of stories for research and evaluation, in a participatory and inclusive way. We help you learn from the past and decide for the future.",
+          "nl": "Om in complexiteit patronen te ontrafelen, gebruiken we de kracht van verhalen voor onderzoek en evaluatie, op een participatieve en inclusieve manier. We helpen je lessen te trekken uit het verleden en beslissingen te nemen voor de toekomst."
+        }
       },
       {
-        "title": "Leadership and capacity strengthening",
-        "text": "To help you and your organisation navigate complexity, we offer group training and coaching on the job, with tools and methods for complex situations."
+        "title": {
+          "en": "Leadership and capacity strengthening",
+          "nl": "Leiderschap en capaciteitsversterking"
+        },
+        "text": {
+          "en": "To help you and your organisation navigate complexity, we offer group training and coaching on the job, with tools and methods for complex situations.",
+          "nl": "Om jou en je organisatie te helpen navigeren in complexiteit, bieden wij groepstrainingen en coaching op de werkvloer, met instrumenten en methodieken voor complexe situaties."
+        }
       }
     ]
   },
   "navigator": {
-    "label": "Our vision and tool",
-    "title": "The Complexity Navigator",
-    "subtitle": "nine building blocks for collective impact in complexity",
-    "text": "To navigate complexity and create collective impact, you need to pay attention to nine crucial aspects. These building blocks help you unravel your specific situation and find your starting point for action. The Navigator is based on proven methods and our years of collective experience."
+    "label": {
+      "en": "Our vision and tool",
+      "nl": "Onze visie en tool"
+    },
+    "title": {
+      "en": "The Complexity Navigator",
+      "nl": "De Complexity Navigator"
+    },
+    "subtitle": {
+      "en": "nine building blocks for collective impact in complexity",
+      "nl": "negen bouwstenen voor collectieve impact in complexiteit"
+    },
+    "text": {
+      "en": "To navigate complexity and create collective impact, you need to pay attention to nine crucial aspects. These building blocks help you unravel your specific situation and find your starting point for action. The Navigator is based on proven methods and our years of collective experience.",
+      "nl": "Om complexiteit op een succesvolle manier te navigeren en collectieve impact te bereiken, moet je aandacht besteden aan negen cruciale aspecten van complexiteit. Deze bouwstenen helpen jouw specifieke situatie te ontrafelen en je startpunt voor actie te vinden. De Navigator is gebaseerd op bewezen methodieken en onze jarenlange collectieve ervaring."
+    }
   },
   "tools": {
-    "label": "Our tools",
-    "title": "Made by Perspectivity",
-    "intro": "Two tools that grew out of our work, now used far beyond it.",
+    "label": {
+      "en": "Our tools",
+      "nl": "Onze tools"
+    },
+    "title": {
+      "en": "Made by Perspectivity",
+      "nl": "Gemaakt door Perspectivity"
+    },
+    "intro": {
+      "en": "Two tools that grew out of our work, now used far beyond it.",
+      "nl": "Twee tools die uit ons werk zijn gegroeid en nu ver daarbuiten worden gebruikt."
+    },
     "sprockler": {
-      "title": "Stories and stats, connected in one tool",
-      "text": "Sprockler is our online tool for narrative research. People share a story and interpret it themselves; the patterns appear right away in interactive graphs, with the individual stories at the heart of every graph. Used in evaluations from Timor-Leste to Amsterdam."
+      "title": {
+        "en": "Stories and stats, connected in one tool",
+        "nl": "Verhalen en cijfers, verbonden in één tool"
+      },
+      "text": {
+        "en": "Sprockler is our online tool for narrative research. People share a story and interpret it themselves; the patterns appear right away in interactive graphs, with the individual stories at the heart of every graph. Used in evaluations from Timor-Leste to Amsterdam.",
+        "nl": "Sprockler is onze online tool voor narratief onderzoek. Mensen delen een verhaal en duiden het zelf; de patronen verschijnen meteen in interactieve grafieken, met de afzonderlijke verhalen in het hart van elke grafiek. Gebruikt in evaluaties van Timor-Leste tot Amsterdam."
+      }
     },
     "challenge": {
-      "title": "A serious board game about complexity",
-      "text": "In The Perspectivity Challenge, players act as world leaders and experience complexity first-hand, then reflect on what they learned. Games on climate, food, public health, fashion, human security and decision making. Played in 24 countries, by 83 organisations."
+      "title": {
+        "en": "A serious board game about complexity",
+        "nl": "Een serious boardgame over complexiteit"
+      },
+      "text": {
+        "en": "In The Perspectivity Challenge, players act as world leaders and experience complexity first-hand, then reflect on what they learned. Games on climate, food, public health, fashion, human security and decision making. Played in 24 countries, by 83 organisations.",
+        "nl": "In The Perspectivity Challenge spelen deelnemers wereldleiders en ervaren ze complexiteit aan den lijve; daarna reflecteren ze op wat ze leerden. Spellen over klimaat, voedsel, volksgezondheid, mode, menselijke veiligheid en besluitvorming. Gespeeld in 24 landen, door 83 organisaties."
+      }
     }
   },
   "training": {
-    "label": "Training",
-    "title": "Learn to navigate complexity",
-    "intro": "Learn how to facilitate a generative dialogue, use the value of different perspectives, or conduct narrative and participatory research. Open enrolment, or tailor-made for your organisation.",
-    "note": "Perspectivity Enterprise is CRKBO registered; our training courses are VAT exempt."
+    "label": {
+      "en": "Training",
+      "nl": "Training"
+    },
+    "title": {
+      "en": "Learn to navigate complexity",
+      "nl": "Leer navigeren in complexiteit"
+    },
+    "intro": {
+      "en": "Learn how to facilitate a generative dialogue, use the value of different perspectives, or conduct narrative and participatory research. Open enrolment, or tailor-made for your organisation.",
+      "nl": "Leer hoe je een generatieve dialoog faciliteert, de waarde van verschillende perspectieven benut, of narratief en participatief onderzoek uitvoert. Via open inschrijving, of op maat voor jouw organisatie."
+    },
+    "note": {
+      "en": "Perspectivity Enterprise is CRKBO registered; our training courses are VAT exempt.",
+      "nl": "Perspectivity Enterprise is geregistreerd in het CRKBO; onze trainingen zijn daarom vrijgesteld van btw."
+    }
   },
   "projects": {
-    "label": "Projects",
-    "title": "Iconic projects"
+    "label": {
+      "en": "Projects",
+      "nl": "Projecten"
+    },
+    "title": {
+      "en": "Iconic projects",
+      "nl": "Beeldbepalende projecten"
+    }
   },
-  "quote": "“Perspectivity’s work is based on human contact and social structures. Human contact is a whimsical process. It can rub, explode, unite or run smoothly.”",
+  "quote": {
+    "en": "“Perspectivity’s work is based on human contact and social structures. Human contact is a whimsical process. It can rub, explode, unite or run smoothly.”",
+    "nl": "“Het werk van Perspectivity is gebaseerd op menselijk contact en sociale structuren. Menselijk contact is een grillig proces. Het kan schuren, ontploffen, verenigen of juist vlekkeloos verlopen.”"
+  },
   "stories": {
-    "label": "Stories",
-    "title": "Latest stories"
+    "label": {
+      "en": "Stories",
+      "nl": "Verhalen"
+    },
+    "title": {
+      "en": "Latest stories",
+      "nl": "Recente verhalen"
+    }
   },
   "team": {
-    "label": "Who we are",
-    "title": "A cooperative of facilitators",
-    "intro": "Perspectivity is a steward-owned cooperative of professionals who join forces to navigate complexity. We live and work in Europe, the Middle East, Africa and beyond. Are you an independent professional looking for like-minded spirits? Let’s have a virtual coffee."
+    "label": {
+      "en": "Who we are",
+      "nl": "Wie we zijn"
+    },
+    "title": {
+      "en": "A cooperative of facilitators",
+      "nl": "Een coöperatie van facilitators"
+    },
+    "intro": {
+      "en": "Perspectivity is a steward-owned cooperative of professionals who join forces to navigate complexity. We live and work in Europe, the Middle East, Africa and beyond. Are you an independent professional looking for like-minded spirits? Let’s have a virtual coffee.",
+      "nl": "Perspectivity is een steward-owned coöperatie van professionals die hun krachten bundelen om door complexiteit te navigeren. Wij wonen en werken in Europa, het Midden-Oosten, Afrika en daarbuiten. Ben jij een onafhankelijke professional en op zoek naar gelijkgestemde geesten? Laten we een virtuele kop koffie drinken."
+    }
   },
   "toolbox": {
-    "label": "Toolbox",
-    "title": "Methods we often use",
+    "label": {
+      "en": "Toolbox",
+      "nl": "Gereedschap"
+    },
+    "title": {
+      "en": "Methods we often use",
+      "nl": "Methoden die we vaak gebruiken"
+    },
     "methods": [
-      "Citizens’ Assembly",
-      "Deep Democracy",
-      "Future Search",
-      "Social Lab",
-      "Appreciative Inquiry",
-      "Serious Gaming",
-      "Transformative Scenario Planning",
-      "Theory U",
-      "Systems Mapping",
-      "Open Space",
-      "World Café"
+      {
+        "en": "Citizens’ Assembly",
+        "nl": "Burgerberaad"
+      },
+      {
+        "en": "Deep Democracy",
+        "nl": "Deep Democracy"
+      },
+      {
+        "en": "Future Search",
+        "nl": "Future Search"
+      },
+      {
+        "en": "Social Lab",
+        "nl": "Social lab"
+      },
+      {
+        "en": "Appreciative Inquiry",
+        "nl": "Waarderend onderzoek"
+      },
+      {
+        "en": "Serious Gaming",
+        "nl": "Serious gaming"
+      },
+      {
+        "en": "Transformative Scenario Planning",
+        "nl": "Transformatieve scenarioplanning"
+      },
+      {
+        "en": "Theory U",
+        "nl": "Theory U"
+      },
+      {
+        "en": "Systems Mapping",
+        "nl": "Systems Mapping"
+      },
+      {
+        "en": "Open Space",
+        "nl": "Open Space"
+      },
+      {
+        "en": "World Café",
+        "nl": "Wereldcafé"
+      }
     ]
   },
   "contact": {
-    "title": "Let’s talk",
-    "text": "Working on a complex challenge? We like to think along. Send us a message, or sign up for our newsletter about our work, trainings and events.",
-    "address": "Perspectivity\nJean François van Royenweg 16\n2597 NW The Hague",
+    "title": {
+      "en": "Let’s talk",
+      "nl": "Neem contact op"
+    },
+    "text": {
+      "en": "Working on a complex challenge? We like to think along. Send us a message, or sign up for our newsletter about our work, trainings and events.",
+      "nl": "Werk je aan een complex vraagstuk? We denken graag mee. Stuur ons een bericht, of schrijf je in voor onze nieuwsbrief over ons werk, trainingen en evenementen."
+    },
+    "address": {
+      "en": "Perspectivity\nJean François van Royenweg 16\n2597 NW The Hague",
+      "nl": "Perspectivity\nJean François van Royenweg 16\n2597 NW Den Haag"
+    },
     "email": "info@perspectivity.org",
     "phone": "+31 6 1033 4466"
   },
-  "footer": "Perspectivity Enterprise · Chamber of Commerce 54179092"
+  "footer": {
+    "en": "Perspectivity Enterprise · Chamber of Commerce 54179092",
+    "nl": "Perspectivity Enterprise · Kamer van Koophandel 54179092"
+  }
 }

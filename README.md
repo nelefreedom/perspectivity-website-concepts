@@ -2,7 +2,7 @@
 
 Three mock-up directions for the new perspectivity.org, built on the Perspectivity Design System.
 
-- `a/` Calm: business register, white space, black and red type. **Editable by partners.**
+- `a/` Calm: business register, white space, black and red type. **Editable by partners, in English (`a/`) and Dutch (`a/nl/`).**
 - `b/` Egg window: photos in the egg, patterns, light support colours
 - `c/` Navigator: the visitor starts from their own question, exuberant colour fields
 
@@ -10,7 +10,7 @@ Live: https://nelefreedom.github.io/perspectivity-website-concepts/ (not indexed
 
 ## How it is built
 
-- Concept A is an Astro page (`src/pages/a/index.astro`) that reads its texts and lists from `content/*.json`.
+- Concept A is one Astro template (`src/components/ConceptA.astro`) rendered twice: `src/pages/a/index.astro` (English) and `src/pages/a/nl/index.astro` (Dutch). It reads its texts and lists from `content/*.json`, where every text holds both languages: `{ "en": "...", "nl": "..." }`. Fixed interface words (buttons, menu, form labels) sit in the template.
 - B, C, the overview page and all shared assets live unchanged in `public/`. Shared tokens: `public/assets/tokens.css`; team data for B and C: `public/assets/team.js`.
 - Every push to `main` builds the site with GitHub Actions and publishes it on GitHub Pages (`.github/workflows/deploy.yml`).
 - Quicksand and Bitter stand in for Netto OT and Caecilia until a web font licence is arranged.
@@ -19,7 +19,7 @@ Live: https://nelefreedom.github.io/perspectivity-website-concepts/ (not indexed
 
 Partners edit concept A at https://app.pagescms.org, logging in with the email address they were invited with. No GitHub account needed.
 
-What they can edit, set in `.pages.yml`:
+Every text field shows English and Nederlands side by side. What they can edit, set in `.pages.yml`:
 
 - Page texts: every title, introduction and text block, the quote, the toolbox methods and the contact details
 - Training dates and trainings

@@ -99,3 +99,6 @@ section[id],[id^="s"]{scroll-margin-top:96px}
 /* Grid columns may shrink below their content width */
 .wrap>*{min-width:0}
 hgroup{margin:0}
+
+/* Long Dutch compounds wrap instead of pushing the page sideways */
+h3{overflow-wrap:break-word;hyphens:auto}

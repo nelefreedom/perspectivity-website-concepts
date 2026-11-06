@@ -1,17 +1,44 @@
 [
   {
-    "partner": "Human Security Collective",
-    "title": "Learning from a youth programme in Tunisia and the Netherlands",
-    "summary": "Can you set up and conduct an innovative monitoring and evaluation system for an international youth programme? We designed and ran the evaluation of two youth leadership programmes."
+    "partner": {
+      "en": "Human Security Collective",
+      "nl": "Human Security Collective"
+    },
+    "title": {
+      "en": "Learning from a youth programme in Tunisia and the Netherlands",
+      "nl": "Leren van een jongerenprogramma in Tunesië en Nederland"
+    },
+    "summary": {
+      "en": "Can you set up and conduct an innovative monitoring and evaluation system for an international youth programme? We designed and ran the evaluation of two youth leadership programmes.",
+      "nl": "Kun je een innovatief monitoring- en evaluatiesysteem opzetten en uitvoeren voor een internationaal jongerenprogramma? Wij ontwierpen en voerden de evaluatie uit van twee leiderschapsprogramma’s voor jongeren."
+    }
   },
   {
-    "partner": "Netherlands Embassy in Turkey",
-    "title": "ACT Academy strengthens youth leadership in Turkey",
-    "summary": "A ground-breaking pilot of a sustainable leadership programme, set up with the embassy in Ankara to support civil society where civic space is shrinking."
+    "partner": {
+      "en": "Netherlands Embassy in Turkey",
+      "nl": "Nederlandse Ambassade in Turkije"
+    },
+    "title": {
+      "en": "ACT Academy strengthens youth leadership in Turkey",
+      "nl": "ACT Academy versterkt jeugdleiderschap in Turkije"
+    },
+    "summary": {
+      "en": "A ground-breaking pilot of a sustainable leadership programme, set up with the embassy in Ankara to support civil society where civic space is shrinking.",
+      "nl": "Een baanbrekende pilot van een duurzaam leiderschapsprogramma, opgezet met de ambassade in Ankara, om het maatschappelijk middenveld te steunen nu de ruimte daarvoor kleiner wordt."
+    }
   },
   {
-    "partner": "Partos",
-    "title": "Building the future of development cooperation",
-    "summary": "A six-month collective exploration with the Dutch development sector: which future is most desirable, and what does it mean for strategy?"
+    "partner": {
+      "en": "Partos",
+      "nl": "Partos"
+    },
+    "title": {
+      "en": "Building the future of development cooperation",
+      "nl": "Bouwen aan de toekomst van ontwikkelingssamenwerking"
+    },
+    "summary": {
+      "en": "A six-month collective exploration with the Dutch development sector: which future is most desirable, and what does it mean for strategy?",
+      "nl": "Een collectieve verkenning van zes maanden met de Nederlandse ontwikkelingssector: welke toekomst is het meest gewenst, en wat betekent dat voor de strategie?"
+    }
   }
 ]
