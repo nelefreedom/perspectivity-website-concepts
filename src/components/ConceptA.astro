@@ -17,7 +17,7 @@ const shown = (list) => list.filter((x) => x.visible !== false);
 const openTrainings = shown(trainings).filter((x) => x.kind !== 'In-company');
 const companyTrainings = shown(trainings).filter((x) => x.kind === 'In-company');
 const lines = (s) => (s || '').split('\n').filter(Boolean);
-const enUrl = `${base}/a/`;
+const enUrl = `${base}/a/en/`;
 const nlUrl = `${base}/a/nl/`;
 
 // Fixed interface words; editors change the content, not these.
