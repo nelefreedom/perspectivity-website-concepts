@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Perspectivity · Concept A: Calm</title>
+<link rel="icon" href="../assets/person-red.png">
+<link rel="stylesheet" href="../assets/tokens.css">
+<style>
+  body{background:#fff}
+  /* Header */
+  .top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:var(--dashed)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
+  .top img{height:34px;width:auto}
+  .menu{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-family:var(--font-display);font-weight:500;font-size:15px}
+  .menu a{text-decoration:none;padding:10px 0}
+  .menu a:hover{color:var(--p-red);text-decoration:underline;text-underline-offset:6px}
+  .lang{font-family:var(--font-display);font-weight:700;font-size:14px;display:flex;gap:2px}
+  .lang a{text-decoration:none;padding:10px 8px}
+  .lang a[aria-current]{color:var(--p-red)}
+  @media (max-width:900px){.menu{display:none}}
+
+  section{padding:var(--space-10) 0}
+  .rule{border:0;border-top:var(--dashed);margin:0}
+
+  /* Hero */
+  .hero{padding:var(--space-11) 0 var(--space-10)}
+  .hero .wrap{display:grid;grid-template-columns:1.4fr .6fr;gap:var(--space-9);align-items:end}
+  .hero h1{font-size:var(--fs-display);color:var(--p-red)}
+  .hero .lead{font-size:var(--fs-lead);max-width:var(--measure);margin:var(--space-7) 0}
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .hero .puppet{width:100%;max-width:240px;justify-self:end}
+  @media (max-width:800px){.hero .wrap{grid-template-columns:1fr}.hero .puppet{max-width:140px;justify-self:start;order:-1}}
+
+  /* Section heads */
+  .head{display:grid;grid-template-columns:280px 1fr;gap:var(--space-8);margin-bottom:var(--space-8)}
+  .head .eyebrow{color:var(--p-red);padding-top:12px}
+  .head h2{font-size:var(--fs-title-2)}
+  .head p{max-width:var(--measure);margin:var(--space-4) 0 0}
+  @media (max-width:800px){.head{grid-template-columns:1fr;gap:var(--space-3)}}
+
+  /* Services */
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-7);margin-left:calc(280px + var(--space-8))}
+  .three article{border-top:var(--dashed);padding-top:var(--space-5)}
+  .three h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:1.25;margin:0 0 var(--space-3)}
+  .three p{margin:0;color:var(--p-ink-2)}
+  @media (max-width:1000px){.three{margin-left:0}}
+  @media (max-width:760px){.three{grid-template-columns:1fr}}
+
+  /* Navigator band */
+  .nav-band{background:var(--p-lightbeige)}
+  .nav-band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-9);align-items:center}
+  .nav-band img{width:100%;max-width:420px;margin:0 auto}
+  .nav-band .wrap>*{min-width:0}
+  .nav-band h2{font-size:var(--fs-title-2);margin:var(--space-3) 0 var(--space-5)}
+  .nav-band .subtitle{font-size:var(--fs-subtitle);color:var(--p-red);margin-bottom:var(--space-5)}
+  @media (max-width:800px){.nav-band .wrap{grid-template-columns:1fr}}
+
+  /* Trainings */
+  .dates{list-style:none;margin:0 0 var(--space-8) calc(280px + var(--space-8));padding:0}
+  .dates li{display:grid;grid-template-columns:260px 1fr auto;gap:var(--space-6);align-items:baseline;padding:var(--space-5) 0;border-bottom:var(--dashed)}
+  .dates li:first-child{border-top:var(--dashed)}
+  .dates .when{font-family:var(--font-display);font-weight:700;color:var(--p-red)}
+  .dates .what{font-family:var(--font-display);font-weight:500;font-size:20px}
+  .dates .how{font-size:var(--fs-small);color:var(--p-ink-3)}
+  @media (max-width:1000px){.dates{margin-left:0}.dates li{grid-template-columns:1fr}}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);margin-left:calc(280px + var(--space-8))}
+  .cols ul{list-style:none;margin:0;padding:0}
+  .cols li{padding:var(--space-3) 0;border-bottom:1px solid var(--p-line)}
+  .cols li strong{font-family:var(--font-display);font-weight:700;display:block}
+  .cols li span{font-size:var(--fs-small);color:var(--p-ink-2)}
+  @media (max-width:1000px){.cols{margin-left:0;grid-template-columns:1fr}}
+  .note{font-size:var(--fs-small);color:var(--p-ink-3);margin:var(--space-6) 0 0 calc(280px + var(--space-8))}
+  @media (max-width:1000px){.note{margin-left:0}}
+
+  /* Projects */
+  .projects article{display:grid;grid-template-columns:280px 1fr;gap:var(--space-8);padding:var(--space-7) 0;border-top:var(--dashed)}
+  .projects .partner{font-family:var(--font-display);font-weight:700;font-size:var(--fs-small);text-transform:uppercase;letter-spacing:.06em;color:var(--p-red)}
+  .projects h3{font-family:var(--font-display);font-weight:500;font-size:var(--fs-title-3);line-height:1.15;margin:0 0 var(--space-3)}
+  .projects p{margin:0;max-width:var(--measure)}
+  @media (max-width:800px){.projects article{grid-template-columns:1fr;gap:var(--space-2)}}
+
+  /* Quote */
+  .quote-band{background:var(--p-lightbeige);text-align:center}
+  .quote-band blockquote{margin:0 auto;max-width:880px}
+  .quote-band cite{display:block;margin-top:var(--space-5);font-style:normal;font-family:var(--font-display);font-weight:700;font-size:var(--fs-small)}
+
+  /* Stories */
+  .stories{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-7)}
+  .stories a{text-decoration:none;display:block;border-top:var(--dashed);padding-top:var(--space-5)}
+  .stories a:hover h3{text-decoration:underline;text-underline-offset:5px}
+  .stories h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:1.25;margin:var(--space-2) 0}
+  .stories p{margin:0;color:var(--p-ink-2);font-size:16px}
+  @media (max-width:800px){.stories{grid-template-columns:1fr}}
+
+  /* Team */
+  .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--space-7) var(--space-6)}
+  .team figure{margin:0}
+  .team .ph{aspect-ratio:1;background:var(--p-lightbeige);overflow:hidden}
+  .team .ph img{width:100%;height:100%;object-fit:cover}
+  .team .ph.none{display:grid;place-items:center}
+  .team .ph.none img{width:40%;height:auto;object-fit:contain}
+  .team figcaption{margin-top:var(--space-3)}
+  .team strong{font-family:var(--font-display);font-weight:700;display:block;line-height:1.25}
+  .team span{font-size:var(--fs-small);color:var(--p-ink-3)}
+
+  /* Toolbox */
+  .tools{display:flex;flex-wrap:wrap;gap:8px;margin-left:calc(280px + var(--space-8))}
+  .tools span,.tools a{font-family:var(--font-display);font-weight:500;font-size:15px;padding:8px 16px;border:1px solid var(--p-line);border-radius:999px;text-decoration:none}
+  .tools a{border-color:var(--p-red);color:var(--p-red);font-weight:700}
+  .tools a:hover{background:var(--p-red);color:#fff}
+  @media (max-width:1000px){.tools{margin-left:0}}
+
+  /* Newsletter + contact */
+  .contact{background:var(--p-red);color:#fff}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-9)}
+  .contact h2{font-size:var(--fs-title-2)}
+  .contact p{max-width:46ch}
+  .contact form{display:grid;gap:var(--space-4);align-content:start}
+  .contact .field label{color:#fff}
+  .contact .field input{border-color:#fff}
+  .contact .btn-light{background:#fff;color:var(--p-red)}
+  .contact .btn-light:hover{background:var(--p-black);color:#fff}
+  .contact address{font-style:normal;margin-top:var(--space-6)}
+  .contact :focus-visible{outline-color:#fff}
+  @media (max-width:800px){.contact .wrap{grid-template-columns:1fr}}
+
+  footer{padding:var(--space-8) 0;font-size:var(--fs-small);color:var(--p-ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer img{height:26px;width:auto}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#top" aria-label="Perspectivity, back to top"><img src="../assets/logo-red.png" alt="Perspectivity"></a>
+    <nav aria-label="Main">
+      <ul class="menu">
+        <li><a href="#work">What we do</a></li>
+        <li><a href="#navigator">Navigator</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#team">Who we are</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="lang" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#" lang="nl">NL</a></div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <h1 class="title">For the love of complexity</h1>
+        <p class="lead">We are facilitators of social systems change. Today’s complexity offers fantastic opportunities for creativity, innovation and collaboration. By embracing complexity, we can create our desired future together.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#work">What we do</a>
+          <a class="btn btn-outline" href="#training">Our training courses</a>
+        </div>
+      </div>
+      <img class="puppet" src="../assets/person-red.png" alt="">
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">What we do</p>
+        <div>
+          <h2 class="title">How can we help you?</h2>
+          <p>We bring people with different knowledge, interests and perspectives together. This is how we create space for new insights and responses to the complex challenges we are facing.</p>
+        </div>
+      </div>
+      <div class="three">
+        <article>
+          <h3>Facilitation of multi-stakeholder processes</h3>
+          <p>We facilitate dialogue with diverse stakeholders around shared challenges. Strengthening common ground and including diverse perspectives brings depth, new insights and room for collective action.</p>
+        </article>
+        <article>
+          <h3>Narrative research and evaluation</h3>
+          <p>To unravel patterns in complexity, we use the power of stories for research and evaluation, in a participatory and inclusive way. We help you learn from the past and decide for the future.</p>
+        </article>
+        <article>
+          <h3>Leadership and capacity strengthening</h3>
+          <p>To help you and your organisation navigate complexity, we offer group training and coaching on the job, with tools and methods for complex situations.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="nav-band" id="navigator">
+    <div class="wrap">
+      <img src="../assets/navigator.png" alt="The Complexity Navigator: an egg divided into building blocks, among them backbone, responsive leadership, reinforcing actions, involvement of all, urgency for change, vital connections, adaptive learning and shared ambitions.">
+      <div>
+        <p class="eyebrow" style="color:var(--p-red)">Our vision and tool</p>
+        <h2 class="title">The Complexity Navigator</h2>
+        <p class="subtitle">nine building blocks for collective impact in complexity</p>
+        <p>To navigate complexity and create collective impact, you need to pay attention to nine crucial aspects. These building blocks help you unravel your specific situation and find your starting point for action. The Navigator is based on proven methods and our years of collective experience.</p>
+        <a class="btn btn-primary" href="#">Download the Navigator</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="training">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Training</p>
+        <div>
+          <h2 class="title">Learn to navigate complexity</h2>
+          <p>Learn how to facilitate a generative dialogue, use the value of different perspectives, or conduct narrative and participatory research. Open enrolment, or tailor-made for your organisation.</p>
+        </div>
+      </div>
+      <ul class="dates">
+        <li><span class="when">25 &amp; 26 March 2027</span><span class="what">Deep Democracy Level 2</span><span class="how">In person</span></li>
+        <li><span class="when">Date to be announced</span><span class="what">The Art of Facilitation in Complexity</span><span class="how">Online</span></li>
+        <li><span class="when">Date to be announced</span><span class="what">Storytelling in complexity (Sprockler)</span><span class="how">Online</span></li>
+      </ul>
+      <div class="cols">
+        <div>
+          <p class="tussenkop">Open trainings</p>
+          <ul>
+            <li><strong>Deep Democracy, Level 1 and 2</strong><span>Facilitate dialogue and uncover the wisdom of the minority.</span></li>
+            <li><strong>The Art of Facilitation in Complexity</strong><span>An on-the-job learning journey in facilitating complex processes.</span></li>
+            <li><strong>Storytelling in complexity (Sprockler)</strong><span>Collect many stories and quantify the key patterns.</span></li>
+            <li><strong>How to get started with Systems Mapping</strong><span>Find high leverage points for systems change.</span></li>
+            <li><strong>Writeshop</strong><span>Learn to write &amp; write to learn.</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="tussenkop">In-company</p>
+          <ul>
+            <li><strong>Stories of Change</strong><span>Communicate the value and progress of a project.</span></li>
+            <li><strong>CoResolve: Participatory Leadership</strong><span>For anyone driving an agenda.</span></li>
+            <li><strong>Agile Scrum &amp; Project Management</strong><span>A practical workshop.</span></li>
+            <li><strong>Care for a Common Cause</strong><span>How young leaders create common ground and lead change.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Perspectivity Enterprise is CRKBO registered; our training courses are VAT exempt.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="projects" class="projects">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Projects</p>
+        <h2 class="title">Iconic projects</h2>
+      </div>
+      <article>
+        <p class="partner">Partner: Human Security Collective</p>
+        <div><h3>Learning from a youth programme in Tunisia and the Netherlands</h3>
+        <p>Can you set up and conduct an innovative monitoring and evaluation system for an international youth programme? We designed and ran the evaluation of two youth leadership programmes.</p></div>
+      </article>
+      <article>
+        <p class="partner">Partner: Netherlands Embassy in Turkey</p>
+        <div><h3>ACT Academy strengthens youth leadership in Turkey</h3>
+        <p>A ground-breaking pilot of a sustainable leadership programme, set up with the embassy in Ankara to support civil society where civic space is shrinking.</p></div>
+      </article>
+      <article>
+        <p class="partner">Partner: Partos</p>
+        <div><h3>Building the future of development cooperation</h3>
+        <p>A six-month collective exploration with the Dutch development sector: which future is most desirable, and what does it mean for strategy?</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="quote-band">
+    <div class="wrap">
+      <blockquote>
+        <p class="quote">“Perspectivity’s work is based on human contact and social structures. Human contact is a whimsical process. It can rub, explode, unite or run smoothly.”</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="stories">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Stories</p>
+        <h2 class="title">Latest stories</h2>
+      </div>
+      <div class="stories">
+        <a href="#"><span class="eyebrow" style="color:var(--p-red)">Blog</span><h3>Embracing difference: first reflections on the National Citizens’ Assembly on Climate</h3><p>What we witnessed, what we learned, and what makes this kind of process possible.</p></a>
+        <a href="#"><span class="eyebrow" style="color:var(--p-red)">News</span><h3>Weaving knowledge for collective learning</h3><p>A learning resource and Partnership Prompt Cards, co-created with the Robert Carr Fund.</p></a>
+        <a href="#"><span class="eyebrow" style="color:var(--p-red)">News</span><h3>The Perspectivity Public Health Challenge expands in the UK</h3><p>What would you prioritise during a public health crisis with limited resources?</p></a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="team">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Who we are</p>
+        <div>
+          <h2 class="title">A cooperative of facilitators</h2>
+          <p>Perspectivity is a steward-owned cooperative of professionals who join forces to navigate complexity. We live and work in Europe, the Middle East, Africa and beyond. Are you an independent professional looking for like-minded spirits? Let’s have a virtual coffee.</p>
+        </div>
+      </div>
+      <div class="team" id="team-grid"></div>
+    </div>
+  </section>
+
+  <section id="toolbox" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Toolbox</p>
+        <div><h2 class="title" style="font-size:var(--fs-title-3)">Methods we often use</h2></div>
+      </div>
+      <div class="tools">
+        <a href="https://sprockler.com" rel="noopener">Sprockler ↗</a>
+        <a href="#navigator">Complexity Navigator</a>
+        <a href="#">Publications</a>
+        <span>Citizens’ Assembly</span><span>Deep Democracy</span><span>Future Search</span><span>Social Lab</span>
+        <span>Appreciative Inquiry</span><span>Serious Gaming</span><span>Transformative Scenario Planning</span>
+        <span>Theory U</span><span>Systems Mapping</span><span>Open Space</span><span>World Café</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <h2 class="title">Let’s talk</h2>
+        <p>Working on a complex challenge? We like to think along. Send us a message, or sign up for our newsletter about our work, trainings and events.</p>
+        <address>Perspectivity<br>Jean François van Royenweg 16<br>2597 NW The Hague<br><a href="mailto:info@perspectivity.org">info@perspectivity.org</a><br>+31 6 1033 4466</address>
+      </div>
+      <form onsubmit="return false" aria-label="Newsletter">
+        <p class="tussenkop" style="color:#fff">Newsletter</p>
+        <div class="field"><label for="a-name">Name</label><input id="a-name" autocomplete="name"></div>
+        <div class="field"><label for="a-mail">Email</label><input id="a-mail" type="email" autocomplete="email"></div>
+        <div><button class="btn btn-light" type="submit">Subscribe</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="../assets/logo-payoff-red.png" alt="Perspectivity, for the love of complexity">
+    <span>Perspectivity Enterprise · Chamber of Commerce 54179092 · <a href="#">Privacy statement</a></span>
+  </div>
+</footer>
+
+<nav class="concept-bar" aria-label="Concepts"><a href="../">All</a><a href="../a/" aria-current="page">A</a><a href="../b/">B</a><a href="../c/">C</a></nav>
+<script src="../assets/team.js"></script>
+<script>renderTeam(document.getElementById('team-grid'), p => `
+  <figure><div class="ph ${p.img?'':'none'}">${p.img?`<img class="grey" src="${p.img}" alt="" loading="lazy">`:`<img src="../assets/person-red.png" alt="">`}</div>
+  <figcaption><strong>${p.name}</strong><span>${p.focus}</span></figcaption></figure>`);</script>
+</body>
+</html>

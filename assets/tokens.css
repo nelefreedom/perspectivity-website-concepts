@@ -1,0 +1,82 @@
+/* Perspectivity Design System: tokens for the website concepts.
+   Source: Perspectivity Design System (Claude Design), tokens/*.css.
+   Fonts: Quicksand stands in for Netto OT, Bitter for Caecilia LT Pro,
+   until a web font licence for the brand fonts is arranged. */
+
+@import url("https://fonts.bunny.net/css?family=quicksand:400,500,700|bitter:300,400,400i,700&display=swap");
+
+:root{
+  --p-red:#C83F27; --p-red-dark:#A8331F; --p-red-tint:#F3D9D3;
+  --p-lightbeige:#F7EDE5; --p-lightbeige-dark:#EFE0D4;
+  --p-beige:#E8CDB5; --p-pink:#FFC7CD; --p-darkgreen:#00454E;
+  --p-yellow:#FAC618; --p-blue:#59A6FF; --p-grey:#C5C2C2;
+  --p-black:#000; --p-white:#fff;
+  --p-ink-2:#3A3A3A; --p-ink-3:#6B6560; --p-line:#E3D3C5;
+
+  --font-display:"Quicksand","Netto OT",system-ui,sans-serif;
+  --font-body:"Bitter","Caecilia LT Pro",Cambria,Georgia,serif;
+
+  --fs-display:clamp(48px,8vw,88px);
+  --fs-title-1:clamp(40px,6vw,67px);
+  --fs-title-2:clamp(32px,4.4vw,48px);
+  --fs-title-3:clamp(26px,3vw,36px);
+  --fs-subtitle:clamp(21px,2.2vw,27px);
+  --fs-lead:clamp(18px,1.6vw,21px);
+  --fs-body:17px; --fs-small:14px; --fs-caption:12px;
+
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;
+  --space-6:24px;--space-7:32px;--space-8:48px;--space-9:64px;--space-10:96px;--space-11:128px;
+  --content-max:1200px; --measure:62ch;
+
+  --dashed:0.75pt dashed var(--p-red);
+  --ease-calm:cubic-bezier(.25,.1,.25,1);
+  --dur-fast:140ms; --dur-base:240ms; --dur-slow:420ms;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:var(--font-body);font-size:var(--fs-body);line-height:1.6;color:var(--p-black);background:var(--p-white)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--p-darkgreen);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;background:var(--p-black);color:#fff;padding:8px 14px;z-index:100}
+.skip:focus{left:8px}
+
+.wrap{max-width:var(--content-max);margin:0 auto;padding:0 var(--space-6)}
+
+/* Typography roles */
+.title{font-family:var(--font-display);font-weight:500;text-transform:uppercase;letter-spacing:.01em;line-height:1.05;margin:0}
+.subtitle{font-family:var(--font-display);font-weight:400;line-height:1.15;margin:0}
+.eyebrow{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:var(--fs-small)}
+.tussenkop{font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:15px;margin:0 0 var(--space-2)}
+.quote{font-family:var(--font-body);font-weight:300;color:var(--p-red);font-size:var(--fs-subtitle);line-height:1.35}
+
+/* Buttons: pill, Netto/Quicksand uppercase */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 24px;border-radius:999px;
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:14px;
+  text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background var(--dur-base) var(--ease-calm),color var(--dur-base) var(--ease-calm)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--p-red);color:#fff}
+.btn-primary:hover{background:var(--p-red-dark)}
+.btn-outline{border-color:currentColor;background:transparent}
+.btn-outline:hover{background:var(--p-black);color:#fff;border-color:var(--p-black)}
+
+/* Egg as photo window */
+.egg{-webkit-mask:url("egg-red.png") center/contain no-repeat;mask:url("egg-red.png") center/contain no-repeat;aspect-ratio:3326/4293;overflow:hidden}
+.egg img{width:100%;height:100%;object-fit:cover}
+.grey{filter:grayscale(1) contrast(.95) brightness(1.03)}
+
+/* Forms */
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--font-display);font-weight:700;font-size:14px}
+.field input,.field textarea,.field select{font:inherit;padding:12px 14px;border:1.5px solid var(--p-black);border-radius:2px;background:#fff;min-height:44px}
+
+/* Concept switcher bar (only for the mock-ups) */
+.concept-bar{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;gap:4px;background:var(--p-black);padding:6px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:13px}
+.concept-bar a{color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px}
+.concept-bar a[aria-current]{background:var(--p-red)}
+
+/* Anchors land below the sticky header */
+section[id],[id^="s"]{scroll-margin-top:96px}

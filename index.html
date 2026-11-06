@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Perspectivity · Website concepts</title>
+<link rel="icon" href="assets/person-red.png">
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+  body{background:var(--p-lightbeige)}
+  header{padding:var(--space-9) 0 var(--space-7)}
+  header img{height:44px;width:auto;margin-bottom:var(--space-7)}
+  h1{font-size:var(--fs-title-2);color:var(--p-red)}
+  header p{max-width:var(--measure)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);padding-bottom:var(--space-10)}
+  .grid a{background:#fff;text-decoration:none;display:flex;flex-direction:column}
+  .grid a:hover h2{text-decoration:underline;text-underline-offset:5px}
+  .sw{height:180px;display:grid;place-items:center}
+  .sw img{height:120px;width:auto}
+  .grid .body{padding:var(--space-6);border-top:var(--dashed)}
+  .grid h2{font-size:24px;margin-bottom:var(--space-3)}
+  .grid p{margin:0;color:var(--p-ink-2)}
+  @media (max-width:860px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="assets/logo-payoff-red.png" alt="Perspectivity, for the love of complexity">
+    <h1 class="title">Website concepts</h1>
+    <p>Three directions for the new one-page website, all built on the Perspectivity Design System. Same content, three ways of telling it. Draft for the acquisition circle, November 2026.</p>
+  </header>
+  <div class="grid">
+    <a href="a/"><div class="sw" style="background:#fff"><img src="assets/person-red.png" alt=""></div>
+      <div class="body"><h2 class="title">A · Calm</h2><p>The business register: lots of white space, black and red type, dashed red rules. Reads like a well-made report.</p></div></a>
+    <a href="b/"><div class="sw" style="background:var(--p-pink)"><img src="assets/egg-red.png" alt=""></div>
+      <div class="body"><h2 class="title">B · Egg window</h2><p>The medium register: photos inside the egg, egg-fragment patterns, light support colours with one bright element per section.</p></div></a>
+    <a href="c/"><div class="sw" style="background:var(--p-darkgreen)"><img src="assets/nav-fish-white.png" alt=""></div>
+      <div class="body"><h2 class="title">C · Navigator</h2><p>The exuberant register: the visitor starts from their own question, guided by the Complexity Navigator, in contrasting colour fields.</p></div></a>
+  </div>
+</div>
+</body>
+</html>

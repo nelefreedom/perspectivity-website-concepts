@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Perspectivity · Concept C: Navigator</title>
+<link rel="icon" href="../assets/person-red.png">
+<link rel="stylesheet" href="../assets/tokens.css">
+<style>
+  body{background:#fff}
+  .top{position:sticky;top:0;z-index:50;background:var(--p-darkgreen);color:#fff}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px}
+  .top img{height:32px;width:auto}
+  .menu{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-family:var(--font-display);font-weight:700;font-size:15px}
+  .menu a{text-decoration:none;padding:10px 0}
+  .menu a:hover{color:var(--p-yellow)}
+  .lang a{font-family:var(--font-display);font-weight:700;font-size:14px;text-decoration:none;padding:10px 8px}
+  .lang a[aria-current]{color:var(--p-yellow)}
+  .top :focus-visible,.dark :focus-visible{outline-color:var(--p-yellow)}
+  @media (max-width:900px){.menu{display:none}}
+
+  section{padding:var(--space-10) 0}
+  .dark{background:var(--p-darkgreen);color:#fff}
+
+  /* Hero: question + three routes */
+  .hero{padding:var(--space-10) 0 0;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:7fr 5fr;gap:var(--space-8);align-items:end}
+  .hero h1{font-size:var(--fs-display)}
+  .hero .subtitle{font-size:var(--fs-subtitle);color:var(--p-yellow);margin:var(--space-5) 0 var(--space-8)}
+  .hero .puppet{width:70%;max-width:300px;justify-self:center;margin-bottom:-6px}
+  @media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero .puppet{width:40%}}
+
+  .routes{display:grid;grid-template-columns:repeat(3,1fr)}
+  .route{padding:var(--space-8) var(--space-7);text-decoration:none;display:flex;flex-direction:column;gap:var(--space-4);min-height:340px;transition:filter var(--dur-base) var(--ease-calm)}
+  .route:hover{filter:brightness(.96)}
+  .route:hover .go{text-decoration:underline;text-underline-offset:5px}
+  .route .q{font-family:var(--font-display);font-weight:500;font-size:var(--fs-title-3);line-height:1.15}
+  .route p{margin:0;flex:1}
+  .route .go{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:14px}
+  .route img{width:96px}
+  .r1{background:var(--p-yellow);color:var(--p-black)}
+  .r2{background:var(--p-blue);color:var(--p-black)}
+  .r3{background:var(--p-pink);color:var(--p-black)}
+  @media (max-width:900px){.routes{grid-template-columns:1fr}.route{min-height:0}}
+
+  /* Navigator: the egg + building block labels */
+  .navi .wrap{display:grid;grid-template-columns:6fr 6fr;gap:var(--space-9);align-items:center}
+  .navi h2{font-size:var(--fs-title-1)}
+  .navi .subtitle{font-size:var(--fs-subtitle);margin:var(--space-4) 0 var(--space-6)}
+  .blocks{display:flex;flex-wrap:wrap;gap:8px;margin:var(--space-6) 0 var(--space-7);padding:0;list-style:none}
+  .blocks li{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.05em;padding:8px 14px;border:var(--dashed);border-radius:999px;color:var(--p-red)}
+  @media (max-width:820px){.navi .wrap{grid-template-columns:1fr}}
+
+  /* Services as numbered panels */
+  .service{display:grid;grid-template-columns:120px 1fr 1fr;gap:var(--space-7);padding:var(--space-8) 0;border-top:var(--dashed);align-items:start}
+  .service .num{font-family:var(--font-display);font-weight:700;font-size:var(--fs-title-1);line-height:1;color:var(--p-red)}
+  .service h3{font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:var(--fs-title-3);line-height:1.1;margin:0}
+  .service p{margin:0}
+  .service .ex{font-size:var(--fs-small);color:var(--p-ink-3);margin-top:var(--space-3)}
+  @media (max-width:820px){.service{grid-template-columns:1fr;gap:var(--space-3)}}
+
+  /* Training on blue + beige */
+  .training{background:var(--p-beige)}
+  .training h2{font-size:var(--fs-title-1)}
+  .tlist{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-5);margin-top:var(--space-8)}
+  .t{background:var(--p-blue);padding:var(--space-7);display:grid;grid-template-columns:auto 1fr;gap:var(--space-5);align-items:start}
+  .t.alt{background:#fff}
+  .date{width:96px;height:96px;border-radius:50%;background:var(--p-black);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-weight:700;line-height:1.05;font-size:15px;padding:10px}
+  .t h3{font-family:var(--font-display);font-weight:700;font-size:22px;line-height:1.2;margin:0 0 var(--space-2)}
+  .t p{margin:0}
+  .inco{margin-top:var(--space-8);display:grid;grid-template-columns:1fr 2fr;gap:var(--space-7)}
+  .inco ul{margin:0;padding:0;list-style:none;columns:2;column-gap:var(--space-7)}
+  .inco li{padding:var(--space-2) 0;border-bottom:1px solid rgba(0,0,0,.15);break-inside:avoid;font-family:var(--font-display);font-weight:500}
+  @media (max-width:820px){.tlist,.inco{grid-template-columns:1fr}.inco ul{columns:1}}
+
+  /* Projects on dark green with pattern */
+  .projects{background:url("../assets/pattern-darkgreen.png") right -80px bottom -120px/44% auto no-repeat,var(--p-darkgreen);color:#fff}
+  .projects h2{font-size:var(--fs-title-1)}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);margin-top:var(--space-8)}
+  .pgrid article{background:#fff;color:var(--p-black);padding:var(--space-7);display:flex;flex-direction:column;gap:var(--space-3)}
+  .pgrid .partner{font-family:var(--font-display);font-weight:700;font-size:var(--fs-small);color:var(--p-red);text-transform:uppercase;letter-spacing:.05em}
+  .pgrid h3{font-family:var(--font-display);font-weight:700;font-size:21px;line-height:1.25;margin:0}
+  .pgrid p{margin:0;font-size:16px}
+  @media (max-width:900px){.pgrid{grid-template-columns:1fr}}
+
+  /* Stories */
+  .stories h2{font-size:var(--fs-title-2)}
+  .srow{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-7);margin-top:var(--space-7)}
+  .srow a{text-decoration:none;border-top:4px solid var(--p-yellow);padding-top:var(--space-4)}
+  .srow a:nth-child(2){border-color:var(--p-blue)}.srow a:nth-child(3){border-color:var(--p-pink)}
+  .srow a:hover h3{text-decoration:underline;text-underline-offset:5px}
+  .srow h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:1.25;margin:var(--space-2) 0}
+  .srow p{margin:0;font-size:16px;color:var(--p-ink-2)}
+  @media (max-width:820px){.srow{grid-template-columns:1fr}}
+
+  /* Team on yellow */
+  .team{background:var(--p-yellow)}
+  .team .head{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:end}
+  .team h2{font-size:var(--fs-title-1)}
+  .tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-5);margin-top:var(--space-8)}
+  .tg figure{margin:0;background:#fff;padding:var(--space-3)}
+  .tg .ph{aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--p-darkgreen);display:grid;place-items:center}
+  .tg .ph img{width:100%;height:100%;object-fit:cover}
+  .tg .ph.none img{width:46%;height:auto;object-fit:contain}
+  .tg figcaption{padding:var(--space-3) var(--space-1) var(--space-1)}
+  .tg strong{display:block;font-family:var(--font-display);font-weight:700;line-height:1.2}
+  .tg span{font-size:13px;color:var(--p-ink-3)}
+  @media (max-width:820px){.team .head{grid-template-columns:1fr}}
+
+  /* Toolbox */
+  .tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--space-6)}
+  .tools a,.tools span{padding:10px 18px;border-radius:999px;font-family:var(--font-display);font-weight:500;background:var(--p-lightbeige);text-decoration:none}
+  .tools a{background:var(--p-darkgreen);color:#fff;font-weight:700}
+  .tools a:hover{background:var(--p-black)}
+
+  /* Contact */
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-9)}
+  .contact h2{font-size:var(--fs-title-1)}
+  .contact form{display:grid;gap:var(--space-4);background:#fff;color:var(--p-black);padding:var(--space-7)}
+  .contact address{font-style:normal;margin-top:var(--space-6)}
+  .btn-yellow{background:var(--p-yellow);color:var(--p-black)}
+  .btn-yellow:hover{background:var(--p-black);color:#fff}
+  @media (max-width:820px){.contact .wrap{grid-template-columns:1fr}}
+
+  footer{background:var(--p-black);color:#fff;padding:var(--space-7) 0;font-size:var(--fs-small)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+  footer img{height:30px;width:auto}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a href="#top" aria-label="Perspectivity, back to top"><img src="../assets/logo-beige-white.png" alt="Perspectivity"></a>
+    <nav aria-label="Main"><ul class="menu">
+      <li><a href="#navigator">Navigator</a></li><li><a href="#work">What we do</a></li><li><a href="#training">Training</a></li>
+      <li><a href="#projects">Projects</a></li><li><a href="#team">Who we are</a></li><li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <div class="lang" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#" lang="nl">NL</a></div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero dark" id="top">
+    <div class="wrap">
+      <div>
+        <h1 class="title">Where are you in your complex challenge?</h1>
+        <p class="subtitle">for the love of complexity</p>
+      </div>
+      <img class="puppet" src="../assets/person-white.png" alt="">
+    </div>
+    <div class="routes">
+      <a class="route r1" href="#s1"><img src="../assets/nav-fish-black.png" alt=""><span class="q">We need to bring people together</span><p>Diverse stakeholders, a shared challenge, and no blueprint.</p><span class="go">Facilitation →</span></a>
+      <a class="route r2" href="#s2"><img src="../assets/nav-spine-black.png" alt=""><span class="q">We want to understand what is happening</span><p>Stories that reveal patterns, for learning and evaluation.</p><span class="go">Narrative research →</span></a>
+      <a class="route r3" href="#training"><img src="../assets/nav-spiral-black.png" alt=""><span class="q">We want to grow in navigating complexity</span><p>Training and coaching on the job, open or in-company.</p><span class="go">Training →</span></a>
+    </div>
+  </section>
+
+  <section class="navi" id="navigator">
+    <div class="wrap">
+      <img src="../assets/navigator.png" alt="The Complexity Navigator: an egg divided into building blocks, each with an icon.">
+      <div>
+        <p class="eyebrow" style="color:var(--p-red)">Our compass</p>
+        <h2 class="title" style="margin-top:12px">The Complexity Navigator</h2>
+        <p class="subtitle">nine building blocks for collective impact</p>
+        <p>No two complex situations are the same, and there are no ready-made solutions. The Navigator helps you unravel your specific situation and find your starting point for action. It is based on proven methods and our years of collective experience.</p>
+        <ul class="blocks" aria-label="Building blocks">
+          <li>Backbone</li><li>Responsive leadership</li><li>Reinforcing actions</li><li>Involvement of all</li>
+          <li>Urgency for change</li><li>Vital connections</li><li>Adaptive learning</li><li>Shared ambitions</li>
+        </ul>
+        <a class="btn btn-primary" href="#">Download the Navigator</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="padding-top:0">
+    <div class="wrap">
+      <div class="service" id="s1">
+        <span class="num">01</span>
+        <h3>Facilitation of multi-stakeholder processes</h3>
+        <div><p>We facilitate dialogue with diverse stakeholders around shared challenges. Common ground and diverse perspectives bring depth, new insights and room for collective action.</p><p class="ex">Citizens’ Assembly · Future Search · Deep Democracy · Open Space</p></div>
+      </div>
+      <div class="service" id="s2">
+        <span class="num">02</span>
+        <h3>Narrative research and evaluation</h3>
+        <div><p>We use the power of stories for research and evaluation, in a participatory and inclusive way, so you can learn from the past and decide for the future.</p><p class="ex">Sprockler · Outcome Harvesting · Stories of Change</p></div>
+      </div>
+      <div class="service" id="s3">
+        <span class="num">03</span>
+        <h3>Leadership and capacity strengthening</h3>
+        <div><p>Group training and coaching on the job, to strengthen your leadership and give you tools for complex situations.</p><p class="ex">Art of Facilitation · CoResolve · Theory U</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="training" id="training">
+    <div class="wrap">
+      <h2 class="title">Training</h2>
+      <div class="tlist">
+        <article class="t"><span class="date">25&amp;26<br>MAR<br>2027</span><div><h3>Deep Democracy Level 2</h3><p>In person. For everybody who wants to delve deeper after Level 1.</p><p style="margin-top:12px"><a href="#">Register</a></p></div></article>
+        <article class="t alt"><span class="date" style="background:var(--p-red)">SOON</span><div><h3>The Art of Facilitation in Complexity</h3><p>Online. An on-the-job learning journey in facilitating complex processes.</p><p style="margin-top:12px"><a href="#">Read more</a></p></div></article>
+        <article class="t alt"><span class="date" style="background:var(--p-red)">SOON</span><div><h3>Storytelling in complexity (Sprockler)</h3><p>Online. Collect many stories and quantify the key patterns.</p><p style="margin-top:12px"><a href="#">Read more</a></p></div></article>
+        <article class="t"><span class="date">SOON</span><div><h3>How to get started with Systems Mapping</h3><p>Find high leverage points for systems change.</p><p style="margin-top:12px"><a href="#">Read more</a></p></div></article>
+      </div>
+      <div class="inco">
+        <p class="tussenkop">In-company, dates in consultation</p>
+        <ul><li>Stories of Change</li><li>CoResolve: Participatory Leadership</li><li>Agile Scrum &amp; Project Management</li><li>Care for a Common Cause</li><li>Deep Democracy</li><li>Writeshop</li></ul>
+      </div>
+      <p style="font-size:var(--fs-small);margin-top:var(--space-6)">CRKBO registered: our training courses are VAT exempt.</p>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <h2 class="title">Iconic projects</h2>
+      <div class="pgrid">
+        <article><span class="partner">Human Security Collective</span><h3>Learning from a youth programme in Tunisia and the Netherlands</h3><p>Monitoring and evaluation of two youth leadership programmes.</p></article>
+        <article><span class="partner">Netherlands Embassy in Turkey</span><h3>ACT Academy strengthens youth leadership in Turkey</h3><p>A pilot of a sustainable leadership programme for civil society.</p></article>
+        <article><span class="partner">Partos</span><h3>Building the future of development cooperation</h3><p>A six-month collective exploration with the Dutch development sector.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="stories" id="stories">
+    <div class="wrap">
+      <h2 class="title">Latest stories</h2>
+      <div class="srow">
+        <a href="#"><span class="eyebrow">Blog</span><h3>Embracing difference: reflections on the National Citizens’ Assembly on Climate</h3><p>What we witnessed and learned.</p></a>
+        <a href="#"><span class="eyebrow">News</span><h3>Weaving knowledge for collective learning</h3><p>Partnership Prompt Cards with the Robert Carr Fund.</p></a>
+        <a href="#"><span class="eyebrow">News</span><h3>The Public Health Challenge expands in the UK</h3><p>A game about dilemmas in a health crisis.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="team" id="team">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="title">Who we are</h2>
+        <p style="margin:0">A steward-owned cooperative of facilitators who love to navigate complexity. Independent professional and looking for like-minded spirits? Let’s have a virtual coffee.</p>
+      </div>
+      <div class="tg" id="team-grid"></div>
+    </div>
+  </section>
+
+  <section id="toolbox">
+    <div class="wrap">
+      <h2 class="title" style="font-size:var(--fs-title-3)">Our toolbox</h2>
+      <div class="tools">
+        <a href="https://sprockler.com" rel="noopener">Sprockler ↗</a><a href="#navigator">Complexity Navigator</a><a href="#">Publications</a>
+        <span>Citizens’ Assembly</span><span>Deep Democracy</span><span>Future Search</span><span>Social Lab</span><span>Appreciative Inquiry</span>
+        <span>Serious Gaming</span><span>Transformative Scenario Planning</span><span>Theory U</span><span>Systems Mapping</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact dark" id="contact">
+    <div class="wrap">
+      <div>
+        <h2 class="title">Start a conversation</h2>
+        <p>Tell us about your challenge. We like to think along.</p>
+        <address>Jean François van Royenweg 16<br>2597 NW The Hague<br><a href="mailto:info@perspectivity.org">info@perspectivity.org</a><br>+31 6 1033 4466</address>
+      </div>
+      <form onsubmit="return false" aria-label="Newsletter">
+        <p class="tussenkop">Newsletter</p>
+        <div class="field"><label for="c-name">Name</label><input id="c-name" autocomplete="name"></div>
+        <div class="field"><label for="c-mail">Email</label><input id="c-mail" type="email" autocomplete="email"></div>
+        <div><button class="btn btn-yellow" type="submit">Subscribe</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="../assets/logo-payoff-beige-white.png" alt="Perspectivity, for the love of complexity">
+    <span>Perspectivity Enterprise · Chamber of Commerce 54179092 · <a href="#">Privacy statement</a></span>
+  </div>
+</footer>
+
+<nav class="concept-bar" aria-label="Concepts"><a href="../">All</a><a href="../a/">A</a><a href="../b/">B</a><a href="../c/" aria-current="page">C</a></nav>
+<script src="../assets/team.js"></script>
+<script>renderTeam(document.getElementById('team-grid'), p => `
+  <figure><div class="ph ${p.img?'':'none'}">${p.img?`<img class="grey" src="${p.img}" alt="" loading="lazy">`:`<img src="../assets/person-white.png" alt="">`}</div>
+  <figcaption><strong>${p.name}</strong><span>${p.focus}</span></figcaption></figure>`);</script>
+</body>
+</html>
