@@ -34,6 +34,22 @@ const UI = {
     newsletter: 'Newsletter', name: 'Name', email: 'Email', subscribe: 'Subscribe', privacy: 'Privacy statement',
     logoAlt: 'Perspectivity, for the love of complexity',
     words: { 'In person': 'In person', Online: 'Online', Hybrid: 'Hybrid', News: 'News', Blog: 'Blog' },
+    reg: {
+      title: 'Register for a training', testNote: 'Test mode: nothing is sent. After you submit, this page shows where each piece of information would go.',
+      name: 'Name', email: 'Email', org: 'Organisation (optional)', training: 'Training', choose: 'Choose a training',
+      inCompanyOpt: 'In-company training, on request', billing: 'Billing address (optional)', diet: 'Dietary wishes (optional)',
+      remarks: 'Remarks (optional)', alsoNews: 'Also send me the newsletter', privacy: 'I agree with the privacy statement',
+      submit: 'Register (test)', required: 'required',
+    },
+    sim: {
+      heading: 'Test mode: nothing was sent', intro: 'This is what the real site would do with what you entered:',
+      mail: 'Email to the training address (still to be chosen)', news: 'Newsletter tool (Mailchimp or a European tool, still to be chosen)',
+      newsSkipped: 'Nothing: the newsletter box was not ticked.', site: 'The website itself', siteNothing: 'Stores nothing. The site has no database.',
+      empty: '(empty)', errName: 'Fill in your name.', errEmail: 'Fill in a valid email address, such as name@example.org.',
+      errTraining: 'Choose a training.', errPrivacy: 'Tick the box to agree with the privacy statement.',
+      labels: { name: 'Name', email: 'Email', org: 'Organisation', training: 'Training', billing: 'Billing address', diet: 'Dietary wishes', remarks: 'Remarks' },
+    },
+    subscribeTest: 'Subscribe (test)', newsTestNote: 'Test mode: nothing is sent.',
   },
   nl: {
     title: 'Perspectivity · Concept A: Calm (Nederlands)', skip: 'Naar de inhoud', home: 'Perspectivity, terug naar boven',
@@ -47,6 +63,22 @@ const UI = {
     newsletter: 'Nieuwsbrief', name: 'Naam', email: 'E-mail', subscribe: 'Inschrijven', privacy: 'Privacyverklaring',
     logoAlt: 'Perspectivity, for the love of complexity',
     words: { 'In person': 'Op locatie', Online: 'Online', Hybrid: 'Hybride', News: 'Nieuws', Blog: 'Blog' },
+    reg: {
+      title: 'Aanmelden voor een training', testNote: 'Testmodus: er wordt niets verstuurd. Na het verzenden zie je op deze pagina waar elk gegeven naartoe zou gaan.',
+      name: 'Naam', email: 'E-mail', org: 'Organisatie (niet verplicht)', training: 'Training', choose: 'Kies een training',
+      inCompanyOpt: 'In-company training, in overleg', billing: 'Factuuradres (niet verplicht)', diet: 'Dieetwensen (niet verplicht)',
+      remarks: 'Opmerkingen (niet verplicht)', alsoNews: 'Stuur mij ook de nieuwsbrief', privacy: 'Ik ga akkoord met de privacyverklaring',
+      submit: 'Aanmelden (test)', required: 'verplicht',
+    },
+    sim: {
+      heading: 'Testmodus: er is niets verstuurd', intro: 'Dit zou de echte site doen met wat je invulde:',
+      mail: 'Mail naar het trainingsadres (nog te kiezen)', news: 'Nieuwsbrieftool (Mailchimp of een Europese tool, nog te kiezen)',
+      newsSkipped: 'Niets: het vakje voor de nieuwsbrief stond uit.', site: 'De website zelf', siteNothing: 'Bewaart niets. De site heeft geen database.',
+      empty: '(leeg)', errName: 'Vul je naam in.', errEmail: 'Vul een geldig e-mailadres in, zoals naam@voorbeeld.nl.',
+      errTraining: 'Kies een training.', errPrivacy: 'Vink het vakje aan om akkoord te gaan met de privacyverklaring.',
+      labels: { name: 'Naam', email: 'E-mail', org: 'Organisatie', training: 'Training', billing: 'Factuuradres', diet: 'Dieetwensen', remarks: 'Opmerkingen' },
+    },
+    subscribeTest: 'Inschrijven (test)', newsTestNote: 'Testmodus: er wordt niets verstuurd.',
   },
 };
 const u = UI[lang];
@@ -130,6 +162,31 @@ const word = (w) => u.words[w] || w;
   @media (max-width:1000px){.cols{margin-left:0;grid-template-columns:1fr}}
   .note{font-size:var(--fs-small);color:var(--p-ink-3);margin:var(--space-6) 0 0 calc(280px + var(--space-8))}
   @media (max-width:1000px){.note{margin-left:0}}
+  .register{margin:var(--space-9) 0 0 calc(280px + var(--space-8));padding-top:var(--space-7);border-top:var(--dashed)}
+  .register h3{font-family:var(--font-display);font-weight:500;font-size:var(--fs-title-3);line-height:1.15;margin:0 0 var(--space-3)}
+  .register form{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+  .register .wide{grid-column:1/-1}
+  .field textarea{min-height:88px}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:var(--fs-body)}
+  .check input{width:22px;height:22px;margin:3px 0 0;flex:none;accent-color:var(--p-red)}
+  .testnote{font-size:var(--fs-small);color:var(--p-ink-2);margin:0 0 var(--space-5)}
+  .req{font-weight:400}
+  .error{color:var(--p-red-text);font-size:var(--fs-small);font-weight:700;margin:0}
+  .error:empty{display:none}
+  [aria-invalid="true"]{border-color:var(--p-red-text)!important;border-width:2px!important}
+  .sim{background:#fff;color:#000;border:1.5px dashed var(--p-red);padding:var(--space-6);margin-top:var(--space-6)}
+  .sim h4{font-family:var(--font-display);font-weight:700;font-size:20px;margin:0 0 var(--space-2)}
+  .sim>p{margin:0 0 var(--space-4)}
+  .sim ol{margin:0;padding-left:1.3em;display:grid;gap:var(--space-4)}
+  .sim li strong{font-family:var(--font-display);display:block}
+  .sim dl{margin:6px 0 0;display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:var(--fs-small)}
+  .sim dt{color:var(--p-ink-3)}
+  .sim dd{margin:0;overflow-wrap:anywhere;white-space:pre-line}
+  .sim:focus{outline:2px solid var(--p-darkgreen);outline-offset:3px}
+  .contact .sim{grid-column:auto}
+  .contact .testnote{color:#fff;margin:0}
+  @media (max-width:1000px){.register{margin-left:0}}
+  @media (max-width:700px){.register form{grid-template-columns:1fr}}
 
   /* Projects */
   .projects article>*{min-width:0}
@@ -324,6 +381,28 @@ const word = (w) => u.words[w] || w;
         </div>
       </div>
       <p class="note">{T(t.training.note)}</p>
+      <div class="register" id="register">
+        <h3>{u.reg.title}</h3>
+        <p class="testnote">{u.reg.testNote}</p>
+        <form id="reg-form" novalidate data-sim="registration">
+          <div class="field"><label for="r-name">{u.reg.name} <span class="req">({u.reg.required})</span></label><input id="r-name" name="name" autocomplete="name" required aria-describedby="r-name-err"><p class="error" id="r-name-err"></p></div>
+          <div class="field"><label for="r-email">{u.reg.email} <span class="req">({u.reg.required})</span></label><input id="r-email" name="email" type="email" autocomplete="email" required aria-describedby="r-email-err"><p class="error" id="r-email-err"></p></div>
+          <div class="field"><label for="r-org">{u.reg.org}</label><input id="r-org" name="org" autocomplete="organization"></div>
+          <div class="field"><label for="r-training">{u.reg.training} <span class="req">({u.reg.required})</span></label>
+            <select id="r-training" name="training" required aria-describedby="r-training-err">
+              <option value="">{u.reg.choose}</option>
+              {shown(dates).map((x) => <option>{`${T(x.training)}, ${T(x.date) || u.tba}`}</option>)}
+              <option>{u.reg.inCompanyOpt}</option>
+            </select><p class="error" id="r-training-err"></p></div>
+          <div class="field wide"><label for="r-billing">{u.reg.billing}</label><textarea id="r-billing" name="billing" autocomplete="street-address"></textarea></div>
+          <div class="field"><label for="r-diet">{u.reg.diet}</label><input id="r-diet" name="diet"></div>
+          <div class="field"><label for="r-remarks">{u.reg.remarks}</label><input id="r-remarks" name="remarks"></div>
+          <label class="check wide"><input type="checkbox" name="alsoNews">{u.reg.alsoNews}</label>
+          <div class="wide"><label class="check"><input type="checkbox" name="privacy" id="r-privacy" required aria-describedby="r-privacy-err">{u.reg.privacy} ({u.reg.required})</label><p class="error" id="r-privacy-err"></p></div>
+          <div class="wide"><button class="btn btn-primary" type="submit">{u.reg.submit}</button></div>
+        </form>
+        <div class="sim" id="reg-sim" tabindex="-1" hidden></div>
+      </div>
     </div>
   </section>
 
@@ -409,11 +488,13 @@ const word = (w) => u.words[w] || w;
         <p>{T(t.contact.text)}</p>
         <address>{lines(T(t.contact.address)).map((l) => <>{l}<br></>)}<a href={`mailto:${T(t.contact.email)}`}>{T(t.contact.email)}</a><br>{T(t.contact.phone)}</address>
       </div>
-      <form onsubmit="return false" aria-label={u.newsletter}>
+      <form id="news-form" novalidate data-sim="newsletter" aria-label={u.newsletter}>
         <p class="tussenkop" style="color:#fff">{u.newsletter}</p>
-        <div class="field"><label for="a-name">{u.name}</label><input id="a-name" autocomplete="name"></div>
-        <div class="field"><label for="a-mail">{u.email}</label><input id="a-mail" type="email" autocomplete="email"></div>
-        <div><button class="btn btn-light" type="submit">{u.subscribe}</button></div>
+        <p class="testnote">{u.newsTestNote}</p>
+        <div class="field"><label for="a-name">{u.name}</label><input id="a-name" name="name" autocomplete="name"></div>
+        <div class="field"><label for="a-mail">{u.email} <span class="req">({u.reg.required})</span></label><input id="a-mail" name="email" type="email" autocomplete="email" required aria-describedby="a-mail-err"><p class="error" id="a-mail-err" style="color:#fff"></p></div>
+        <div><button class="btn btn-light" type="submit">{u.subscribeTest}</button></div>
+        <div class="sim" id="news-sim" tabindex="-1" hidden></div>
       </form>
     </div>
   </section>
@@ -428,5 +509,7 @@ const word = (w) => u.words[w] || w;
 
 <nav class="concept-bar" aria-label={u.concepts}><a href={`${base}/`}>All</a><a href={lang === 'nl' ? nlUrl : enUrl} aria-current="page">A</a><a href={`${base}/b/`}>B</a><a href={`${base}/c/`}>C</a></nav>
 <script is:inline src={`${base}/assets/site.js`}></script>
+<script type="application/json" id="sim-strings" set:html={JSON.stringify(u.sim)}></script>
+<script is:inline src={`${base}/assets/form-sim.js`}></script>
 </body>
 </html>
