@@ -9,20 +9,20 @@
 <link rel="stylesheet" href="../assets/tokens.css">
 <style>
   body{background:var(--p-lightbeige);overflow-x:hidden}
-  .top{position:sticky;top:0;z-index:50;background:var(--p-lightbeige)}
+  .top{--menu-bg:var(--p-lightbeige);position:sticky;top:0;z-index:50;background:var(--p-lightbeige)}
   .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:80px}
   .top img{height:36px;width:auto}
   .menu{display:flex;gap:6px;list-style:none;margin:0;padding:0;font-family:var(--font-display);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.05em}
   .menu a{text-decoration:none;padding:10px 14px;border-radius:999px;display:block}
   .menu a:hover{background:#fff}
   .lang a{font-family:var(--font-display);font-weight:700;font-size:14px;text-decoration:none;padding:10px 8px}
-  .lang a[aria-current]{color:var(--p-red)}
+  .lang a[aria-current]{color:var(--p-red-text)}
   @media (max-width:960px){.menu{display:none}}
 
   section{position:relative;padding:var(--space-10) 0}
 
   /* Hero: photo inside the egg, bleeding off the right edge */
-  .hero{padding:var(--space-8) 0 var(--space-11);min-height:640px}
+  .hero{padding:var(--space-8) 0 var(--space-11);min-height:640px;overflow-x:clip}
   .hero .egg{position:absolute;right:-8vw;top:-40px;width:min(52vw,640px)}
   .hero .panel{position:relative;background:#fff;max-width:620px;padding:var(--space-8) var(--space-8) var(--space-8);margin-top:var(--space-9)}
   .hero h1{font-size:var(--fs-title-1);color:var(--p-red)}
@@ -85,6 +85,7 @@
 
   /* Quote over ice photo */
   .photo-quote{padding:0}
+  .photo-quote .quote{color:var(--p-red-text)}
   .photo-quote .wrap{display:grid;grid-template-columns:5fr 7fr;align-items:center;gap:var(--space-9);padding-top:var(--space-10);padding-bottom:var(--space-10)}
   .photo-quote .egg{width:100%;max-width:380px}
   @media (max-width:820px){.photo-quote .wrap{grid-template-columns:1fr}.photo-quote .egg{max-width:220px}}
@@ -94,7 +95,7 @@
   .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-8)}
   .story-grid a{text-decoration:none;background:var(--p-lightbeige);padding:var(--space-6);display:block}
   .story-grid a:hover h3{text-decoration:underline;text-underline-offset:5px}
-  .story-grid .eyebrow{color:var(--p-red)}
+  .story-grid .eyebrow{color:var(--p-red-text)}
   .story-grid h3{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:1.25;margin:var(--space-3) 0}
   .story-grid p{margin:0;font-size:16px}
   @media (max-width:820px){.story-grid{grid-template-columns:1fr}}
@@ -130,6 +131,16 @@
   footer{background:var(--p-red);color:#fff;padding:var(--space-8) 0;font-size:var(--fs-small)}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
   footer img{height:34px;width:auto}
+  .tools-b{background:var(--p-beige)}
+  .tools-b h2{font-size:var(--fs-title-2);text-align:center}
+  .tool-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}
+  .tool-cards article{background:#fff;padding:var(--space-7);display:grid;grid-template-columns:120px 1fr;gap:var(--space-6);align-items:start}
+  .tool-cards .shape{aspect-ratio:3326/4293;background:center/contain no-repeat;display:grid;place-items:center}
+  .tool-cards .shape img{width:50%}
+  .tool-cards h3{font-family:var(--font-display);font-weight:700;font-size:22px;line-height:1.25;margin:var(--space-2) 0 var(--space-3)}
+  .tool-cards p{margin:0 0 var(--space-5)}
+  @media (max-width:900px){.tool-cards{grid-template-columns:1fr}}
+  @media (max-width:480px){.tool-cards article{grid-template-columns:1fr;padding:var(--space-6)}.tool-cards .shape{width:90px}}
 </style>
 </head>
 <body>
@@ -137,11 +148,12 @@
 <header class="top">
   <div class="wrap">
     <a href="#top" aria-label="Perspectivity, back to top"><img src="../assets/logo-red.png" alt="Perspectivity"></a>
-    <nav aria-label="Main"><ul class="menu">
-      <li><a href="#work">What we do</a></li><li><a href="#navigator">Navigator</a></li><li><a href="#training">Training</a></li>
+    <nav aria-label="Main"><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul class="menu" id="menu">
+      <li><a href="#work">What we do</a></li><li><a href="#navigator">Navigator</a></li><li><a href="#tools">Tools</a></li><li><a href="#training">Training</a></li>
       <li><a href="#projects">Projects</a></li><li><a href="#team">Team</a></li><li><a href="#contact">Contact</a></li>
     </ul></nav>
-    <div class="lang" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#" lang="nl">NL</a></div>
+    <nav class="lang" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#" lang="nl">NL</a></nav>
   </div>
 </header>
 
@@ -196,6 +208,27 @@
         <p class="subtitle">nine building blocks for collective impact</p>
         <p>To navigate complexity and create collective impact, you need to pay attention to nine crucial aspects. The building blocks help you unravel your specific situation and find your starting point for action.</p>
         <a class="btn btn-yellow" href="#">Download the Navigator</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tools-b" id="tools">
+    <div class="wrap">
+      <h2 class="title">Our tools</h2>
+      <p class="intro">Two tools that grew out of our work, now used far beyond it.</p>
+      <div class="tool-cards">
+        <article>
+          <div class="shape" style="background-image:url('../assets/egg-blue.png')"><img src="../assets/person-black.png" alt=""></div>
+          <div><p class="eyebrow" style="color:var(--p-red)">Sprockler</p>
+          <h3>Stories and stats, connected in one tool</h3><p>Sprockler is our online tool for narrative research. People share a story and interpret it themselves; the patterns appear right away in interactive graphs, with the individual stories at the heart of every graph. Used in evaluations from Timor-Leste to Amsterdam.</p>
+          <a class="btn btn-primary" href="https://sprockler.com" rel="noopener">Visit sprockler.com<span class="sr-only"> (external site)</span></a></div>
+        </article>
+        <article>
+          <div class="shape" style="background-image:url('../assets/egg-darkgreen.png')"><img src="../assets/person-white.png" alt=""></div>
+          <div><p class="eyebrow" style="color:var(--p-red)">The Perspectivity Challenge</p>
+          <h3>A serious board game about complexity</h3><p>In The Perspectivity Challenge, players act as world leaders and experience complexity first-hand, then reflect on what they learned. Games on climate, food, public health, fashion, human security and decision making. Played in 24 countries, by 83 organisations.</p>
+          <a class="btn btn-primary" href="https://perspectivity-challenge.org" rel="noopener">Visit the Challenge<span class="sr-only"> (external site)</span></a></div>
+        </article>
       </div>
     </div>
   </section>
@@ -293,6 +326,7 @@
 
 <nav class="concept-bar" aria-label="Concepts"><a href="../">All</a><a href="../a/">A</a><a href="../b/" aria-current="page">B</a><a href="../c/">C</a></nav>
 <script src="../assets/team.js"></script>
+<script src="../assets/site.js"></script>
 <script>renderTeam(document.getElementById('team-grid'), p => `
   <figure><div class="egg ${p.img?'':'none'}">${p.img?`<img class="grey" src="${p.img}" alt="" loading="lazy">`:`<img src="../assets/person-white.png" alt="">`}</div>
   <strong>${p.name}</strong><span>${p.focus}</span></figure>`);</script>

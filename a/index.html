@@ -10,7 +10,7 @@
 <style>
   body{background:#fff}
   /* Header */
-  .top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:var(--dashed)}
+  .top{--menu-bg:#fff;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:var(--dashed)}
   .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
   .top img{height:34px;width:auto}
   .menu{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-family:var(--font-display);font-weight:500;font-size:15px}
@@ -54,7 +54,7 @@
   .nav-band img{width:100%;max-width:420px;margin:0 auto}
   .nav-band .wrap>*{min-width:0}
   .nav-band h2{font-size:var(--fs-title-2);margin:var(--space-3) 0 var(--space-5)}
-  .nav-band .subtitle{font-size:var(--fs-subtitle);color:var(--p-red);margin-bottom:var(--space-5)}
+  .nav-band .subtitle{font-size:var(--fs-subtitle);margin-bottom:var(--space-5)}
   @media (max-width:800px){.nav-band .wrap{grid-template-columns:1fr}}
 
   /* Trainings */
@@ -83,6 +83,7 @@
 
   /* Quote */
   .quote-band{background:var(--p-lightbeige);text-align:center}
+  .quote-band .quote{color:var(--p-red-text)}
   .quote-band blockquote{margin:0 auto;max-width:880px}
   .quote-band cite{display:block;margin-top:var(--space-5);font-style:normal;font-family:var(--font-display);font-weight:700;font-size:var(--fs-small)}
 
@@ -129,6 +130,12 @@
   footer{padding:var(--space-8) 0;font-size:var(--fs-small);color:var(--p-ink-3)}
   footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
   footer img{height:26px;width:auto}
+  .tool-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);margin-left:calc(280px + var(--space-8))}
+  .tool-pair article{border-top:var(--dashed);padding-top:var(--space-6)}
+  .tool-pair h3{font-family:var(--font-display);font-weight:500;font-size:var(--fs-title-3);line-height:1.15;margin:0 0 var(--space-4)}
+  .tool-pair p{margin:0 0 var(--space-6)}
+  @media (max-width:1000px){.tool-pair{margin-left:0}}
+  @media (max-width:760px){.tool-pair{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -138,16 +145,17 @@
   <div class="wrap">
     <a href="#top" aria-label="Perspectivity, back to top"><img src="../assets/logo-red.png" alt="Perspectivity"></a>
     <nav aria-label="Main">
-      <ul class="menu">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul class="menu" id="menu">
         <li><a href="#work">What we do</a></li>
         <li><a href="#navigator">Navigator</a></li>
-        <li><a href="#training">Training</a></li>
+        <li><a href="#tools">Tools</a></li><li><a href="#training">Training</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#team">Who we are</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="lang" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#" lang="nl">NL</a></div>
+    <nav class="lang" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#" lang="nl">NL</a></nav>
   </div>
 </header>
 
@@ -198,11 +206,35 @@
     <div class="wrap">
       <img src="../assets/navigator.png" alt="The Complexity Navigator: an egg divided into building blocks, among them backbone, responsive leadership, reinforcing actions, involvement of all, urgency for change, vital connections, adaptive learning and shared ambitions.">
       <div>
-        <p class="eyebrow" style="color:var(--p-red)">Our vision and tool</p>
+        <p class="eyebrow" style="color:var(--p-red-text)">Our vision and tool</p>
         <h2 class="title">The Complexity Navigator</h2>
-        <p class="subtitle">nine building blocks for collective impact in complexity</p>
+        <p class="subtitle" style="color:var(--p-red-text)">nine building blocks for collective impact in complexity</p>
         <p>To navigate complexity and create collective impact, you need to pay attention to nine crucial aspects. These building blocks help you unravel your specific situation and find your starting point for action. The Navigator is based on proven methods and our years of collective experience.</p>
         <a class="btn btn-primary" href="#">Download the Navigator</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools" class="tools-band">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Our tools</p>
+        <div><h2 class="title">Made by Perspectivity</h2>
+        <p>Two tools that grew out of our work, now used far beyond it.</p></div>
+      </div>
+      <div class="tool-pair">
+        <article>
+          <p class="tussenkop" style="color:var(--p-red)">Sprockler</p>
+          <h3>Stories and stats, connected in one tool</h3>
+          <p>Sprockler is our online tool for narrative research. People share a story and interpret it themselves; the patterns appear right away in interactive graphs, with the individual stories at the heart of every graph. Used in evaluations from Timor-Leste to Amsterdam.</p>
+          <a class="btn btn-outline" href="https://sprockler.com" rel="noopener">Visit sprockler.com<span class="sr-only"> (external site)</span></a>
+        </article>
+        <article>
+          <p class="tussenkop" style="color:var(--p-red)">The Perspectivity Challenge</p>
+          <h3>A serious board game about complexity</h3>
+          <p>In The Perspectivity Challenge, players act as world leaders and experience complexity first-hand, then reflect on what they learned. Games on climate, food, public health, fashion, human security and decision making. Played in 24 countries, by 83 organisations.</p>
+          <a class="btn btn-outline" href="https://perspectivity-challenge.org" rel="noopener">Visit the Challenge<span class="sr-only"> (external site)</span></a>
+        </article>
       </div>
     </div>
   </section>
@@ -352,6 +384,7 @@
 
 <nav class="concept-bar" aria-label="Concepts"><a href="../">All</a><a href="../a/" aria-current="page">A</a><a href="../b/">B</a><a href="../c/">C</a></nav>
 <script src="../assets/team.js"></script>
+<script src="../assets/site.js"></script>
 <script>renderTeam(document.getElementById('team-grid'), p => `
   <figure><div class="ph ${p.img?'':'none'}">${p.img?`<img class="grey" src="${p.img}" alt="" loading="lazy">`:`<img src="../assets/person-red.png" alt="">`}</div>
   <figcaption><strong>${p.name}</strong><span>${p.focus}</span></figcaption></figure>`);</script>
