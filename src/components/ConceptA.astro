@@ -119,7 +119,7 @@ const word = (w) => u.words[w] || w;
   .hero h1{font-size:var(--fs-display);color:var(--p-red)}
   .hero .lead{font-size:var(--fs-lead);max-width:var(--measure);margin:var(--space-7) 0}
   .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
-  .hero .puppet{width:100%;max-width:240px;justify-self:end}
+  .hero .puppet{width:100%;max-width:240px;justify-self:end;opacity:.5}
   @media (max-width:800px){.hero .wrap{grid-template-columns:1fr}.hero .puppet{max-width:140px;justify-self:start;order:-1}}
 
   /* Section heads */
@@ -128,6 +128,9 @@ const word = (w) => u.words[w] || w;
   .head h2{font-size:var(--fs-title-2)}
   .head p{max-width:var(--measure);margin:var(--space-4) 0 0}
   @media (max-width:800px){.head{grid-template-columns:1fr;gap:var(--space-3)}}
+
+  /* Figma handoff test: centered, dark red section heading. */
+  #work .head h2{text-align:center;color:var(--p-red-text)}
 
   /* Services */
   .three{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-7);margin-left:calc(280px + var(--space-8))}
