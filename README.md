@@ -6,7 +6,7 @@ Three mock-up directions for the new perspectivity.org, built on the Perspectivi
 - `b/` Egg window: photos in the egg, patterns, light support colours
 - `c/` Navigator: the visitor starts from their own question, exuberant colour fields
 
-Live: https://nelefreedom.github.io/perspectivity-website-concepts/ (not indexed by search engines).
+Live: https://perspectivity-org.github.io/perspectivity-website-concepts/ (not indexed by search engines).
 
 ## How it is built
 
