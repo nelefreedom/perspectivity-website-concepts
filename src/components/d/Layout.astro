@@ -1,0 +1,99 @@
+---
+// Concept D: page frame (head, header, footer, scripts) shared by the home page and the detail pages.
+import '../../styles/d.css';
+import { site } from '../../lib/d.js';
+
+const { lang = 'nl', title = '', description = '', path = '', registerHref = '' } = Astro.props;
+const s = site(lang);
+const { base, u, T, t, reg } = s;
+const onHome = path === '';
+const nlUrl = `${base}/d/nl/${path}`;
+const enUrl = `${base}/d/en/${path}`;
+const to = (hash) => (onHome ? hash : `${s.home}${hash}`);
+const pageTitle = title ? `${title} · Perspectivity` : u.siteTitle;
+const privacyUrl = T(reg.privacyUrl);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>{pageTitle}</title>
+<meta name="description" content={description || u.description}>
+<link rel="alternate" hreflang="nl" href={nlUrl}>
+<link rel="alternate" hreflang="en" href={enUrl}>
+<link rel="icon" href={`${base}/assets/person-red.png`}>
+</head>
+<body>
+<a class="skip" href="#main">{u.skip}</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href={onHome ? '#top' : s.home} aria-label={u.home}><img src={`${base}/assets/logo-red.png`} alt="Perspectivity" width="640" height="169"></a>
+    <nav class="main" aria-label={u.mainNav}>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul class="menu" id="menu">
+        <li><a href={to('#work')}>{u.menu.work}</a></li>
+        <li><a href={to('#projects')}>{u.menu.projects}</a></li>
+        <li><a href={to('#training')}>{u.menu.training}</a></li>
+        <li><a href={to('#stories')}>{u.menu.stories}</a></li>
+        <li><a href={to('#team')}>{u.menu.team}</a></li>
+        <li><a href={to('#contact')}>{u.menu.contact}</a></li>
+        <li class="menu-lang">
+          <a href={nlUrl} lang="nl" hreflang="nl" aria-current={lang === 'nl' ? 'true' : undefined}>Nederlands</a>
+          <a href={enUrl} lang="en" hreflang="en" aria-current={lang === 'en' ? 'true' : undefined}>English</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="lang" aria-label={u.langNav}>
+      <a href={nlUrl} lang="nl" hreflang="nl" aria-current={lang === 'nl' ? 'true' : undefined}>NL<span class="sr-only"> Nederlands</span></a>
+      <a href={enUrl} lang="en" hreflang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN<span class="sr-only"> English</span></a>
+    </nav>
+    <a class="btn btn-primary btn-small" href={registerHref || to('#register')}>{u.register}</a>
+  </div>
+</header>
+
+<main id="main">
+  <slot />
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-text">
+        <h2 class="title">{T(t.contact.title)}</h2>
+        <p>{u.contactText}</p>
+        <div class="actions">
+          <a class="btn btn-light" href={`mailto:${t.contact.email}`}>{u.mailUs}</a>
+          {s.tel && <a class="btn btn-ghost-light" href={`tel:${s.tel}`}>{u.callUs}</a>}
+        </div>
+      </div>
+      <div class="card-wrap">
+        <img class="puppet" src={`${base}/assets/person-white.png`} alt="" width="295" height="360">
+        <div class="card">
+          <img class="card-logo" src={`${base}/assets/logo-payoff-red.png`} alt={u.logoAlt} width="640" height="202">
+          <address>
+            <span class="big">
+              <a href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
+              {s.tel && <a href={`tel:${s.tel}`}>{t.contact.phone}</a>}
+            </span>
+            <span>{(T(t.contact.address) || '').split('\n').filter((l, i) => l && (i > 0 || l !== 'Perspectivity')).map((l) => <>{l}<br></>)}</span>
+          </address>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src={`${base}/assets/logo-red.png`} alt="Perspectivity" width="640" height="169">
+    <p class="meta"><span>{T(t.footer)}</span>{privacyUrl && <a href={privacyUrl}>{u.reg.privacyLink}</a>}<a href={`${base}/`}>{u.concepts}</a></p>
+  </div>
+</footer>
+
+<script is:inline src={`${base}/assets/site.js`}></script>
+<script type="application/json" id="form-config" set:html={JSON.stringify(s.formConfig)}></script>
+<script is:inline src={`${base}/d/form.js`}></script>
+</body>
+</html>

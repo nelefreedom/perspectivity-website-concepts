@@ -31,6 +31,15 @@ components:
       - { name: en, label: English, type: text }
       - { name: nl, label: Nederlands, type: text }
 
+  # The detail page behind a training, project or news item.
+  facts-list:
+    type: object
+    list:
+      collapsible: { collapsed: true, summary: "{label}" }
+    fields:
+      - { name: label, label: Label, type: string }
+      - { name: value, label: Text (one line per row), type: text }
+
 content:
   - name: texts
     label: Page texts
@@ -144,7 +153,7 @@ content:
         fields:
           - { name: email, label: Email address that receives registrations, type: string }
           - { name: endpoint, label: Form service address (leave empty to register by email), type: string }
-          - { name: privacyUrl, label: Link to the privacy statement, type: string }
+          - { name: privacyUrl, label: Link to the privacy statement, component: en-nl-line }
 
   - name: dates
     label: Training dates
@@ -175,6 +184,21 @@ content:
         type: select
         options: { values: [Open training, In-company] }
       - { name: visible, label: Show on the site, type: boolean, default: true }
+      - { name: slug, label: Page address (lower case and hyphens; changing it changes the link), type: string }
+      - { name: image, label: Photo at the top of the page, type: image }
+      - { name: intro, label: Introduction on the page, component: en-nl-text }
+      - name: facts
+        label: Facts in the side panel
+        type: object
+        fields:
+          - { name: en, label: English, component: facts-list }
+          - { name: nl, label: Nederlands, component: facts-list }
+      - name: body
+        label: Page text
+        type: object
+        fields:
+          - { name: en, label: English, type: rich-text }
+          - { name: nl, label: Nederlands, type: rich-text }
 
   - name: projects
     label: Projects
@@ -186,6 +210,21 @@ content:
       - { name: partner, label: Partner, component: en-nl-line }
       - { name: title, label: Title, component: en-nl-line, required: true }
       - { name: summary, label: Summary, component: en-nl-text }
+      - { name: slug, label: Page address (lower case and hyphens; changing it changes the link), type: string }
+      - { name: image, label: Photo at the top of the page, type: image }
+      - { name: intro, label: Introduction on the page, component: en-nl-text }
+      - name: facts
+        label: Facts in the side panel
+        type: object
+        fields:
+          - { name: en, label: English, component: facts-list }
+          - { name: nl, label: Nederlands, component: facts-list }
+      - name: body
+        label: Page text
+        type: object
+        fields:
+          - { name: en, label: English, type: rich-text }
+          - { name: nl, label: Nederlands, type: rich-text }
 
   - name: news
     label: News and blogs
@@ -200,6 +239,22 @@ content:
         options: { values: [News, Blog] }
       - { name: title, label: Title, component: en-nl-line, required: true }
       - { name: summary, label: Summary, component: en-nl-text }
+      - { name: date, label: Date, type: date }
+      - { name: slug, label: Page address (lower case and hyphens; changing it changes the link), type: string }
+      - { name: image, label: Photo at the top of the page, type: image }
+      - { name: intro, label: Introduction on the page, component: en-nl-text }
+      - name: facts
+        label: Facts in the side panel
+        type: object
+        fields:
+          - { name: en, label: English, component: facts-list }
+          - { name: nl, label: Nederlands, component: facts-list }
+      - name: body
+        label: Page text
+        type: object
+        fields:
+          - { name: en, label: English, type: rich-text }
+          - { name: nl, label: Nederlands, type: rich-text }
 
   - name: team
     label: Team
