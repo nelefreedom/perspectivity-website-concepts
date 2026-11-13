@@ -510,7 +510,7 @@ const word = (w) => u.words[w] || w;
   </div>
 </footer>
 
-<nav class="concept-bar" aria-label={u.concepts}><a href={`${base}/`}>All</a><a href={lang === 'nl' ? nlUrl : enUrl} aria-current="page">A</a><a href={`${base}/b/`}>B</a><a href={`${base}/c/`}>C</a></nav>
+<nav class="concept-bar" aria-label={u.concepts}><a href={`${base}/`}>All</a><a href={lang === 'nl' ? nlUrl : enUrl} aria-current="page">A</a><a href={`${base}/b/`}>B</a><a href={`${base}/c/`}>C</a><a href={`${base}/d/${lang}/`}>D</a></nav>
 <script is:inline src={`${base}/assets/site.js`}></script>
 <script type="application/json" id="sim-strings" set:html={JSON.stringify(u.sim)}></script>
 <script is:inline src={`${base}/assets/form-sim.js`}></script>

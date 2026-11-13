@@ -1,0 +1,439 @@
+---
+// Concept D, "Business card": the current site, tidied up into one calm page.
+// Reads the same content files as concept A, so edits in Pages CMS show up here too.
+// Nothing moves on this page: no animation, no transitions, no smooth scrolling.
+import '../styles/d.css';
+import texts from '../../content/texts.json';
+import trainings from '../../content/trainings.json';
+import dates from '../../content/dates.json';
+import projects from '../../content/projects.json';
+import team from '../../content/team.json';
+import settings from '../../content/settings.json';
+
+const { lang = 'nl' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const media = (p) => (!p ? '' : p.startsWith('http') ? p : base + p);
+const T = (v) => (v && typeof v === 'object' ? v[lang] || v.en || '' : v || '');
+const t = texts;
+const shown = (list) => list.filter((x) => x.visible !== false);
+const lines = (s) => (s || '').split('\n').filter(Boolean);
+const enUrl = `${base}/d/en/`;
+const nlUrl = `${base}/d/nl/`;
+
+// Fixed interface words; editors change the content, not these.
+const UI = {
+  nl: {
+    title: 'Perspectivity · For the love of complexity',
+    description: 'Perspectivity faciliteert veranderingen in sociale systemen: dialoogprocessen, narratief onderzoek en trainingen. Schrijf je in voor een training of leg je vraagstuk voor.',
+    skip: 'Naar de inhoud', home: 'Perspectivity, terug naar boven', mainNav: 'Hoofdmenu', langNav: 'Taal',
+    menu: { work: 'Wat we doen', approach: 'Aanpak', projects: 'Projecten', training: 'Trainingen', team: 'Wie we zijn', contact: 'Contact' },
+    register: 'Inschrijven',
+    heroEyebrow: 'Coöperatie van facilitators', ctaTalk: 'Bespreek je vraagstuk', ctaTraining: 'Bekijk de trainingen',
+    eggAlt: '',
+    agenda: 'Trainingsagenda', allTrainings: 'Alle trainingen', tba: 'Datum volgt', signUp: 'Schrijf je in', signUpTba: 'Meld je aan',
+    words: { 'In person': 'Op locatie', Online: 'Online', Hybrid: 'Hybride' },
+    ctaBarTitle: 'Werk je aan een complex vraagstuk?', ctaBarText: 'We denken graag mee. In een eerste gesprek verkennen we je vraag en wat wij daarin kunnen betekenen.', ctaBarBtn: 'Plan een kennismaking',
+    navAlt: 'De Complexity Navigator: een ei met negen bouwstenen',
+    navBlocks: 'Tot de bouwstenen horen onder meer backbone, responsive leadership, reinforcing actions, involvement of all, urgency for change, vital connections, adaptive learning en shared ambitions.',
+    visitSprockler: 'Naar sprockler.com', visitChallenge: 'Naar de Challenge', external: ' (externe site)',
+    partner: 'Partner',
+    openTr: 'Open trainingen', inCompany: 'In-company, op maat', request: 'Vraag aan', onRequest: 'Data in overleg',
+    reg: {
+      title: 'Schrijf je in', intro: 'Kies een training en vul je gegevens in. We nemen contact met je op om je inschrijving te bevestigen.',
+      name: 'Naam', email: 'E-mail', phone: 'Telefoon', org: 'Organisatie', training: 'Training', choose: 'Kies een training',
+      count: 'Aantal deelnemers', billing: 'Factuuradres', remarks: 'Opmerkingen of dieetwensen', optional: 'niet verplicht',
+      alsoNews: 'Stuur mij ook de nieuwsbrief over trainingen en evenementen', privacy: 'Ik ga akkoord met het verwerken van mijn gegevens voor deze inschrijving',
+      privacyLink: 'Privacyverklaring', submit: 'Verstuur inschrijving', inCompanyTag: 'in-company',
+    },
+    form: {
+      errName: 'Vul je naam in.', errEmail: 'Vul een geldig e-mailadres in, zoals naam@voorbeeld.nl.', errTraining: 'Kies een training.',
+      errPrivacy: 'Vink dit vakje aan om je in te schrijven.',
+      subject: 'Inschrijving training', yes: 'ja', no: 'nee',
+      labels: { training: 'Training', name: 'Naam', email: 'E-mail', phone: 'Telefoon', org: 'Organisatie', count: 'Aantal deelnemers', billing: 'Factuuradres', remarks: 'Opmerkingen', news: 'Nieuwsbrief' },
+      mailTitle: 'Nog één stap: verstuur de e-mail', mailText: 'Je e-mailprogramma opent met je inschrijving. Verstuur die e-mail om je inschrijving af te ronden. Opent er niets? Kopieer dan de tekst hieronder en mail hem naar',
+      openMail: 'Open e-mail', copy: 'Kopieer tekst', copied: 'Gekopieerd',
+      sending: 'Bezig met versturen…', sentTitle: 'Bedankt, je inschrijving is binnen', sentText: 'We nemen contact met je op om je inschrijving te bevestigen.',
+      failTitle: 'Versturen is niet gelukt', failText: 'Probeer het opnieuw, of mail je inschrijving naar',
+    },
+    teamAlt: '', contactText: 'Werk je aan een complex vraagstuk, of wil je een training op maat? Bel of mail ons. We denken graag mee.',
+    mailUs: 'Mail ons', callUs: 'Bel ons', logoAlt: 'Perspectivity, for the love of complexity', concepts: 'Alle concepten',
+  },
+  en: {
+    title: 'Perspectivity · For the love of complexity',
+    description: 'Perspectivity facilitates social systems change: dialogue processes, narrative research and training. Register for a training or talk to us about your challenge.',
+    skip: 'Skip to content', home: 'Perspectivity, back to top', mainNav: 'Main', langNav: 'Language',
+    menu: { work: 'What we do', approach: 'Approach', projects: 'Projects', training: 'Training', team: 'Who we are', contact: 'Contact' },
+    register: 'Register',
+    heroEyebrow: 'A cooperative of facilitators', ctaTalk: 'Discuss your challenge', ctaTraining: 'See our trainings',
+    eggAlt: '',
+    agenda: 'Training calendar', allTrainings: 'All trainings', tba: 'Date to be announced', signUp: 'Register', signUpTba: 'Sign up',
+    words: { 'In person': 'In person', Online: 'Online', Hybrid: 'Hybrid' },
+    ctaBarTitle: 'Working on a complex challenge?', ctaBarText: 'We like to think along. In a first conversation we explore your question and how we can help.', ctaBarBtn: 'Plan an introduction',
+    navAlt: 'The Complexity Navigator: an egg of nine building blocks',
+    navBlocks: 'The building blocks include backbone, responsive leadership, reinforcing actions, involvement of all, urgency for change, vital connections, adaptive learning and shared ambitions.',
+    visitSprockler: 'Visit sprockler.com', visitChallenge: 'Visit the Challenge', external: ' (external site)',
+    partner: 'Partner',
+    openTr: 'Open trainings', inCompany: 'In-company, tailor-made', request: 'Request', onRequest: 'Dates on request',
+    reg: {
+      title: 'Register', intro: 'Choose a training and fill in your details. We will contact you to confirm your registration.',
+      name: 'Name', email: 'Email', phone: 'Phone', org: 'Organisation', training: 'Training', choose: 'Choose a training',
+      count: 'Number of participants', billing: 'Billing address', remarks: 'Remarks or dietary wishes', optional: 'optional',
+      alsoNews: 'Also send me the newsletter about trainings and events', privacy: 'I agree to my details being processed for this registration',
+      privacyLink: 'Privacy statement', submit: 'Send registration', inCompanyTag: 'in-company',
+    },
+    form: {
+      errName: 'Fill in your name.', errEmail: 'Fill in a valid email address, such as name@example.org.', errTraining: 'Choose a training.',
+      errPrivacy: 'Tick this box to register.',
+      subject: 'Training registration', yes: 'yes', no: 'no',
+      labels: { training: 'Training', name: 'Name', email: 'Email', phone: 'Phone', org: 'Organisation', count: 'Number of participants', billing: 'Billing address', remarks: 'Remarks', news: 'Newsletter' },
+      mailTitle: 'One more step: send the email', mailText: 'Your email program opens with your registration. Send that email to complete your registration. Nothing opened? Copy the text below and mail it to',
+      openMail: 'Open email', copy: 'Copy text', copied: 'Copied',
+      sending: 'Sending…', sentTitle: 'Thank you, we received your registration', sentText: 'We will contact you to confirm your registration.',
+      failTitle: 'Sending did not work', failText: 'Try again, or mail your registration to',
+    },
+    teamAlt: '', contactText: 'Working on a complex challenge, or looking for tailor-made training? Call or mail us. We like to think along.',
+    mailUs: 'Mail us', callUs: 'Call us', logoAlt: 'Perspectivity, for the love of complexity', concepts: 'All concepts',
+  },
+};
+const u = UI[lang];
+const word = (w) => u.words[w] || w;
+
+// Training offer: each open training with its planned dates.
+// A date belongs to a training when their English titles start with the same two words
+// ("Deep Democracy Level 2" under "Deep Democracy, Level 1 and 2"); dates that match nothing get their own row.
+const key = (v) => ((v && v.en) || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).join(' ');
+const slotOf = (d) => {
+  const title = T(d.training);
+  const when = T(d.date);
+  return { title, when, format: d.format ? word(d.format) : '', value: `${title}, ${when || u.tba}` };
+};
+const agenda = shown(dates).map(slotOf);
+const open = shown(trainings).filter((x) => x.kind !== 'In-company');
+const company = shown(trainings).filter((x) => x.kind === 'In-company');
+const used = new Set();
+const openRows = open.map((x) => {
+  const slots = shown(dates).filter((d) => key(d.training) === key(x.title));
+  slots.forEach((d) => used.add(d));
+  const title = T(x.title);
+  return { title, summary: T(x.summary), slots: slots.map(slotOf), value: `${title}, ${u.tba}` };
+});
+const looseRows = shown(dates).filter((d) => !used.has(d)).map((d) => ({ title: T(d.training), summary: '', slots: [slotOf(d)], value: '' }));
+const rows = [...looseRows, ...openRows];
+const companyRows = company.map((x) => ({ title: T(x.title), summary: T(x.summary), value: `${T(x.title)} (${u.reg.inCompanyTag})` }));
+const slotLabel = (row, s) => [s.when || u.tba, s.title !== row.title ? s.title : '', s.format].filter(Boolean).join(' · ');
+
+const icons = ['nav-fish-red.png', 'nav-spiral-red.png', 'nav-spine-red.png'];
+const reg = settings.registration || {};
+const mail = reg.email || t.contact.email;
+const tel = (t.contact.phone || '').replace(/[^+\d]/g, '');
+const formConfig = { email: mail, endpoint: reg.endpoint || '', lang, strings: u.form };
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>{u.title}</title>
+<meta name="description" content={u.description}>
+<link rel="alternate" hreflang="nl" href={nlUrl}>
+<link rel="alternate" hreflang="en" href={enUrl}>
+<link rel="icon" href={`${base}/assets/person-red.png`}>
+</head>
+<body>
+<a class="skip" href="#main">{u.skip}</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label={u.home}><img src={`${base}/assets/logo-red.png`} alt="Perspectivity" width="640" height="169"></a>
+    <nav class="main" aria-label={u.mainNav}>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul class="menu" id="menu">
+        <li><a href="#work">{u.menu.work}</a></li>
+        <li><a href="#approach">{u.menu.approach}</a></li>
+        <li><a href="#projects">{u.menu.projects}</a></li>
+        <li><a href="#training">{u.menu.training}</a></li>
+        <li><a href="#team">{u.menu.team}</a></li>
+        <li><a href="#contact">{u.menu.contact}</a></li>
+        <li class="menu-lang">
+          <a href={nlUrl} lang="nl" hreflang="nl" aria-current={lang === 'nl' ? 'true' : undefined}>Nederlands</a>
+          <a href={enUrl} lang="en" hreflang="en" aria-current={lang === 'en' ? 'true' : undefined}>English</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="lang" aria-label={u.langNav}>
+      <a href={nlUrl} lang="nl" hreflang="nl" aria-current={lang === 'nl' ? 'true' : undefined}>NL<span class="sr-only"> Nederlands</span></a>
+      <a href={enUrl} lang="en" hreflang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN<span class="sr-only"> English</span></a>
+    </nav>
+    <a class="btn btn-primary btn-small" href="#register">{u.register}</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">{u.heroEyebrow}</p>
+          <h1 class="title">{T(t.hero.title)}</h1>
+          <p class="lead">{T(t.hero.lead)}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">{u.ctaTalk}</a>
+            <a class="btn btn-outline" href="#training">{u.ctaTraining}</a>
+          </div>
+        </div>
+        <div class="hero-egg" aria-hidden="true">
+          <div class="egg" style={`--egg:url(${base}/assets/egg-red.png)`}><img src={`${base}/assets/ice.jpg`} alt="" width="933" height="1400"></div>
+        </div>
+      </div>
+
+      {agenda.length > 0 && (
+        <div class="agenda">
+          <div class="agenda-head">
+            <h2 class="tussenkop">{u.agenda}</h2>
+            <a class="link" href="#training">{u.allTrainings}</a>
+          </div>
+          <ul class="agenda-list" style={`--n:${Math.min(agenda.length, 3)}`}>
+            {agenda.slice(0, 3).map((s) => (
+              <li>
+                <span class="when">{s.when || u.tba}</span>
+                <span class="what">{s.title}</span>
+                <span class="how">{s.format}</span>
+                <a class="btn btn-outline btn-small" href="#register" data-pick={s.value}>{s.when ? u.signUp : u.signUpTba}<span class="sr-only">: {s.title}</span></a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">{T(t.work.label)}</p>
+        <h2 class="title">{T(t.work.title)}</h2>
+        <p class="intro">{T(t.work.intro)}</p>
+      </div>
+      <div class="three">
+        {t.work.services.map((x, i) => (
+          <article class="service">
+            <div class="icon"><img src={`${base}/assets/${icons[i % icons.length]}`} alt=""></div>
+            <h3>{T(x.title)}</h3>
+            <p>{T(x.text)}</p>
+          </article>
+        ))}
+      </div>
+      <div class="methods">
+        <h3 class="tussenkop">{T(t.toolbox.title)}</h3>
+        <ul class="chips">
+          {t.toolbox.methods.map((m) => <li>{T(m)}</li>)}
+        </ul>
+      </div>
+      <div class="cta-bar">
+        <div>
+          <h3>{u.ctaBarTitle}</h3>
+          <p>{u.ctaBarText}</p>
+        </div>
+        <a class="btn btn-primary" href="#contact">{u.ctaBarBtn}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" class="beige">
+    <div class="wrap">
+      <div class="approach">
+        <img class="navimg" src={`${base}/assets/navigator.png`} alt={u.navAlt} width="980" height="1182" aria-describedby="nav-blocks">
+        <div class="approach-text">
+          <p class="eyebrow">{T(t.navigator.label)}</p>
+          <h2 class="title">{T(t.navigator.title)}</h2>
+          <p class="sub">{T(t.navigator.subtitle)}</p>
+          <p class="body">{T(t.navigator.text)}</p>
+          <p class="sr-only" id="nav-blocks">{u.navBlocks}</p>
+        </div>
+      </div>
+      <div class="tools">
+        <article class="tool">
+          <div class="mark"><img src={`${base}/assets/sprockler-wordmark.png`} alt="Sprockler" width="900" height="297"></div>
+          <h3>{T(t.tools.sprockler.title)}</h3>
+          <p>{T(t.tools.sprockler.text)}</p>
+          <a class="btn btn-outline btn-small" href="https://sprockler.com" rel="noopener">{u.visitSprockler}<span class="sr-only">{u.external}</span></a>
+        </article>
+        <article class="tool">
+          <div class="mark type">The Perspectivity Challenge</div>
+          <h3>{T(t.tools.challenge.title)}</h3>
+          <p>{T(t.tools.challenge.text)}</p>
+          <a class="btn btn-outline btn-small" href="https://perspectivity-challenge.org" rel="noopener">{u.visitChallenge}<span class="sr-only">{u.external}</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">{T(t.projects.label)}</p>
+        <h2 class="title">{T(t.projects.title)}</h2>
+      </div>
+      <div class="projects">
+        {projects.map((x) => (
+          <article class="project">
+            <p class="eyebrow">{T(x.partner)}</p>
+            <h3>{T(x.title)}</h3>
+            <p class="sum">{T(x.summary)}</p>
+          </article>
+        ))}
+      </div>
+      <div class="quote-block">
+        <img src={`${base}/assets/person-red.png`} alt="" width="295" height="360">
+        <blockquote>{T(t.quote)}</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="training" class="beige">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">{T(t.training.label)}</p>
+        <h2 class="title">{T(t.training.title)}</h2>
+        <p class="intro">{T(t.training.intro)}</p>
+      </div>
+      <div class="train-grid">
+        <div class="offer">
+          <div class="offer-block">
+            <h3 class="tussenkop">{u.openTr}</h3>
+            <ul class="rows">
+              {rows.map((r) => (
+                <li>
+                  <div>
+                    <strong>{r.title}</strong>
+                    {r.summary && <span class="sum">{r.summary}</span>}
+                    {r.slots.length === 0 && <span class="when">{u.tba}</span>}
+                    {r.slots.length === 1 && <span class="when">{slotLabel(r, r.slots[0])}</span>}
+                  </div>
+                  {r.slots.length <= 1 && (
+                    <button class="pick" type="button" data-pick={r.slots[0] ? r.slots[0].value : r.value}>{r.slots[0] && r.slots[0].when ? u.signUp : u.signUpTba}<span class="sr-only">: {r.title}</span></button>
+                  )}
+                  {r.slots.length > 1 && r.slots.map((s) => (
+                    <>
+                      <span class="when" style="grid-column:1">{slotLabel(r, s)}</span>
+                      <button class="pick" type="button" style="grid-row:auto" data-pick={s.value}>{s.when ? u.signUp : u.signUpTba}<span class="sr-only">: {s.title}, {s.when || u.tba}</span></button>
+                    </>
+                  ))}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {companyRows.length > 0 && (
+            <div class="offer-block">
+              <h3 class="tussenkop">{u.inCompany}</h3>
+              <ul class="rows">
+                {companyRows.map((r) => (
+                  <li>
+                    <div>
+                      <strong>{r.title}</strong>
+                      {r.summary && <span class="sum">{r.summary}</span>}
+                    </div>
+                    <button class="pick" type="button" data-pick={r.value}>{u.request}<span class="sr-only">: {r.title}</span></button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <p class="small">{T(t.training.note)}</p>
+        </div>
+
+        <div class="register" id="register">
+          <h3 id="register-title" tabindex="-1">{u.reg.title}</h3>
+          <p>{u.reg.intro}</p>
+          <form id="reg-form" novalidate aria-labelledby="register-title">
+            <div class="field wide"><label for="r-training">{u.reg.training}</label>
+              <select id="r-training" name="training" required aria-describedby="r-training-err">
+                <option value="">{u.reg.choose}</option>
+                <optgroup label={u.openTr}>
+                  {rows.flatMap((r) => (r.slots.length ? r.slots.map((s) => s.value) : [r.value])).map((v) => <option value={v}>{v}</option>)}
+                </optgroup>
+                {companyRows.length > 0 && (
+                  <optgroup label={u.inCompany}>
+                    {companyRows.map((r) => <option value={r.value}>{r.title}</option>)}
+                  </optgroup>
+                )}
+              </select><p class="error" id="r-training-err"></p></div>
+            <div class="field"><label for="r-name">{u.reg.name}</label><input id="r-name" name="name" autocomplete="name" required aria-describedby="r-name-err"><p class="error" id="r-name-err"></p></div>
+            <div class="field"><label for="r-email">{u.reg.email}</label><input id="r-email" name="email" type="email" autocomplete="email" required aria-describedby="r-email-err"><p class="error" id="r-email-err"></p></div>
+            <div class="field"><label for="r-phone">{u.reg.phone} <span class="opt">({u.reg.optional})</span></label><input id="r-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="r-org">{u.reg.org} <span class="opt">({u.reg.optional})</span></label><input id="r-org" name="org" autocomplete="organization"></div>
+            <div class="field"><label for="r-count">{u.reg.count}</label><input id="r-count" name="count" type="number" inputmode="numeric" min="1" max="99" value="1"></div>
+            <div class="field wide"><label for="r-billing">{u.reg.billing} <span class="opt">({u.reg.optional})</span></label><textarea id="r-billing" name="billing" autocomplete="street-address"></textarea></div>
+            <div class="field wide"><label for="r-remarks">{u.reg.remarks} <span class="opt">({u.reg.optional})</span></label><textarea id="r-remarks" name="remarks"></textarea></div>
+            <label class="check wide" for="r-news"><input type="checkbox" name="news" id="r-news"><span>{u.reg.alsoNews}</span></label>
+            <div class="wide">
+              <label class="check" for="r-privacy"><input type="checkbox" name="privacy" id="r-privacy" required aria-describedby="r-privacy-err"><span>{u.reg.privacy}{reg.privacyUrl && <>. <a href={reg.privacyUrl}>{u.reg.privacyLink}</a></>}</span></label>
+              <p class="error" id="r-privacy-err"></p>
+            </div>
+            <div class="wide"><button class="btn btn-primary" type="submit" id="r-submit">{u.reg.submit}</button></div>
+          </form>
+          <div class="result" id="reg-result" tabindex="-1" role="status" hidden></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">{T(t.team.label)}</p>
+        <h2 class="title">{T(t.team.title)}</h2>
+        <p class="intro">{T(t.team.intro)}</p>
+      </div>
+      <div class="team">
+        {team.map((p) => (
+          <figure>
+            <div class={p.photo ? 'ph' : 'ph none'}>{p.photo ? <img src={media(p.photo)} alt="" loading="lazy" width="480" height="480"> : <img src={`${base}/assets/person-red.png`} alt="" width="295" height="360">}</div>
+            <figcaption><strong>{p.name}</strong><span>{T(p.focus)}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-text">
+        <h2 class="title">{T(t.contact.title)}</h2>
+        <p>{u.contactText}</p>
+        <div class="actions">
+          <a class="btn btn-light" href={`mailto:${t.contact.email}`}>{u.mailUs}</a>
+          {tel && <a class="btn btn-ghost-light" href={`tel:${tel}`}>{u.callUs}</a>}
+        </div>
+      </div>
+      <div class="card-wrap">
+      <img class="puppet" src={`${base}/assets/person-white.png`} alt="" width="295" height="360">
+      <div class="card">
+        <img class="card-logo" src={`${base}/assets/logo-payoff-red.png`} alt={u.logoAlt} width="640" height="202">
+        <address>
+          <span class="big">
+            <a href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
+            {tel && <a href={`tel:${tel}`}>{t.contact.phone}</a>}
+          </span>
+          <span>{lines(T(t.contact.address)).filter((l, i) => i > 0 || l !== 'Perspectivity').map((l) => <>{l}<br></>)}</span>
+        </address>
+      </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src={`${base}/assets/logo-red.png`} alt="Perspectivity" width="640" height="169">
+    <p class="meta"><span>{T(t.footer)}</span>{reg.privacyUrl && <a href={reg.privacyUrl}>{u.reg.privacyLink}</a>}<a href={`${base}/`}>{u.concepts}</a></p>
+  </div>
+</footer>
+
+<script is:inline src={`${base}/assets/site.js`}></script>
+<script type="application/json" id="form-config" set:html={JSON.stringify(formConfig)}></script>
+<script is:inline src={`${base}/d/form.js`}></script>
+</body>
+</html>

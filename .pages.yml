@@ -132,6 +132,20 @@ content:
           - { name: phone, label: Phone number, type: string }
       - { name: footer, label: Footer line, component: en-nl-line }
 
+  - name: settings
+    label: Registration form (concept D)
+    type: file
+    path: content/settings.json
+    format: json
+    fields:
+      - name: registration
+        label: Training registration
+        type: object
+        fields:
+          - { name: email, label: Email address that receives registrations, type: string }
+          - { name: endpoint, label: Form service address (leave empty to register by email), type: string }
+          - { name: privacyUrl, label: Link to the privacy statement, type: string }
+
   - name: dates
     label: Training dates
     type: file
