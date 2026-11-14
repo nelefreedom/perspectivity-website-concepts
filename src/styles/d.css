@@ -139,7 +139,7 @@ section{padding-block:var(--section)}
 .hero-text{display:grid;gap:14px;justify-items:start}
 .hero h1{font-size:clamp(34px,4.5vw,58px);color:var(--p-red)}
 .hero .lead{font-size:var(--fs-lead);line-height:1.5;max-width:62ch}
-.hero-team{width:100%;aspect-ratio:13/5;object-fit:cover;object-position:50% 62%}
+.hero-team{width:100%;aspect-ratio:16/5;object-fit:cover;object-position:50% 58%}
 
 /* Training calendar in the hero */
 .agenda{background:#fff;padding:clamp(14px,1.8vw,20px) clamp(16px,2.2vw,26px)}
