@@ -266,3 +266,19 @@ content:
       - { name: name, label: Name, type: string, required: true }
       - { name: focus, label: Focus (a few words), component: en-nl-line }
       - { name: photo, label: Photo (square works best), type: image }
+      - { name: slug, label: Page address (lower case and hyphens; changing it changes the link), type: string }
+      - { name: email, label: Email address, type: string }
+      - { name: phone, label: Phone number, type: string }
+      - { name: linkedin, label: LinkedIn link, type: string }
+      - name: bio
+        label: Page text
+        type: object
+        fields:
+          - { name: en, label: English, type: rich-text }
+          - { name: nl, label: Nederlands, type: rich-text }
+      - name: expertise
+        label: Expertise
+        type: object
+        fields:
+          - { name: en, label: English, type: string, list: true }
+          - { name: nl, label: Nederlands, type: string, list: true }

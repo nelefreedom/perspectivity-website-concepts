@@ -13,10 +13,12 @@ export const UI = {
     siteTitle: 'Perspectivity · For the love of complexity',
     description: 'Perspectivity faciliteert veranderingen in sociale systemen: dialoogprocessen, narratief onderzoek en trainingen. Schrijf je in voor een training of leg je vraagstuk voor.',
     skip: 'Naar de inhoud', home: 'Perspectivity, naar de startpagina', mainNav: 'Hoofdmenu', langNav: 'Taal',
-    menu: { work: 'Wat we doen', projects: 'Projecten', training: 'Trainingen', stories: 'Verhalen', team: 'Wie we zijn', contact: 'Contact' },
+    menu: { work: 'Wat we doen', projects: 'Projecten en verhalen', training: 'Trainingen', team: 'Wie we zijn', contact: 'Contact' },
+    workTitle: 'Projecten en verhalen', themesLabel: 'We werken veel rondom de volgende thema’s', saidLabel: 'Wat anderen zeggen',
+    terms: 'Algemene voorwaarden', cancellation: 'Annuleringsvoorwaarden voor trainingen',
     register: 'Inschrijven',
     heroEyebrow: 'Coöperatie van facilitators', ctaTalk: 'Bespreek je vraagstuk', ctaTraining: 'Bekijk de trainingen',
-    teamRowAlt: 'Twaalf facilitators van Perspectivity naast elkaar',
+    teamRowAlt: 'Het team van Perspectivity buiten op een rij, vier van hen in handstand',
     agenda: 'Trainingsagenda', allTrainings: 'Alle trainingen', tba: 'Datum volgt', signUp: 'Schrijf je in', signUpTba: 'Meld je aan',
     words: { 'In person': 'Op locatie', Online: 'Online', Hybrid: 'Hybride', News: 'Nieuws', Blog: 'Blog' },
     ctaBarTitle: 'Werk je aan een complex vraagstuk?', ctaBarText: 'We denken graag mee. In een eerste gesprek verkennen we je vraag en wat wij daarin kunnen betekenen.', ctaBarBtn: 'Plan een kennismaking',
@@ -25,14 +27,15 @@ export const UI = {
     readMore: 'Lees meer', moreInfo: 'Meer informatie',
     openTr: 'Open trainingen', inCompany: 'In-company, op maat', request: 'Vraag aan', onRequest: 'In overleg',
     kinds: { training: 'Open training', company: 'In-company training', project: 'Project', News: 'Nieuws', Blog: 'Blog' },
-    back: { training: 'Alle trainingen', project: 'Alle projecten', news: 'Alle verhalen' },
+    back: { training: 'Alle trainingen', project: 'Projecten en verhalen', news: 'Projecten en verhalen', person: 'Het hele team' },
+    mailPerson: 'Stuur een e-mail', expertise: 'Expertise',
     practical: 'Praktisch', date: 'Datum', published: 'Gepubliceerd', atAGlance: 'In het kort',
-    more: { training: 'Andere trainingen', project: 'Meer projecten', news: 'Meer verhalen' },
+    more: { training: 'Andere trainingen', project: 'Meer projecten', news: 'Meer verhalen', person: 'Collega’s' },
     reg: {
       title: 'Schrijf je in', intro: 'Kies een training en vul je gegevens in. We nemen contact met je op om je inschrijving te bevestigen.',
       name: 'Naam', email: 'E-mail', phone: 'Telefoon', org: 'Organisatie', training: 'Training', choose: 'Kies een training',
       count: 'Aantal deelnemers', billing: 'Factuuradres', remarks: 'Opmerkingen of dieetwensen', optional: 'niet verplicht',
-      alsoNews: 'Stuur mij ook de nieuwsbrief over trainingen en evenementen', privacy: 'Ik ga akkoord met het verwerken van mijn gegevens voor deze inschrijving',
+      alsoNews: 'Stuur mij ook de nieuwsbrief', privacy: 'Ik ga akkoord met het verwerken van mijn gegevens voor deze inschrijving',
       privacyLink: 'Privacyverklaring', submit: 'Verstuur inschrijving', inCompanyTag: 'in-company',
     },
     form: {
@@ -52,10 +55,12 @@ export const UI = {
     siteTitle: 'Perspectivity · For the love of complexity',
     description: 'Perspectivity facilitates social systems change: dialogue processes, narrative research and training. Register for a training or talk to us about your challenge.',
     skip: 'Skip to content', home: 'Perspectivity, to the home page', mainNav: 'Main', langNav: 'Language',
-    menu: { work: 'What we do', projects: 'Projects', training: 'Training', stories: 'Stories', team: 'Who we are', contact: 'Contact' },
+    menu: { work: 'What we do', projects: 'Projects and stories', training: 'Training', team: 'Who we are', contact: 'Contact' },
+    workTitle: 'Projects and stories', themesLabel: 'We work a lot on the following themes', saidLabel: 'What others say',
+    terms: 'Terms & conditions', cancellation: 'Training cancellation policy',
     register: 'Register',
     heroEyebrow: 'A cooperative of facilitators', ctaTalk: 'Discuss your challenge', ctaTraining: 'See our trainings',
-    teamRowAlt: 'Twelve Perspectivity facilitators side by side',
+    teamRowAlt: 'The Perspectivity team in a row outdoors, four of them doing a handstand',
     agenda: 'Training calendar', allTrainings: 'All trainings', tba: 'Date to be announced', signUp: 'Register', signUpTba: 'Sign up',
     words: { 'In person': 'In person', Online: 'Online', Hybrid: 'Hybrid', News: 'News', Blog: 'Blog' },
     ctaBarTitle: 'Working on a complex challenge?', ctaBarText: 'We like to think along. In a first conversation we explore your question and how we can help.', ctaBarBtn: 'Plan an introduction',
@@ -64,14 +69,15 @@ export const UI = {
     readMore: 'Read more', moreInfo: 'More information',
     openTr: 'Open trainings', inCompany: 'In-company, tailor-made', request: 'Request', onRequest: 'In consultation',
     kinds: { training: 'Open training', company: 'In-company training', project: 'Project', News: 'News', Blog: 'Blog' },
-    back: { training: 'All trainings', project: 'All projects', news: 'All stories' },
+    back: { training: 'All trainings', project: 'Projects and stories', news: 'Projects and stories', person: 'The whole team' },
+    mailPerson: 'Send an email', expertise: 'Expertise',
     practical: 'Practical', date: 'Date', published: 'Published', atAGlance: 'At a glance',
-    more: { training: 'Other trainings', project: 'More projects', news: 'More stories' },
+    more: { training: 'Other trainings', project: 'More projects', news: 'More stories', person: 'Colleagues' },
     reg: {
       title: 'Register', intro: 'Choose a training and fill in your details. We will contact you to confirm your registration.',
       name: 'Name', email: 'Email', phone: 'Phone', org: 'Organisation', training: 'Training', choose: 'Choose a training',
       count: 'Number of participants', billing: 'Billing address', remarks: 'Remarks or dietary wishes', optional: 'optional',
-      alsoNews: 'Also send me the newsletter about trainings and events', privacy: 'I agree to my details being processed for this registration',
+      alsoNews: 'Also send me the newsletter', privacy: 'I agree to my details being processed for this registration',
       privacyLink: 'Privacy statement', submit: 'Send registration', inCompanyTag: 'in-company',
     },
     form: {
@@ -90,6 +96,25 @@ export const UI = {
 };
 
 export const LANGS = ['nl', 'en'];
+
+// Taken over from the current perspectivity.org: themes, quotes and footer links.
+export const THEMES = [
+  { nl: 'Sociaal domein', en: 'Social welfare' }, { nl: 'Hoger onderwijs', en: 'Higher education' },
+  { nl: 'Klimaat & energie', en: 'Climate & energy' }, { nl: 'Ontwikkelingssamenwerking', en: 'International development' },
+  { nl: 'Leefomgeving', en: 'Living environment' }, { nl: 'Publiek beleid', en: 'Public policy' },
+  { nl: 'Midden-Oosten & Afrika', en: 'Middle East & Africa' }, { nl: 'Nederland', en: 'Netherlands' },
+  { nl: 'Leiderschap', en: 'Leadership' }, { nl: 'Jeugd', en: 'Youth' }, { nl: 'Participatie & inclusie', en: 'Citizen participation & inclusion' },
+];
+export const QUOTES = [
+  { text: { nl: '… We werden dat weekend keer op keer uit onze comfortzones gesleept …', en: '… That weekend we were all dragged out of our comfort zones time and time again …' }, name: 'Michael Donnelly', role: 'OasisGame, Municipality of Burrenbridge, Ireland' },
+  { text: { nl: '… en bovenal een sfeer van wederzijds vertrouwen te scheppen dat onmisbaar was voor het succes …', en: '… en bovenal een sfeer van wederzijds vertrouwen te scheppen dat onmisbaar was voor het succes …' }, lang: { en: 'nl' }, name: 'Raoul Nolen', role: 'Director Young in Prison' },
+  { text: { nl: '… langzamerhand begon de groep zich de relatie tussen het persoonlijke en het systeemniveau te realiseren …', en: '… gradually they began to realize the relation between the personal and systemic levels …' }, name: 'Dr. Mohammed Al-Mottahar', role: 'Vice Minister for Higher Education and Scientific Research, Yemen' },
+];
+export const LINKS = {
+  terms: { nl: 'https://perspectivity.org/wp-content/uploads/2021/03/Algemene_Voorwaarden_NL_Perspectivity.pdf', en: 'https://perspectivity.org/wp-content/uploads/2021/03/Terms-and-Conditions-EN-Perspectivity.pdf' },
+  cancellation: { nl: 'https://perspectivity.org/wp-content/uploads/2021/03/Trainingen_annuleringsvoorwaarden_NL_Perspectivity.pdf', en: 'https://perspectivity.org/wp-content/uploads/2021/03/Training_Cancellation_Policy_EN_Perspectivity.pdf' },
+  linkedin: 'https://www.linkedin.com/company/1380641/', facebook: 'https://www.facebook.com/perspectivity',
+};
 
 // The nine building blocks of the Complexity Navigator, in the order of the original drawing.
 export const BLOCKS = [

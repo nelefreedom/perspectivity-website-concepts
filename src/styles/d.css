@@ -139,7 +139,8 @@ section{padding-block:var(--section)}
 .hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px clamp(20px,4vw,56px);align-items:center;margin-top:clamp(10px,1.4vw,16px)}
 .hero .lead{font-size:var(--fs-lead);line-height:1.5;max-width:66ch}
 .hero-row .actions{flex-direction:column;align-items:stretch}
-.hero-team{width:100%;margin-top:clamp(6px,1vw,12px)}
+.hero-team{width:100%;margin-top:clamp(12px,1.6vw,20px);aspect-ratio:2.35/1;object-fit:cover;object-position:50% 58%}
+@media (max-width:640px){.hero-team{aspect-ratio:16/10;object-position:50% 60%}}
 @media (max-width:860px){
   .hero-row{grid-template-columns:1fr}
   .hero-row .actions{flex-direction:row}
@@ -177,8 +178,9 @@ a.what:hover{text-decoration:underline}
 @media (max-width:1000px){.service{grid-template-columns:1fr;gap:10px}.service .icon img{width:58px}}
 @media (max-width:760px){.three{grid-template-columns:1fr}.service{grid-template-columns:56px minmax(0,1fr);gap:14px}}
 
+.methods+.methods{margin-top:14px}
 .methods{margin-top:clamp(20px,2.6vw,30px);display:flex;gap:10px 18px;align-items:baseline;flex-wrap:wrap}
-.methods h3{flex:none}
+.methods h3{flex:0 1 auto;min-width:0}
 .chips{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 520px}
 .chips li{font-family:var(--font-display);font-weight:500;font-size:14.5px;padding:4px 13px;border:1px solid var(--p-line);border-radius:999px;background:#fff}
 
@@ -212,8 +214,13 @@ section:not(.beige) .tile{background:var(--p-lightbeige)}
   .tile{grid-template-columns:1fr}
   .tile-img{height:auto;min-height:0;aspect-ratio:3/2}
 }
-.quote-block{margin:clamp(24px,3.4vw,40px) auto 0;max-width:900px;text-align:center;font-weight:300;color:var(--p-red-text);
-  font-size:clamp(19px,2vw,24px);line-height:1.4;border-top:var(--dashed);padding-top:clamp(20px,2.6vw,30px)}
+#said{padding-block:clamp(26px,3.4vw,44px)}
+.said{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.6vw,36px);margin-top:12px}
+.said figure{margin:0;border-top:var(--dashed);padding-top:14px;display:grid;gap:10px;align-content:start}
+.said blockquote{margin:0;font-weight:300;color:var(--p-red-text);font-size:clamp(18px,1.7vw,21px);line-height:1.4}
+.said strong{font-family:var(--font-display);font-weight:700;font-size:15px;display:block}
+.said span{font-size:13.5px;color:var(--p-ink-3);display:block}
+@media (max-width:820px){.said{grid-template-columns:1fr}}
 
 /* Approach: the Navigator's nine building blocks and the tools */
 .approach{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(22px,4vw,56px);align-items:center}
@@ -284,7 +291,12 @@ section:not(.beige) .tile{background:var(--p-lightbeige)}
 @media (max-width:1000px){.team{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:640px){.team{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 12px}.team strong{font-size:14px}.team span{font-size:12.5px}}
 @media (max-width:340px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.team figure{margin:0}
+.team figure{margin:0;position:relative}
+.team strong a{text-decoration:none}
+.team strong a::after{content:"";position:absolute;inset:0}
+.team figure:hover strong a{text-decoration:underline;text-decoration-color:var(--p-red)}
+.team figure:focus-within{outline:2px solid var(--p-darkgreen);outline-offset:3px}
+.team strong a:focus-visible{outline:none}
 .team .ph{aspect-ratio:1;background:#fff;overflow:hidden}
 .team .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(.95) brightness(1.03)}
 .team .ph.none{display:grid;place-items:center}
@@ -367,3 +379,15 @@ footer .meta{display:flex;gap:6px 18px;flex-wrap:wrap}
 @media (max-width:820px){.more-list{grid-template-columns:1fr}}
 
 section[id],div[id]{scroll-margin-top:calc(var(--header-h) + 14px)}
+
+/* Team member page */
+.person-top{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:clamp(18px,3.4vw,44px);align-items:center}
+.person-photo{aspect-ratio:1;background:#fff;overflow:hidden}
+.person-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(.95) brightness(1.03)}
+.person-photo.none{display:grid;place-items:center}
+.person-photo.none img{width:40%;height:auto;object-fit:contain;filter:none}
+@media (max-width:640px){.person-top{grid-template-columns:1fr}.person-photo{max-width:200px}}
+.facts dd a{color:var(--p-red-text);overflow-wrap:anywhere}
+.people-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.people-links a{display:block;font-family:var(--font-display);font-weight:500;font-size:14.5px;padding:5px 13px;border:1px solid var(--p-line);border-radius:999px;background:#fff;text-decoration:none}
+.people-links a:hover{border-color:var(--p-red);color:var(--p-red-text)}
