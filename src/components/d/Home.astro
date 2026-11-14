@@ -19,16 +19,18 @@ const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav
 <Layout lang={lang}>
   <section class="hero" id="top">
     <div class="wrap">
-      <p class="eyebrow">{u.heroEyebrow}</p>
-      <h1 class="title">{T(t.hero.title)}</h1>
-      <div class="hero-row">
-        <p class="lead">{T(t.hero.lead)}</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#contact">{u.ctaTalk}</a>
-          <a class="btn btn-outline" href="#training">{u.ctaTraining}</a>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">{u.heroEyebrow}</p>
+          <h1 class="title">{T(t.hero.title)}</h1>
+          <p class="lead">{T(t.hero.lead)}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">{u.ctaTalk}</a>
+            <a class="btn btn-outline" href="#training">{u.ctaTraining}</a>
+          </div>
         </div>
+        <img class="hero-team" src={`${base}/assets/team-2026.jpg`} alt={u.teamRowAlt} width="2000" height="1331">
       </div>
-      <img class="hero-team" src={`${base}/assets/team-2026.jpg`} alt={u.teamRowAlt} width="2000" height="1331">
 
       {agenda.length > 0 && (
         <div class="agenda">
