@@ -6,6 +6,6 @@ export default defineConfig({
   base: '/perspectivity-website-concepts',
   trailingSlash: 'ignore',
   devToolbar: { enabled: false },
-  // The English version moved from /a/ to /a/en/; old links keep working.
-  redirects: { '/a': '/perspectivity-website-concepts/a/en/' },
+  // The English version moved from /a/ to /a/en/; old links keep working. /d/ opens the Dutch version.
+  redirects: { '/a': '/perspectivity-website-concepts/a/en/', '/d': '/perspectivity-website-concepts/d/nl/' },
 });

@@ -1,0 +1,115 @@
+---
+// Concept D: a detail page for one training, project or news item.
+import Layout from './Layout.astro';
+import RegisterForm from './RegisterForm.astro';
+import { site } from '../../lib/d.js';
+
+const { lang = 'nl', kind = 'training', slug = '' } = Astro.props;
+const s = site(lang);
+const { base, u, T, word, media, url, trainingRows, firstValue, slotLabel, day, projects, news } = s;
+
+let item, row, eyebrow, backHref, others, facts = [], path;
+if (kind === 'training') {
+  row = trainingRows.find((r) => r.slug === slug);
+  item = row.item;
+  eyebrow = row.company ? u.kinds.company : u.kinds.training;
+  backHref = `${s.home}#training`;
+  others = trainingRows.filter((r) => r.slug && r.slug !== slug).map((r) => ({ href: r.href, title: r.title, summary: r.summary }));
+  path = `training/${slug}/`;
+} else if (kind === 'project') {
+  item = projects.find((x) => x.slug === slug);
+  eyebrow = u.kinds.project;
+  backHref = `${s.home}#projects`;
+  others = projects.filter((x) => x.slug && x.slug !== slug).map((x) => ({ href: url.project(x.slug), title: T(x.title), summary: T(x.partner) }));
+  path = `projects/${slug}/`;
+} else {
+  item = news.find((x) => x.slug === slug);
+  eyebrow = word(item.kind);
+  backHref = `${s.home}#stories`;
+  others = news.filter((x) => x.slug && x.slug !== slug).map((x) => ({ href: url.news(x.slug), title: T(x.title), summary: day(x.date) }));
+  path = `news/${slug}/`;
+}
+const title = T(item.title);
+const intro = ((item.intro && item.intro[lang]) || T(item.summary) || '').split(/\n\s*\n/).filter(Boolean);
+facts = (item.facts && (item.facts[lang] || item.facts.en)) || [];
+const body = (T(item.body) || '').replaceAll('src="/uploads/', `src="${base}/uploads/`);
+const pick = row ? firstValue(row) : '';
+const pickLabel = row ? (row.company ? u.request : row.slots[0] && row.slots[0].when ? u.signUp : u.signUpTba) : '';
+const hasAside = kind === 'training' || facts.length > 0 || (kind === 'news' && item.date);
+---
+
+<Layout lang={lang} title={title} description={intro[0] || ''} path={path} registerHref={kind === 'training' ? '#register' : ''}>
+  <section class="detail-head beige">
+    <div class="wrap">
+      <div class={item.image ? 'detail-top has-img' : 'detail-top'}>
+        <div class="detail-intro">
+          <p class="crumb"><a href={backHref}>{u.back[kind]}</a></p>
+          <p class="eyebrow">{eyebrow}{kind === 'news' && item.date && <span class="plain"> · {day(item.date)}</span>}</p>
+          <h1 class="title">{title}</h1>
+          {intro.map((p) => <p class="lead">{p}</p>)}
+          {row && (
+            <div class="actions">
+              <a class="btn btn-primary" href="#register" data-pick={pick}>{pickLabel}</a>
+            </div>
+          )}
+        </div>
+        {item.image && <img class="detail-img" src={media(item.image)} alt="" width="1400" height="930">}
+      </div>
+    </div>
+  </section>
+
+  <section class="detail-body">
+    <div class="wrap">
+      <div class={hasAside ? 'detail-grid' : 'detail-grid single'}>
+        <div class="prose" set:html={body || `<p>${T(item.summary)}</p>`} />
+        {hasAside && (
+          <aside class="facts">
+            <h2 class="tussenkop">{kind === 'training' ? u.practical : u.atAGlance}</h2>
+            <dl>
+              {row && (
+                <div>
+                  <dt>{u.date}</dt>
+                  <dd>
+                    {row.company && u.onRequest}
+                    {!row.company && row.slots.length === 0 && u.tba}
+                    {!row.company && row.slots.map((x) => <span class="slot">{slotLabel(x)}</span>)}
+                  </dd>
+                </div>
+              )}
+              {kind === 'news' && item.date && <div><dt>{u.published}</dt><dd>{day(item.date)}</dd></div>}
+              {facts.map((f) => (
+                <div>
+                  <dt>{f.label}</dt>
+                  <dd>{f.value.split('\n').filter(Boolean).map((l) => <span class="slot">{l}</span>)}</dd>
+                </div>
+              ))}
+            </dl>
+            {row && <a class="btn btn-primary" href="#register" data-pick={pick}>{pickLabel}</a>}
+            {!row && <a class="btn btn-primary" href="#contact">{u.ctaTalk}</a>}
+          </aside>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {kind === 'training' && (
+    <section class="beige detail-register">
+      <div class="wrap narrow">
+        <RegisterForm lang={lang} selected={pick} />
+      </div>
+    </section>
+  )}
+
+  {others.length > 0 && (
+    <section class={kind === 'training' ? 'detail-more' : 'detail-more beige'}>
+      <div class="wrap">
+        <h2 class="tussenkop">{u.more[kind]}</h2>
+        <ul class="more-list">
+          {others.map((o) => (
+            <li><a href={o.href}><strong>{o.title}</strong>{o.summary && <span>{o.summary}</span>}</a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+</Layout>

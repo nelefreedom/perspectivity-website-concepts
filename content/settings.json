@@ -1,0 +1,10 @@
+{
+  "registration": {
+    "email": "info@perspectivity.org",
+    "endpoint": "",
+    "privacyUrl": {
+      "en": "https://perspectivity.org/wp-content/uploads/2021/03/Privacy_Statement_EN_Perspectivity.pdf",
+      "nl": "https://perspectivity.org/wp-content/uploads/2021/03/Privacyverklaring_NL_Perspectivity.pdf"
+    }
+  }
+}

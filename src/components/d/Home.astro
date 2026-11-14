@@ -1,0 +1,243 @@
+---
+// Concept D, "Business card": the home page. Reads the content files that editors change in Pages CMS.
+// Nothing moves on this page: no animation, no transitions, no smooth scrolling.
+import Layout from './Layout.astro';
+import RegisterForm from './RegisterForm.astro';
+import { site, BLOCKS } from '../../lib/d.js';
+
+const { lang = 'nl' } = Astro.props;
+const s = site(lang);
+const { base, u, T, t, word, media, url, agenda, rows, companyRows, firstValue, slotLabel, day, projects, news, team } = s;
+const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav9/responsive-leadership.png'];
+---
+
+<Layout lang={lang}>
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow">{u.heroEyebrow}</p>
+      <h1 class="title">{T(t.hero.title)}</h1>
+      <div class="hero-row">
+        <p class="lead">{T(t.hero.lead)}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">{u.ctaTalk}</a>
+          <a class="btn btn-outline" href="#training">{u.ctaTraining}</a>
+        </div>
+      </div>
+      <img class="hero-team" src={`${base}/assets/team-row.webp`} alt={u.teamRowAlt} width="1902" height="406">
+
+      {agenda.length > 0 && (
+        <div class="agenda">
+          <div class="agenda-head">
+            <h2 class="tussenkop">{u.agenda}</h2>
+            <a class="link" href="#training">{u.allTrainings}</a>
+          </div>
+          <ul class="agenda-list" style={`--n:${Math.min(agenda.length, 3)}`}>
+            {agenda.slice(0, 3).map((a) => (
+              <li>
+                <span class="when">{a.when || u.tba}{a.format && <span class="how"> · {a.format}</span>}</span>
+                {a.href ? <a class="what" href={a.href}>{a.title}</a> : <span class="what">{a.title}</span>}
+                <a class="btn btn-outline btn-small" href="#register" data-pick={a.value}>{a.when ? u.signUp : u.signUpTba}<span class="sr-only">: {a.title}</span></a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head split">
+        <div>
+          <p class="eyebrow">{T(t.work.label)}</p>
+          <h2 class="title">{T(t.work.title)}</h2>
+        </div>
+        <p class="intro">{T(t.work.intro)}</p>
+      </div>
+      <div class="three">
+        {t.work.services.map((x, i) => (
+          <article class="service">
+            <div class="icon"><img src={`${base}/assets/${icons[i % icons.length]}`} alt=""></div>
+            <div>
+              <h3>{T(x.title)}</h3>
+              <p>{T(x.text)}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="methods">
+        <h3 class="tussenkop">{T(t.toolbox.title)}</h3>
+        <ul class="chips">
+          {t.toolbox.methods.map((m) => <li>{T(m)}</li>)}
+        </ul>
+      </div>
+      <div class="cta-bar">
+        <div>
+          <h3>{u.ctaBarTitle}</h3>
+          <p>{u.ctaBarText}</p>
+        </div>
+        <a class="btn btn-primary" href="#contact">{u.ctaBarBtn}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="beige">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">{T(t.projects.label)}</p>
+        <h2 class="title">{T(t.projects.title)}</h2>
+      </div>
+      <div class="cards">
+        {projects.map((x) => (
+          <article class="tile">
+            {x.image && <img class="tile-img" src={media(x.image)} alt="" loading="lazy" width="600" height="400">}
+            <div class="tile-body">
+              <p class="eyebrow">{T(x.partner)}</p>
+              <h3>{x.slug ? <a href={url.project(x.slug)}>{T(x.title)}</a> : T(x.title)}</h3>
+              <p class="sum">{T(x.summary)}</p>
+              {x.slug && <p class="more" aria-hidden="true">{u.readMore}</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="approach">
+        <div class="approach-text">
+          <p class="eyebrow">{T(t.navigator.label)}</p>
+          <h2 class="title">{T(t.navigator.title)}</h2>
+          <p class="sub">{T(t.navigator.subtitle)}</p>
+          <p class="body">{T(t.navigator.text)}</p>
+          <a class="btn btn-outline btn-small" href={u.downloadNavUrl} rel="noopener">{u.downloadNav}<span class="sr-only">{u.external}</span></a>
+        </div>
+        <ul class="blocks" aria-label={u.blocksLabel}>
+          {BLOCKS.map(([file, label]) => (
+            <li class={label ? undefined : 'plain'} aria-hidden={label ? undefined : 'true'}>
+              <img src={`${base}/assets/nav9/${file}.png`} alt="">
+              {label && <span>{label}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="tools">
+        <article class="tool">
+          <div class="mark"><img src={`${base}/assets/sprockler-wordmark.png`} alt="Sprockler" width="900" height="297"></div>
+          <div>
+            <h3>{T(t.tools.sprockler.title)}</h3>
+            <p>{T(t.tools.sprockler.text)}</p>
+            <a class="link" href="https://sprockler.com" rel="noopener">{u.visitSprockler}<span class="sr-only">{u.external}</span></a>
+          </div>
+        </article>
+        <article class="tool">
+          <div class="mark type">The Perspectivity Challenge</div>
+          <div>
+            <h3>{T(t.tools.challenge.title)}</h3>
+            <p>{T(t.tools.challenge.text)}</p>
+            <a class="link" href="https://perspectivity-challenge.org" rel="noopener">{u.visitChallenge}<span class="sr-only">{u.external}</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="training" class="beige">
+    <div class="wrap">
+      <div class="head split">
+        <div>
+          <p class="eyebrow">{T(t.training.label)}</p>
+          <h2 class="title">{T(t.training.title)}</h2>
+        </div>
+        <p class="intro">{T(t.training.intro)}</p>
+      </div>
+      <div class="train-grid">
+        <div class="offer">
+          <div class="offer-block">
+            <h3 class="tussenkop">{u.openTr}</h3>
+            <ul class="rows">
+              {rows.map((r) => (
+                <li>
+                  <div>
+                    <strong>{r.href ? <a href={r.href}>{r.title}</a> : r.title}</strong>
+                    {r.summary && <span class="sum">{r.summary}</span>}
+                    <span class="when">{r.slots.length ? r.slots.map((x) => slotLabel(x)).join(' / ') : u.tba}</span>
+                  </div>
+                  <div class="row-actions">
+                    {r.href && <a class="pick quiet" href={r.href}>{u.moreInfo}<span class="sr-only">: {r.title}</span></a>}
+                    <button class="pick" type="button" data-pick={firstValue(r)}>{r.slots[0] && r.slots[0].when ? u.signUp : u.signUpTba}<span class="sr-only">: {r.title}</span></button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {companyRows.length > 0 && (
+            <div class="offer-block">
+              <h3 class="tussenkop">{u.inCompany}</h3>
+              <ul class="rows">
+                {companyRows.map((r) => (
+                  <li>
+                    <div>
+                      <strong>{r.href ? <a href={r.href}>{r.title}</a> : r.title}</strong>
+                      {r.summary && <span class="sum">{r.summary}</span>}
+                    </div>
+                    <div class="row-actions">
+                      {r.href && <a class="pick quiet" href={r.href}>{u.moreInfo}<span class="sr-only">: {r.title}</span></a>}
+                      <button class="pick" type="button" data-pick={r.value}>{u.request}<span class="sr-only">: {r.title}</span></button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <p class="small">{T(t.training.note)}</p>
+        </div>
+        <RegisterForm lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <section id="stories">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">{T(t.stories.label)}</p>
+        <h2 class="title">{T(t.stories.title)}</h2>
+      </div>
+      <div class="cards">
+        {news.map((x) => (
+          <article class="tile">
+            {x.image && <img class="tile-img" src={media(x.image)} alt="" loading="lazy" width="600" height="400">}
+            <div class="tile-body">
+              <p class="eyebrow">{word(x.kind)}{x.date && <span class="plain"> · {day(x.date)}</span>}</p>
+              <h3>{x.slug ? <a href={url.news(x.slug)}>{T(x.title)}</a> : T(x.title)}</h3>
+              <p class="sum">{T(x.summary)}</p>
+              {x.slug && <p class="more" aria-hidden="true">{u.readMore}</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+      <blockquote class="quote-block">{T(t.quote)}</blockquote>
+    </div>
+  </section>
+
+  <section id="team" class="beige">
+    <div class="wrap">
+      <div class="head split">
+        <div>
+          <p class="eyebrow">{T(t.team.label)}</p>
+          <h2 class="title">{T(t.team.title)}</h2>
+        </div>
+        <p class="intro">{T(t.team.intro)}</p>
+      </div>
+      <div class="team">
+        {team.map((p) => (
+          <figure>
+            <div class={p.photo ? 'ph' : 'ph none'}>{p.photo ? <img src={media(p.photo)} alt="" loading="lazy" width="480" height="480"> : <img src={`${base}/assets/person-red.png`} alt="" width="295" height="360">}</div>
+            <figcaption><strong>{p.name}</strong><span>{T(p.focus)}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

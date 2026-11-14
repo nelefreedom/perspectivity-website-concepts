@@ -1,0 +1,10 @@
+---
+import Detail from '../../../../components/d/Detail.astro';
+import { LANGS } from '../../../../lib/d.js';
+import items from '../../../../../content/news.json';
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => items.filter((x) => x.slug && x.visible !== false).map((x) => ({ params: { lang, slug: x.slug } })));
+}
+const { lang, slug } = Astro.params;
+---
+<Detail lang={lang} kind="news" slug={slug} />

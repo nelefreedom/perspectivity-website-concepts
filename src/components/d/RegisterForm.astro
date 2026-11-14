@@ -1,0 +1,41 @@
+---
+// Concept D: the training registration form. `selected` preselects a training.
+import { site } from '../../lib/d.js';
+
+const { lang = 'nl', selected = '' } = Astro.props;
+const { u, T, reg, options } = site(lang);
+const privacyUrl = T(reg.privacyUrl);
+---
+
+<div class="register" id="register">
+  <h2 id="register-title" tabindex="-1">{u.reg.title}</h2>
+  <p>{u.reg.intro}</p>
+  <form id="reg-form" novalidate aria-labelledby="register-title">
+    <div class="field wide"><label for="r-training">{u.reg.training}</label>
+      <select id="r-training" name="training" required aria-describedby="r-training-err">
+        <option value="">{u.reg.choose}</option>
+        <optgroup label={u.openTr}>
+          {options.open.map((v) => <option value={v} selected={v === selected}>{v}</option>)}
+        </optgroup>
+        {options.company.length > 0 && (
+          <optgroup label={u.inCompany}>
+            {options.company.map((o) => <option value={o.value} selected={o.value === selected}>{o.label}</option>)}
+          </optgroup>
+        )}
+      </select><p class="error" id="r-training-err"></p></div>
+    <div class="field"><label for="r-name">{u.reg.name}</label><input id="r-name" name="name" autocomplete="name" required aria-describedby="r-name-err"><p class="error" id="r-name-err"></p></div>
+    <div class="field"><label for="r-email">{u.reg.email}</label><input id="r-email" name="email" type="email" autocomplete="email" required aria-describedby="r-email-err"><p class="error" id="r-email-err"></p></div>
+    <div class="field"><label for="r-phone">{u.reg.phone} <span class="opt">({u.reg.optional})</span></label><input id="r-phone" name="phone" type="tel" autocomplete="tel"></div>
+    <div class="field"><label for="r-org">{u.reg.org} <span class="opt">({u.reg.optional})</span></label><input id="r-org" name="org" autocomplete="organization"></div>
+    <div class="field"><label for="r-count">{u.reg.count}</label><input id="r-count" name="count" type="number" inputmode="numeric" min="1" max="99" value="1"></div>
+    <div class="field wide"><label for="r-billing">{u.reg.billing} <span class="opt">({u.reg.optional})</span></label><textarea id="r-billing" name="billing" autocomplete="street-address"></textarea></div>
+    <div class="field wide"><label for="r-remarks">{u.reg.remarks} <span class="opt">({u.reg.optional})</span></label><textarea id="r-remarks" name="remarks"></textarea></div>
+    <label class="check wide" for="r-news"><input type="checkbox" name="news" id="r-news"><span>{u.reg.alsoNews}</span></label>
+    <div class="wide">
+      <label class="check" for="r-privacy"><input type="checkbox" name="privacy" id="r-privacy" required aria-describedby="r-privacy-err"><span>{u.reg.privacy}{privacyUrl && <> (<a href={privacyUrl}>{u.reg.privacyLink}</a>)</>}</span></label>
+      <p class="error" id="r-privacy-err"></p>
+    </div>
+    <div class="wide"><button class="btn btn-primary" type="submit" id="r-submit">{u.reg.submit}</button></div>
+  </form>
+  <div class="result" id="reg-result" tabindex="-1" role="status" hidden></div>
+</div>
