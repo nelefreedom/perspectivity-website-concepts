@@ -3,11 +3,16 @@
 // Nothing moves on this page: no animation, no transitions, no smooth scrolling.
 import Layout from './Layout.astro';
 import RegisterForm from './RegisterForm.astro';
-import { site, BLOCKS } from '../../lib/d.js';
+import { site, BLOCKS, THEMES, QUOTES } from '../../lib/d.js';
 
 const { lang = 'nl' } = Astro.props;
 const s = site(lang);
 const { base, u, T, t, word, media, url, agenda, rows, companyRows, firstValue, slotLabel, day, projects, news, team } = s;
+// Projects and stories in one list: the newest stories first, then the iconic projects.
+const items = [
+  ...news.map((x) => ({ image: x.image, label: word(x.kind), sub: day(x.date), title: T(x.title), summary: T(x.summary), href: x.slug ? url.news(x.slug) : '' })),
+  ...projects.map((x) => ({ image: x.image, label: u.kinds.project, sub: T(x.partner), title: T(x.title), summary: T(x.summary), href: x.slug ? url.project(x.slug) : '' })),
+];
 const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav9/responsive-leadership.png'];
 ---
 
@@ -23,7 +28,7 @@ const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav
           <a class="btn btn-outline" href="#training">{u.ctaTraining}</a>
         </div>
       </div>
-      <img class="hero-team" src={`${base}/assets/team-row.webp`} alt={u.teamRowAlt} width="1902" height="406">
+      <img class="hero-team" src={`${base}/assets/team-2026.jpg`} alt={u.teamRowAlt} width="2000" height="1331">
 
       {agenda.length > 0 && (
         <div class="agenda">
@@ -71,6 +76,12 @@ const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav
           {t.toolbox.methods.map((m) => <li>{T(m)}</li>)}
         </ul>
       </div>
+      <div class="methods">
+        <h3 class="tussenkop">{u.themesLabel}</h3>
+        <ul class="chips">
+          {THEMES.map((m) => <li>{T(m)}</li>)}
+        </ul>
+      </div>
       <div class="cta-bar">
         <div>
           <h3>{u.ctaBarTitle}</h3>
@@ -84,18 +95,17 @@ const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav
   <section id="projects" class="beige">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">{T(t.projects.label)}</p>
-        <h2 class="title">{T(t.projects.title)}</h2>
+        <h2 class="title">{u.workTitle}</h2>
       </div>
       <div class="cards">
-        {projects.map((x) => (
+        {items.map((x) => (
           <article class="tile">
             {x.image && <img class="tile-img" src={media(x.image)} alt="" loading="lazy" width="600" height="400">}
             <div class="tile-body">
-              <p class="eyebrow">{T(x.partner)}</p>
-              <h3>{x.slug ? <a href={url.project(x.slug)}>{T(x.title)}</a> : T(x.title)}</h3>
-              <p class="sum">{T(x.summary)}</p>
-              {x.slug && <p class="more" aria-hidden="true">{u.readMore}</p>}
+              <p class="eyebrow">{x.label}{x.sub && <span class="plain"> · {x.sub}</span>}</p>
+              <h3>{x.href ? <a href={x.href}>{x.title}</a> : x.title}</h3>
+              <p class="sum">{x.summary}</p>
+              {x.href && <p class="more" aria-hidden="true">{u.readMore}</p>}
             </div>
           </article>
         ))}
@@ -198,26 +208,17 @@ const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav
     </div>
   </section>
 
-  <section id="stories">
+  <section id="said">
     <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">{T(t.stories.label)}</p>
-        <h2 class="title">{T(t.stories.title)}</h2>
-      </div>
-      <div class="cards">
-        {news.map((x) => (
-          <article class="tile">
-            {x.image && <img class="tile-img" src={media(x.image)} alt="" loading="lazy" width="600" height="400">}
-            <div class="tile-body">
-              <p class="eyebrow">{word(x.kind)}{x.date && <span class="plain"> · {day(x.date)}</span>}</p>
-              <h3>{x.slug ? <a href={url.news(x.slug)}>{T(x.title)}</a> : T(x.title)}</h3>
-              <p class="sum">{T(x.summary)}</p>
-              {x.slug && <p class="more" aria-hidden="true">{u.readMore}</p>}
-            </div>
-          </article>
+      <h2 class="tussenkop">{u.saidLabel}</h2>
+      <div class="said">
+        {QUOTES.map((q) => (
+          <figure>
+            <blockquote lang={q.lang && q.lang[lang]}>{T(q.text)}</blockquote>
+            <figcaption><strong>{q.name}</strong><span>{q.role}</span></figcaption>
+          </figure>
         ))}
       </div>
-      <blockquote class="quote-block">{T(t.quote)}</blockquote>
     </div>
   </section>
 
@@ -234,7 +235,7 @@ const icons = ['nav9/involvement-of-all.png', 'nav9/adaptive-learning.png', 'nav
         {team.map((p) => (
           <figure>
             <div class={p.photo ? 'ph' : 'ph none'}>{p.photo ? <img src={media(p.photo)} alt="" loading="lazy" width="480" height="480"> : <img src={`${base}/assets/person-red.png`} alt="" width="295" height="360">}</div>
-            <figcaption><strong>{p.name}</strong><span>{T(p.focus)}</span></figcaption>
+            <figcaption><strong>{p.slug ? <a href={`${s.home}team/${p.slug}/`}>{p.name}</a> : p.name}</strong><span>{T(p.focus)}</span></figcaption>
           </figure>
         ))}
       </div>

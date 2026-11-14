@@ -1,7 +1,7 @@
 ---
 // Concept D: page frame (head, header, footer, scripts) shared by the home page and the detail pages.
 import '../../styles/d.css';
-import { site } from '../../lib/d.js';
+import { site, LINKS } from '../../lib/d.js';
 
 const { lang = 'nl', title = '', description = '', path = '', registerHref = '' } = Astro.props;
 const s = site(lang);
@@ -38,7 +38,6 @@ const privacyUrl = T(reg.privacyUrl);
         <li><a href={to('#work')}>{u.menu.work}</a></li>
         <li><a href={to('#projects')}>{u.menu.projects}</a></li>
         <li><a href={to('#training')}>{u.menu.training}</a></li>
-        <li><a href={to('#stories')}>{u.menu.stories}</a></li>
         <li><a href={to('#team')}>{u.menu.team}</a></li>
         <li><a href={to('#contact')}>{u.menu.contact}</a></li>
         <li class="menu-lang">
@@ -88,7 +87,7 @@ const privacyUrl = T(reg.privacyUrl);
 <footer>
   <div class="wrap">
     <img src={`${base}/assets/logo-red.png`} alt="Perspectivity" width="640" height="169">
-    <p class="meta"><span>{T(t.footer)}</span>{privacyUrl && <a href={privacyUrl}>{u.reg.privacyLink}</a>}<a href={`${base}/`}>{u.concepts}</a></p>
+    <p class="meta"><span>{T(t.footer)}</span><a href={T(LINKS.terms)}>{u.terms}</a>{privacyUrl && <a href={privacyUrl}>{u.reg.privacyLink}</a>}<a href={T(LINKS.cancellation)}>{u.cancellation}</a><a href={LINKS.linkedin} rel="noopener">LinkedIn</a><a href={LINKS.facebook} rel="noopener">Facebook</a><a href={`${base}/`}>{u.concepts}</a></p>
   </div>
 </footer>
 

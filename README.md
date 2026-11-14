@@ -5,7 +5,7 @@ Four mock-up directions for the new perspectivity.org, built on the Perspectivit
 - `a/` Calm: business register, white space, black and red type. **Editable by partners, in English (`a/en/`) and Dutch (`a/nl/`); `a/` forwards to `a/en/`.**
 - `b/` Egg window: photos in the egg, patterns, light support colours
 - `c/` Navigator: the visitor starts from their own question, exuberant colour fields
-- `d/` Business card: the current site tidied up into one calm page, with training registration from the first screen and nothing that moves. Every training, iconic project and news item opens on its own page. Dutch (`d/nl/`) and English (`d/en/`); `d/` forwards to `d/nl/`.
+- `d/` Business card: the current site tidied up into one calm page, with training registration from the first screen and nothing that moves. Every training, project, news item and team member opens on its own page. Dutch (`d/nl/`) and English (`d/en/`); `d/` forwards to `d/nl/`.
 
 Live: https://perspectivity-org.github.io/perspectivity-website-concepts/ (not indexed by search engines).
 

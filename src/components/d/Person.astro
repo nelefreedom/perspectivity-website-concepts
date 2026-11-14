@@ -1,0 +1,62 @@
+---
+// Concept D: the page of one team member.
+import Layout from './Layout.astro';
+import { site } from '../../lib/d.js';
+
+const { lang = 'nl', slug = '' } = Astro.props;
+const s = site(lang);
+const { base, u, T, media, team } = s;
+const p = team.find((x) => x.slug === slug);
+const bio = (p.bio && (p.bio[lang] || p.bio.en)) || '';
+const expertise = (p.expertise && (p.expertise[lang] || p.expertise.en)) || [];
+const others = team.filter((x) => x.slug && x.slug !== slug);
+const tel = (p.phone || '').replace(/[^+\d]/g, '');
+---
+
+<Layout lang={lang} title={p.name} description={T(p.focus)} path={`team/${slug}/`}>
+  <section class="detail-head beige">
+    <div class="wrap">
+      <div class="person-top">
+        <div class={p.photo ? 'person-photo' : 'person-photo none'}>
+          {p.photo ? <img src={media(p.photo)} alt="" width="480" height="480"> : <img src={`${base}/assets/person-red.png`} alt="" width="295" height="360">}
+        </div>
+        <div class="detail-intro">
+          <p class="crumb"><a href={`${s.home}#team`}>{u.back.person}</a></p>
+          <h1 class="title">{p.name}</h1>
+          <p class="lead">{T(p.focus)}</p>
+          <div class="actions">
+            {p.email && <a class="btn btn-primary" href={`mailto:${p.email}`}>{u.mailPerson}</a>}
+            {p.linkedin && <a class="btn btn-outline" href={p.linkedin} rel="noopener">LinkedIn</a>}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="detail-body">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="prose" set:html={bio || `<p>${T(p.focus)}</p>`} />
+        <aside class="facts">
+          <h2 class="tussenkop">{u.atAGlance}</h2>
+          <dl>
+            {expertise.length > 0 && (
+              <div><dt>{u.expertise}</dt><dd>{expertise.map((e) => <span class="slot">{e}</span>)}</dd></div>
+            )}
+            {p.email && <div><dt>{u.reg.email}</dt><dd><a href={`mailto:${p.email}`}>{p.email}</a></dd></div>}
+            {tel && <div><dt>{u.reg.phone}</dt><dd><a href={`tel:${tel}`}>{p.phone}</a></dd></div>}
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="detail-more beige">
+    <div class="wrap">
+      <h2 class="tussenkop">{u.more.person}</h2>
+      <ul class="people-links">
+        {others.map((o) => <li><a href={`${s.home}team/${o.slug}/`}>{o.name}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Layout>
